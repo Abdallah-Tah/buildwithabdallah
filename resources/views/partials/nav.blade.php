@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="sticky top-0 z-50 border-b border-brand-gray/70 bg-white/90 backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="{{ route('home') }}" class="flex items-center gap-3">
-            <img src="{{ asset('brand/logo.png') }}" alt="Build With Abdallah logo" class="h-11 w-11 rounded-xl object-contain">
+            <img src="{{ asset('brand/logo.jpg') }}" alt="Build With Abdallah logo" class="h-11 w-11 rounded-xl object-contain">
             <div>
                 <div class="text-base font-semibold tracking-tight text-brand-navy">Build With Abdallah</div>
                 <div class="text-xs text-slate-500">Software • Automation • APIs • Solutions</div>

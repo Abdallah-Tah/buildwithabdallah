@@ -17,7 +17,7 @@
             </p>
         </div>
         <div class="card-surface">
-            <img src="{{ asset('brand/banner.png') }}" alt="Build With Abdallah brand banner" class="w-full rounded-[1.5rem] border border-blue-100">
+            <img src="{{ asset('brand/banner.jpg') }}" alt="Build With Abdallah brand banner" class="w-full rounded-[1.5rem] border border-blue-100">
         </div>
     </div>
 </section>

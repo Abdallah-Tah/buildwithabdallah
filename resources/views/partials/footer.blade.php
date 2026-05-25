@@ -2,7 +2,7 @@
     <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
         <div>
             <div class="flex items-center gap-3">
-                <img src="{{ asset('brand/logo.png') }}" alt="Build With Abdallah logo" class="h-10 w-10 rounded-xl object-contain">
+                <img src="{{ asset('brand/logo.jpg') }}" alt="Build With Abdallah logo" class="h-10 w-10 rounded-xl object-contain">
                 <h2 class="text-lg font-semibold text-brand-navy">Build With Abdallah</h2>
             </div>
             <p class="mt-4 max-w-xl text-sm leading-7 text-slate-600">

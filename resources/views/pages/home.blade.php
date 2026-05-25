@@ -12,7 +12,7 @@
                 Professional software and automation
             </div>
             <div class="mt-8 flex items-center gap-4">
-                <img src="{{ asset('brand/logo.png') }}" alt="Build With Abdallah logo" class="h-16 w-16 rounded-2xl object-contain shadow-sm ring-1 ring-brand-gray">
+                <img src="{{ asset('brand/logo.jpg') }}" alt="Build With Abdallah logo" class="h-16 w-16 rounded-2xl object-contain shadow-sm ring-1 ring-brand-gray">
                 <div>
                     <p class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">Build With Abdallah</p>
                     <p class="text-base text-slate-600">Software • Automation • APIs • Solutions</p>
@@ -32,7 +32,7 @@
         <div class="relative">
             <div class="absolute -left-8 top-8 h-32 w-32 rounded-full bg-blue-100 blur-2xl"></div>
             <div class="card-surface overflow-hidden p-4 sm:p-5">
-                <img src="{{ asset('brand/banner.png') }}" alt="Build With Abdallah banner" class="w-full rounded-[1.75rem] border border-blue-100 object-cover shadow-sm">
+                <img src="{{ asset('brand/banner.jpg') }}" alt="Build With Abdallah banner" class="w-full rounded-[1.75rem] border border-blue-100 object-cover shadow-sm">
             </div>
         </div>
     </div>

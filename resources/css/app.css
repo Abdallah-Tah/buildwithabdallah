@@ -21,6 +21,11 @@ body {
     font-family: Inter, ui-sans-serif, system-ui, sans-serif;
 }
 
+html.theme-dark body {
+    background: #020817;
+    color: #E2E8F0;
+}
+
 .page-orb {
     position: fixed;
     z-index: -1;
@@ -91,4 +96,108 @@ body {
 
 .filter-pill-active {
     @apply border-blue-200 bg-blue-50 text-brand-blue;
+}
+
+
+html.theme-dark .page-orb-left {
+    background: rgba(37, 99, 235, 0.22);
+}
+
+html.theme-dark .page-orb-right {
+    background: rgba(148, 163, 184, 0.08);
+}
+
+html.theme-dark nav,
+html.theme-dark footer {
+    background: rgba(15, 23, 42, 0.92) !important;
+    border-color: rgba(51, 65, 85, 0.9) !important;
+}
+
+html.theme-dark .card-surface {
+    background: #0F172A !important;
+    border-color: #1E293B !important;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35) !important;
+}
+
+html.theme-dark .nav-link,
+html.theme-dark .footer-link,
+html.theme-dark .mobile-nav-link,
+html.theme-dark .label-text,
+html.theme-dark .text-slate-700,
+html.theme-dark .text-slate-600,
+html.theme-dark .text-slate-500 {
+    color: #CBD5E1 !important;
+}
+
+html.theme-dark .section-title,
+html.theme-dark .text-brand-navy,
+html.theme-dark .text-white {
+    color: #F8FAFC !important;
+}
+
+html.theme-dark .bg-white,
+html.theme-dark .bg-brand-white {
+    background: #020817 !important;
+}
+
+html.theme-dark .bg-slate-100,
+html.theme-dark .bg-blue-50 {
+    background: rgba(30, 41, 59, 0.9) !important;
+}
+
+html.theme-dark .border-brand-gray,
+html.theme-dark .border-blue-100,
+html.theme-dark .border-blue-200,
+html.theme-dark .border-brand-gray\/70,
+html.theme-dark .border-t,
+html.theme-dark .border-b {
+    border-color: #334155 !important;
+}
+
+html.theme-dark .input-field-light,
+html.theme-dark .filter-pill,
+html.theme-dark .secondary-button {
+    background: #0F172A !important;
+    color: #E2E8F0 !important;
+    border-color: #334155 !important;
+}
+
+html.theme-dark .input-field-light::placeholder {
+    color: #94A3B8 !important;
+}
+
+html.theme-dark .input-field-light:focus {
+    border-color: #2563EB !important;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18) !important;
+}
+
+html.theme-dark .filter-pill-active {
+    background: rgba(37, 99, 235, 0.18) !important;
+    color: #93C5FD !important;
+    border-color: rgba(37, 99, 235, 0.45) !important;
+}
+
+html.theme-dark .prose,
+html.theme-dark .prose p,
+html.theme-dark .prose li {
+    color: #CBD5E1 !important;
+}
+
+html.theme-dark .prose h1,
+html.theme-dark .prose h2,
+html.theme-dark .prose h3,
+html.theme-dark .prose h4,
+html.theme-dark .prose strong,
+html.theme-dark .prose code {
+    color: #F8FAFC !important;
+}
+
+html.theme-dark .prose a {
+    color: #93C5FD !important;
+}
+
+html.theme-dark .shadow-blue-200,
+html.theme-dark .shadow-sm,
+html.theme-dark .shadow-slate-200\/70 {
+    box-shadow: 0 10px 25px rgba(2, 6, 23, 0.25) !important;
 }
