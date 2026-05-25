@@ -1,14 +1,24 @@
 @extends('layouts.app', ['title' => 'Contact • Build With Abdallah'])
 
 @section('content')
-<section class="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+<section class="page-section pt-16 sm:pt-20">
     <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
             <p class="section-eyebrow">Contact</p>
             <h1 class="section-title">Tell me what you want to build</h1>
             <p class="mt-6 text-base leading-8 text-slate-600">
-                Need an MVP, dashboard, API, automation system, technical content workflow, or internal business tool? Send the scope and I’ll review the practical path.
+                Need an MVP, dashboard, API, automation system, technical content workflow, or internal business tool? Send the scope and I’ll review the most practical path.
             </p>
+            <div class="mt-8 grid gap-4">
+                <div class="card-surface">
+                    <h2 class="text-lg font-semibold text-brand-navy">Best fit projects</h2>
+                    <p class="mt-3 text-sm leading-7 text-slate-600">Dashboards, Laravel systems, automation workflows, API layers, content platforms, and business operations tools.</p>
+                </div>
+                <div class="card-surface">
+                    <h2 class="text-lg font-semibold text-brand-navy">What helps most</h2>
+                    <p class="mt-3 text-sm leading-7 text-slate-600">Share your goal, the pain point, current workflow, and any deadline or delivery constraints.</p>
+                </div>
+            </div>
         </div>
         <div class="card-surface">
             @if(session('success'))
@@ -38,7 +48,7 @@
                     <textarea id="message" name="message" rows="6" class="input-field-light" required>{{ old('message') }}</textarea>
                     @error('message') <p class="mt-2 text-sm text-rose-600">{{ $message }}</p> @enderror
                 </div>
-                <button type="submit" class="primary-button">Send Message</button>
+                <button type="submit" class="primary-button w-full sm:w-auto">Send Message</button>
             </form>
         </div>
     </div>

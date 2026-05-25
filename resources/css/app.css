@@ -55,7 +55,7 @@ html.theme-dark body {
 }
 
 .mobile-nav-link {
-    @apply block rounded-2xl px-3 py-3 text-sm font-medium text-brand-navy transition hover:bg-blue-50 hover:text-brand-blue;
+    @apply block rounded-xl px-3 py-3 text-sm font-medium text-brand-navy transition hover:bg-blue-50 hover:text-brand-blue;
 }
 
 .footer-link {
@@ -71,7 +71,15 @@ html.theme-dark body {
 }
 
 .card-surface {
-    @apply rounded-[1.75rem] border border-brand-gray bg-white p-6 shadow-sm shadow-slate-200/70;
+    @apply rounded-[1.5rem] border border-brand-gray bg-white p-6 shadow-sm shadow-slate-200/70;
+}
+
+.page-section {
+    @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8;
+}
+
+.empty-state {
+    @apply rounded-[1.5rem] border border-dashed border-blue-200 bg-blue-50/70 p-8 text-center shadow-sm;
 }
 
 .primary-button {

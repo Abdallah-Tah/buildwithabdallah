@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => 'Tutorials • Build With Abdallah'])
 
 @section('content')
-<section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+<section class="page-section pt-16 sm:pt-20">
     <div class="max-w-3xl">
         <p class="section-eyebrow">Tutorials</p>
         <h1 class="section-title">Practical tutorials for software, automation, and API work</h1>
@@ -15,7 +15,7 @@
                 <input id="tutorial-search" name="search" value="{{ $search }}" class="input-field-light" placeholder="Search by title, excerpt, or content">
             </div>
             <div class="flex items-end">
-                <button type="submit" class="primary-button">Search</button>
+                <button type="submit" class="primary-button w-full sm:w-auto">Search</button>
             </div>
         </form>
 
@@ -56,7 +56,10 @@
                 <a href="{{ route('tutorials.show', $post->slug) }}" class="mt-6 inline-flex text-sm font-semibold text-brand-blue">Read tutorial →</a>
             </article>
         @empty
-            <div class="card-surface lg:col-span-3">No tutorials matched your search yet.</div>
+            <div class="empty-state lg:col-span-3">
+                <h3 class="text-xl font-semibold text-brand-navy">No tutorials available yet</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-600">Once real posts are published, this page will list tutorials for Laravel, automation, APIs, and implementation notes.</p>
+            </div>
         @endforelse
     </div>
     <div class="mt-10">{{ $posts->links() }}</div>

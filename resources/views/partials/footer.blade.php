@@ -2,12 +2,13 @@
     <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
         <div>
             <div class="flex items-center gap-3">
-                <img src="{{ asset('brand/logo.jpg') }}" alt="Build With Abdallah logo" class="h-10 w-10 rounded-xl object-contain">
+                <img src="{{ asset('brand/logo.jpg') }}" alt="Build With Abdallah logo" class="h-9 w-9 rounded-lg object-contain">
                 <h2 class="text-lg font-semibold text-brand-navy">Build With Abdallah</h2>
             </div>
             <p class="mt-4 max-w-xl text-sm leading-7 text-slate-600">
                 Professional software, automation, APIs, tutorials, and business solutions built with a practical engineering mindset.
             </p>
+            <p class="mt-5 text-sm text-slate-500">© 2026 Build With Abdallah.</p>
         </div>
         <div>
             <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-700">Explore</h3>
