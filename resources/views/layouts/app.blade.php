@@ -6,10 +6,12 @@
     <title>{{ $title ?? 'Build With Abdallah' }}</title>
     <meta name="description" content="{{ $metaDescription ?? 'Software, Automation, APIs, Tutorials, Videos, and Business Solutions.' }}">
     <meta name="theme-color" content="#2563EB">
-    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}">
+    @php($faviconVersion = file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : time())
+    <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ $faviconVersion }}" sizes="any">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v={{ $faviconVersion }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}?v={{ $faviconVersion }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}?v={{ $faviconVersion }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}?v={{ $faviconVersion }}">
     <script>
         (() => {
             const media = window.matchMedia('(prefers-color-scheme: dark)');
