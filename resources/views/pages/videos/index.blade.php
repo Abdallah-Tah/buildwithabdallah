@@ -4,14 +4,14 @@
 <section class="page-section pt-16 sm:pt-20">
     <div class="max-w-3xl">
         <p class="section-eyebrow">Videos</p>
-        <h1 class="section-title">Professional technical videos for builders and businesses</h1>
-        <p class="mt-5 text-base leading-8 text-slate-600">Short explainers, walkthroughs, and implementation content focused on real software delivery.</p>
+        <h1 class="section-title">Video explainers and demos</h1>
+        <p class="mt-5 text-base leading-8 text-slate-600">Short walkthroughs will appear here when real videos are published. No placeholder videos are shown on the public site.</p>
     </div>
 
     <div class="mt-10 grid gap-6 lg:grid-cols-3">
         @forelse($videos as $video)
             <article class="card-surface flex flex-col">
-                <div class="aspect-video overflow-hidden rounded-2xl border border-blue-100 bg-slate-100">
+                <div class="aspect-video overflow-hidden rounded-lg border border-blue-100 bg-slate-100">
                     <iframe class="h-full w-full" src="{{ $video->youtube_embed_url }}" title="{{ $video->title }}" loading="lazy" allowfullscreen></iframe>
                 </div>
                 <h2 class="mt-5 text-2xl font-semibold text-brand-navy">{{ $video->title }}</h2>

@@ -7,12 +7,13 @@
             <p class="section-eyebrow">Contact</p>
             <h1 class="section-title">Tell me what you want to build</h1>
             <p class="mt-6 text-base leading-8 text-slate-600">
-                Need an MVP, dashboard, API, automation system, technical content workflow, or internal business tool? Send the scope and I’ll review the most practical path.
+                Need a website, MVP, dashboard, API, AI agent, automation system, or internal business tool? Send the scope and I will review the most practical path.
             </p>
+            <p class="mt-4 text-sm font-semibold text-brand-blue">Email: buildwithabdallah@gmail.com</p>
             <div class="mt-8 grid gap-4">
                 <div class="card-surface">
                     <h2 class="text-lg font-semibold text-brand-navy">Best fit projects</h2>
-                    <p class="mt-3 text-sm leading-7 text-slate-600">Dashboards, Laravel systems, automation workflows, API layers, content platforms, and business operations tools.</p>
+                    <p class="mt-3 text-sm leading-7 text-slate-600">Websites, dashboards, Laravel systems, automation workflows, API layers, content platforms, and business operations tools.</p>
                 </div>
                 <div class="card-surface">
                     <h2 class="text-lg font-semibold text-brand-navy">What helps most</h2>
@@ -22,7 +23,7 @@
         </div>
         <div class="card-surface">
             @if(session('success'))
-                <div class="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                <div class="mb-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                     {{ session('success') }}
                 </div>
             @endif

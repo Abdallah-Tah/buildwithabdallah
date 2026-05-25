@@ -5,7 +5,7 @@
     <div class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">{{ $video->category?->name ?? 'Video' }}</div>
     <h1 class="mt-4 text-4xl font-semibold tracking-tight text-brand-navy">{{ $video->title }}</h1>
     <p class="mt-6 text-lg leading-8 text-slate-600">{{ $video->description }}</p>
-    <div class="mt-10 overflow-hidden rounded-3xl border border-blue-100 bg-slate-100 shadow-sm">
+    <div class="mt-10 overflow-hidden rounded-lg border border-blue-100 bg-slate-100 shadow-sm">
         <div class="aspect-video">
             <iframe class="h-full w-full" src="{{ $video->youtube_embed_url }}" title="{{ $video->title }}" loading="lazy" allowfullscreen></iframe>
         </div>

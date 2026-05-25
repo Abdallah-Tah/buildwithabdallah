@@ -10,6 +10,11 @@ use App\Http\Controllers\Api\V1\TagController;
 use App\Http\Controllers\Api\V1\VideoController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/health-check', fn (): array => [
+    'status' => 'ok',
+    'app' => config('app.name'),
+])->name('api.health-check');
+
 Route::prefix('v1')
     ->middleware(['throttle:api-v1', 'force.json', 'api.log'])
     ->group(function (): void {

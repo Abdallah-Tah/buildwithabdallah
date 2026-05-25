@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Build With Abdallah' }}</title>
-    <meta name="description" content="{{ $metaDescription ?? 'Software, Automation, APIs, Tutorials, Videos, and Business Solutions.' }}">
+    <meta name="description" content="{{ $metaDescription ?? 'Full-stack software, AI agents, dashboards, APIs, and automation systems by Abdallah Mohamed.' }}">
     <meta name="theme-color" content="#2563EB">
     @php($faviconVersion = file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : time())
     <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ $faviconVersion }}" sizes="any">
@@ -31,8 +31,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-brand-white text-brand-navy antialiased transition-colors duration-200">
-    <div class="page-orb page-orb-left"></div>
-    <div class="page-orb page-orb-right"></div>
     @include('partials.nav')
 
     <main>

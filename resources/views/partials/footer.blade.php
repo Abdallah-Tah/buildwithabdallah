@@ -6,7 +6,7 @@
                 <h2 class="text-lg font-semibold text-brand-navy">Build With Abdallah</h2>
             </div>
             <p class="mt-4 max-w-xl text-sm leading-7 text-slate-600">
-                Professional software, automation, APIs, tutorials, and business solutions built with a practical engineering mindset.
+                Full-stack software, AI agents, dashboards, APIs, and automation systems for businesses that need practical tools.
             </p>
             <p class="mt-5 text-sm text-slate-500">© 2026 Build With Abdallah.</p>
         </div>
@@ -22,8 +22,9 @@
         <div>
             <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-700">Contact</h3>
             <div class="mt-4 space-y-2 text-sm text-slate-600">
-                <p>Available for dashboards, automation systems, APIs, and MVP builds.</p>
+                <p>Available for websites, dashboards, AI agents, API integrations, automation systems, and MVP builds.</p>
                 <a href="{{ route('contact.index') }}" class="footer-link">Start a conversation</a>
+                <a href="mailto:buildwithabdallah@gmail.com" class="footer-link">buildwithabdallah@gmail.com</a>
             </div>
         </div>
     </div>

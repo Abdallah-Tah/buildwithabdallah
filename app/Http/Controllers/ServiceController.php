@@ -10,28 +10,28 @@ class ServiceController extends Controller
     {
         $services = [
             [
-                'title' => 'Custom Web Applications',
-                'description' => 'Purpose-built applications for dashboards, portals, and internal operations.',
+                'title' => 'Starter Website',
+                'description' => 'A clean business website or landing page with clear copy, contact flow, and responsive design. Starting from $499.',
             ],
             [
-                'title' => 'Business Automation',
-                'description' => 'Automate approvals, notifications, data sync, and repetitive work that wastes time.',
+                'title' => 'Business Dashboard',
+                'description' => 'A Laravel dashboard for reports, admin workflows, status tracking, and internal visibility. Quote after review.',
             ],
             [
-                'title' => 'API Development',
-                'description' => 'Design and build secure APIs for mobile apps, dashboards, integrations, and bots.',
+                'title' => 'AI Agent or Telegram Bot',
+                'description' => 'A monitored agent for alerts, research, follow-ups, summaries, and approval-based actions. Starting from $799.',
             ],
             [
-                'title' => 'Legacy System Modernization',
-                'description' => 'Upgrade fragile spreadsheets and aging tools into maintainable modern software.',
+                'title' => 'API Integration',
+                'description' => 'Connect Stripe, GitHub, forms, CRMs, email, dashboards, or existing tools. Quote after review.',
             ],
             [
-                'title' => 'Laravel / PHP Development',
-                'description' => 'Reliable Laravel builds for product MVPs, content systems, and business operations.',
+                'title' => 'Automation Workflow',
+                'description' => 'Turn repetitive spreadsheet, email, and reporting work into reliable automated steps. Starting from $799.',
             ],
             [
-                'title' => 'Technical Tutorials and Training',
-                'description' => 'Clear tutorials, code walkthroughs, and practical training for teams and builders.',
+                'title' => 'MVP or Internal Tool',
+                'description' => 'A practical product, portal, or internal app with database, admin, API, and deployment support. Quote after review.',
             ],
         ];
 

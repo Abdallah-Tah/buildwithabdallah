@@ -2,12 +2,12 @@
 
 @section('content')
 <section class="page-section pt-16 sm:pt-20">
-    <div class="card-surface grid gap-10 border-blue-200 bg-gradient-to-br from-white to-blue-50 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="grid gap-10 border border-blue-200 bg-blue-50 p-6 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
             <p class="section-eyebrow">Newsletter</p>
-            <h1 class="section-title">Get daily software, automation, and API tips.</h1>
+            <h1 class="section-title">Get practical software and automation notes.</h1>
             <p class="mt-5 text-base leading-8 text-slate-600">
-                A focused newsletter for builders and business owners who want practical ideas, not fluff.
+                A focused newsletter for founders, builders, and business owners who want useful ideas, not fluff.
             </p>
             <ul class="mt-6 space-y-3 text-sm text-slate-600">
                 <li>• Laravel and backend implementation notes</li>
@@ -15,9 +15,9 @@
                 <li>• API design tips for real projects</li>
             </ul>
         </div>
-        <div class="rounded-[1.35rem] border border-blue-100 bg-white p-5 shadow-sm sm:p-6">
+        <div class="border border-blue-100 bg-white p-5 shadow-sm sm:p-6">
             @if(session('newsletter_success'))
-                <div class="mb-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">{{ session('newsletter_success') }}</div>
+                <div class="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">{{ session('newsletter_success') }}</div>
             @endif
             <form action="{{ route('newsletter.store') }}" method="POST" class="space-y-5">
                 @csrf

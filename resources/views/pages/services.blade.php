@@ -4,14 +4,14 @@
 <section class="page-section pt-16 sm:pt-20">
     <div class="max-w-3xl">
         <p class="section-eyebrow">Services</p>
-        <h1 class="section-title">Software, automation, APIs, and delivery that respect business reality</h1>
-        <p class="mt-5 text-base leading-8 text-slate-600">Focused delivery for businesses that need clean systems, not bloated tech experiments.</p>
+        <h1 class="section-title">Services for businesses that need clearer websites, better tools, and less manual work</h1>
+        <p class="mt-5 text-base leading-8 text-slate-600">Fixed-scope delivery when possible, honest quotes when discovery is needed, and practical implementation over buzzwords.</p>
     </div>
 
     <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         @foreach($services as $service)
             <article class="card-surface">
-                <div class="mb-5 h-10 w-10 rounded-2xl bg-blue-50"></div>
+                <div class="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-brand-blue">Build</div>
                 <h2 class="text-xl font-semibold text-brand-navy">{{ $service['title'] }}</h2>
                 <p class="mt-3 text-sm leading-7 text-slate-600">{{ $service['description'] }}</p>
             </article>
@@ -21,15 +21,15 @@
     <div class="mt-10 grid gap-6 lg:grid-cols-3">
         <article class="card-surface">
             <h2 class="text-xl font-semibold text-brand-navy">Ideal for</h2>
-            <p class="mt-3 text-sm leading-7 text-slate-600">Internal tools, dashboards, admin panels, API integrations, automation workflows, and professional MVPs.</p>
+            <p class="mt-3 text-sm leading-7 text-slate-600">Small businesses, solo founders, local services, and teams that need a working system without hiring a full dev team.</p>
         </article>
         <article class="card-surface">
             <h2 class="text-xl font-semibold text-brand-navy">Delivery style</h2>
-            <p class="mt-3 text-sm leading-7 text-slate-600">Practical scope, clean implementation, professional UI, and architecture that stays understandable.</p>
+            <p class="mt-3 text-sm leading-7 text-slate-600">Clear scope, clean implementation, professional UI, deployment help, and documentation you can understand.</p>
         </article>
         <article class="card-surface">
             <h2 class="text-xl font-semibold text-brand-navy">What matters</h2>
-            <p class="mt-3 text-sm leading-7 text-slate-600">Shipping useful business value fast while keeping the codebase stable enough to grow later.</p>
+            <p class="mt-3 text-sm leading-7 text-slate-600">Saving time, reducing mistakes, improving follow-up, and making the business easier to operate.</p>
         </article>
     </div>
 </section>

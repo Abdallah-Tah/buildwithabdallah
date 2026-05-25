@@ -4,7 +4,7 @@
             <img src="{{ asset('brand/logo.jpg') }}" alt="Build With Abdallah logo" class="h-9 w-9 rounded-lg object-contain sm:h-10 sm:w-10">
             <div class="min-w-0">
                 <div class="truncate text-[15px] font-semibold tracking-tight text-brand-navy sm:text-base">Build With Abdallah</div>
-                <div class="truncate text-[11px] text-slate-500 sm:text-xs">Software • Automation • APIs • Solutions</div>
+                <div class="truncate text-[11px] text-slate-500 sm:text-xs">AI Agents • Dashboards • APIs</div>
             </div>
         </a>
 
@@ -14,8 +14,7 @@
             <a href="{{ route('tutorials.index') }}" class="nav-link">Tutorials</a>
             <a href="{{ route('videos.index') }}" class="nav-link">Videos</a>
             <a href="{{ route('newsletter.index') }}" class="nav-link">Newsletter</a>
-            <a href="{{ route('contact.index') }}" class="nav-link">Contact</a>
-            <a href="{{ url('/admin') }}" class="inline-flex items-center rounded-full bg-brand-blue px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-blue-200 transition hover:bg-blue-700">Admin</a>
+            <a href="{{ route('contact.index') }}" class="inline-flex items-center rounded-lg bg-brand-blue px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-blue-200 transition hover:bg-blue-700">Contact</a>
         </div>
 
         <button @click="open = !open" type="button" aria-label="Toggle navigation" class="inline-flex rounded-xl border border-brand-gray bg-white p-2 text-brand-navy lg:hidden">
@@ -33,7 +32,6 @@
             <a href="{{ route('videos.index') }}" class="mobile-nav-link">Videos</a>
             <a href="{{ route('newsletter.index') }}" class="mobile-nav-link">Newsletter</a>
             <a href="{{ route('contact.index') }}" class="mobile-nav-link">Contact</a>
-            <a href="{{ url('/admin') }}" class="mobile-nav-link">Admin</a>
         </div>
     </div>
 </nav>

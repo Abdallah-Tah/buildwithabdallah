@@ -12,16 +12,24 @@ class HomeController extends Controller
     public function __invoke(): View
     {
         $services = [
-            ['title' => 'Custom Web Applications', 'description' => 'Laravel and PHP apps built around real business workflows and internal operations.'],
-            ['title' => 'Business Automation', 'description' => 'Automate repetitive work, alerts, approvals, and data flows without fragile glue.'],
-            ['title' => 'API Development', 'description' => 'Secure APIs for dashboards, clients, integrations, and Taco automation.'],
-            ['title' => 'Legacy System Modernization', 'description' => 'Move from spreadsheets and brittle tools to maintainable business software.'],
-            ['title' => 'Laravel / PHP Development', 'description' => 'Professional backend systems, admin panels, and content platforms that stay clean.'],
-            ['title' => 'Technical Tutorials and Training', 'description' => 'Practical tutorials, implementation notes, and technical guidance teams can use.'],
+            ['title' => 'Business Websites', 'description' => 'Professional websites and landing pages that explain your offer clearly and capture leads.'],
+            ['title' => 'Dashboards and Internal Tools', 'description' => 'Laravel dashboards, admin panels, and reporting systems for real operations.'],
+            ['title' => 'AI Agents and Telegram Bots', 'description' => 'Approval-based agents for alerts, research, support, content workflows, and business monitoring.'],
+            ['title' => 'API Integrations', 'description' => 'Connect Stripe, GitHub, CRMs, forms, spreadsheets, and internal systems without brittle manual steps.'],
+            ['title' => 'Automation Workflows', 'description' => 'Replace repetitive email, spreadsheet, and reporting work with small reliable systems.'],
+            ['title' => 'MVP Builds', 'description' => 'Lean product builds with Laravel, APIs, clean UI, and an admin workflow you can actually use.'],
+        ];
+
+        $proofPoints = [
+            'Full-stack software developer at Kyocera AVX',
+            'Computer Science student at the University of Southern Maine',
+            'Builds real AI agent, Telegram, GitHub, dashboard, and API workflows',
+            'Works across Laravel, PHP, Python, React, APIs, automation, and deployment',
         ];
 
         return view('pages.home', [
             'services' => $services,
+            'proofPoints' => $proofPoints,
             'featuredTutorial' => Post::query()->with(['category', 'tags'])->published()->where('featured', true)->latest('published_at')->first(),
             'latestTutorials' => Post::query()->with(['category', 'tags'])->published()->latest('published_at')->take(3)->get(),
             'latestVideos' => Video::query()->with(['category', 'tags'])->published()->latest('published_at')->take(3)->get(),

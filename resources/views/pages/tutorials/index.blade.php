@@ -31,7 +31,7 @@
         <article class="mt-10 card-surface border-blue-200 bg-gradient-to-r from-white to-blue-50">
             <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
                 <div>
-                    <div class="inline-flex rounded-full bg-brand-blue px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">Featured tutorial</div>
+                    <div class="inline-flex rounded-lg bg-brand-blue px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">Featured tutorial</div>
                     <h2 class="mt-4 text-3xl font-semibold text-brand-navy">{{ $featuredTutorial->title }}</h2>
                     <p class="mt-4 text-base leading-8 text-slate-600">{{ $featuredTutorial->excerpt }}</p>
                 </div>
@@ -48,7 +48,7 @@
                 <div class="flex items-center justify-between gap-3">
                     <div class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{{ $post->category?->name ?? 'Tutorial' }}</div>
                     @if($post->featured)
-                        <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-brand-blue">Featured</span>
+                        <span class="rounded-lg bg-blue-50 px-3 py-1 text-xs font-semibold text-brand-blue">Featured</span>
                     @endif
                 </div>
                 <h2 class="mt-4 text-2xl font-semibold text-brand-navy">{{ $post->title }}</h2>

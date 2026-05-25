@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
-use App\Models\Video;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -43,12 +42,12 @@ class DatabaseSeeder extends Seeder
             [
                 'user_id' => $admin->id,
                 'category_id' => $categories->firstWhere('slug', 'laravel')?->id,
-                'title' => 'Ship a business dashboard with Laravel on a Raspberry Pi',
-                'excerpt' => 'A practical tutorial showing how to move from spreadsheet chaos to a clean Laravel dashboard.',
+                'title' => 'How I structure a business dashboard with Laravel',
+                'excerpt' => 'A practical implementation note on moving from manual spreadsheet work to a clean dashboard and admin workflow.',
                 'body' => <<<MD
-# Ship a business dashboard with Laravel on a Raspberry Pi
+# How I structure a business dashboard with Laravel
 
-This tutorial shows how I would structure a clean Laravel MVP for a small business:
+This implementation note shows how I structure a clean Laravel MVP for a small business:
 
 - define the data model first
 - keep the public site fast and simple
@@ -73,27 +72,10 @@ MD,
                 'status' => 'published',
                 'featured' => true,
                 'published_at' => now()->subDay(),
-                'meta_title' => 'Laravel Raspberry Pi dashboard tutorial',
-                'meta_description' => 'Build a practical Laravel dashboard MVP on a Raspberry Pi with admin and API support.',
+                'meta_title' => 'Laravel business dashboard structure',
+                'meta_description' => 'A practical Laravel dashboard MVP structure with admin and API support.',
             ],
         );
         $post->tags()->sync($tags->take(4)->pluck('id'));
-
-        $video = Video::query()->updateOrCreate(
-            ['slug' => 'build-an-api-first-mvp'],
-            [
-                'user_id' => $admin->id,
-                'category_id' => $categories->firstWhere('slug', 'videos')?->id,
-                'title' => 'Build an API-first MVP',
-                'description' => 'A short walkthrough on building an MVP that can serve both humans and automations.',
-                'youtube_embed_url' => 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-                'status' => 'published',
-                'featured' => true,
-                'published_at' => now()->subHours(12),
-                'meta_title' => 'Build an API-first MVP video',
-                'meta_description' => 'Video walkthrough for building an API-first MVP with Laravel and Filament.',
-            ],
-        );
-        $video->tags()->sync($tags->pluck('id'));
     }
 }

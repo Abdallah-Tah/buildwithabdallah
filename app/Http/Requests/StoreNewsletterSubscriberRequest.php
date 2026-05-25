@@ -15,7 +15,7 @@ class StoreNewsletterSubscriberRequest extends FormRequest
     {
         return [
             'name' => ['nullable', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:newsletter_subscribers,email'],
+            'email' => ['required', 'email', 'max:255'],
             'source' => ['nullable', 'string', 'max:100'],
         ];
     }
