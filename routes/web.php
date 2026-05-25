@@ -20,3 +20,6 @@ Route::get('/newsletter', [NewsletterController::class, 'index'])->name('newslet
 Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::view('/status', 'pages.status')->name('status');
+Route::view('/privacy', 'pages.privacy')->name('privacy');
+Route::view('/terms', 'pages.terms')->name('terms');

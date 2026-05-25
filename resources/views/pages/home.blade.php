@@ -39,6 +39,11 @@
                 internal tools, MVPs, AI features, Telegram bots, workflow plumbing.
                 One direct line, no agency markup, no juniors to babysit.
             </p>
+            <div class="mt-6 flex flex-wrap gap-2">
+                @foreach($proofPoints as $proofPoint)
+                    <span class="rounded-sm border border-line bg-surface/60 px-3 py-2 text-sm text-ink2">{{ $proofPoint }}</span>
+                @endforeach
+            </div>
 
             {{-- Terminal card --}}
             <div class="rounded-md border border-line bg-surface/80 shadow-card overflow-hidden">
@@ -262,7 +267,7 @@
                 <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// selected work</div>
                 <h2 class="mt-4 font-display text-5xl lg:text-6xl text-ink">Things I've <span class="italic text-brand-500">actually</span> shipped.</h2>
             </div>
-            <a href="#" class="hidden md:inline-flex font-mono text-xs uppercase tracking-[0.22em] text-mute hover:text-ink2 pb-2 ul-link">All projects · 47 →</a>
+            <a href="{{ route('contact.index') }}" class="hidden md:inline-flex font-mono text-xs uppercase tracking-[0.22em] text-mute hover:text-ink2 pb-2 ul-link">Discuss your project →</a>
         </div>
 
         {{-- Featured case study --}}
@@ -315,8 +320,8 @@
                     <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Postgres</span>
                     <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Stripe</span>
                 </div>
-                <a href="#" class="mt-auto pt-7 inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 ul-link self-start">
-                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em]">Read the case study</span>
+                <a href="{{ route('contact.index') }}" class="mt-auto pt-7 inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 ul-link self-start">
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em]">Build something similar</span>
                     <span aria-hidden="true">→</span>
                 </a>
             </div>

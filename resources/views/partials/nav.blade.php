@@ -1,39 +1,35 @@
 {{-- Main Navigation --}}
 <header x-data="{ open: false }" @keydown.escape.window="open = false" class="sticky top-0 z-40 border-b border-line/70 bg-bg/95 backdrop-blur">
-    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 h-16 flex items-center justify-between">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 h-20 flex items-center justify-between">
         {{-- Logo --}}
-        <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-            <span class="grid place-items-center w-9 h-9 rounded-full bg-bg ring-1 ring-line group-hover:ring-brand-500/60 transition">
-                <svg viewBox="0 0 40 40" class="w-6 h-6" fill="none" aria-hidden="true">
-                    <path d="M19.2 3.5 L20.8 3.5 L13.8 36.5 L7.4 36.5 Z" fill="#fafafa"/>
-                    <path d="M19.2 3.5 L20.8 3.5 L32.6 36.5 L26.2 36.5 Z" fill="#3d7fff"/>
-                    <path d="M14.4 21.5 L25.6 21.5 L24.4 25 L15.6 25 Z" fill="#3d7fff"/>
-                    <text x="20" y="33" text-anchor="middle" font-family="ui-monospace, 'Geist Mono', monospace" font-size="7.5" font-weight="800" fill="#fafafa">&lt;/&gt;</text>
-                </svg>
-            </span>
+        <a href="{{ route('home') }}" class="flex items-center gap-4 group">
+            <img
+                src="{{ asset('brand/logo.jpg') }}"
+                alt="Build With Abdallah logo"
+                class="h-11 w-11 rounded-full object-cover ring-1 ring-line transition group-hover:ring-brand-500/60"
+            >
             <span class="leading-none">
-                <span class="block text-sm font-medium text-ink tracking-tight">Build With <span class="text-brand-400">Abdallah</span></span>
-                <span class="block mt-1 font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-mute">SOFTWARE · AI · AUTOMATION</span>
+                <span class="block text-base font-semibold text-ink tracking-tight">Build With <span class="text-brand-400">Abdallah</span></span>
+                <span class="block mt-1.5 font-mono text-xs uppercase tracking-[0.18em] text-mute">Software · AI · Automation</span>
             </span>
         </a>
 
         {{-- Desktop Navigation --}}
-        <nav class="hidden lg:flex items-center gap-1 text-sm">
-            <a href="{{ route('services') }}" class="px-3 py-2 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Services</a>
-            <a href="#work" class="px-3 py-2 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Work</a>
-            <a href="{{ route('tutorials.index') }}" class="px-3 py-2 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Journal</a>
-            <a href="{{ route('videos.index') }}" class="px-3 py-2 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Videos</a>
-            <a href="#" class="px-3 py-2 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition flex items-center gap-1.5">
+        <nav class="hidden lg:flex items-center gap-1 text-base">
+            <a href="{{ route('services') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Services</a>
+            <a href="{{ route('home') }}#work" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Work</a>
+            <a href="{{ route('tutorials.index') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Journal</a>
+            <a href="{{ route('videos.index') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Videos</a>
+            <a href="{{ route('status') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition flex items-center gap-1.5">
                 API
-                <span class="font-mono text-[0.6875rem] text-brand-400 px-1 py-0.5 rounded-xs border border-brand-500/30 bg-brand-500/10">v1</span>
+                <span class="font-mono text-xs text-brand-400 px-1.5 py-0.5 rounded-xs border border-brand-500/30 bg-brand-500/10">v1</span>
             </a>
         </nav>
 
         {{-- Desktop CTA --}}
         <div class="hidden lg:flex items-center gap-2">
-            <a href="#" class="px-3 py-2 text-sm text-ink2 hover:text-ink">Sign in</a>
             <a href="{{ route('contact.index') }}" data-magnetic
-               class="magnetic inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-brand-ink font-medium text-sm px-4 py-2 rounded-sm shadow-glow transition">
+               class="magnetic inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-5 py-3 rounded-sm shadow-glow transition">
                 Book a project
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
             </a>
@@ -53,13 +49,14 @@
     {{-- Mobile Menu --}}
     <div x-cloak x-show="open" x-transition.origin.top class="border-t border-line bg-surface lg:hidden">
         <div class="mx-auto max-w-[1280px] px-6 py-4 space-y-1">
-            <a href="{{ route('services') }}" class="block rounded-sm px-3 py-3 text-sm font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Services</a>
-            <a href="#work" class="block rounded-sm px-3 py-3 text-sm font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Work</a>
-            <a href="{{ route('tutorials.index') }}" class="block rounded-sm px-3 py-3 text-sm font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Journal</a>
-            <a href="{{ route('videos.index') }}" class="block rounded-sm px-3 py-3 text-sm font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Videos</a>
-            <a href="{{ route('newsletter.index') }}" class="block rounded-sm px-3 py-3 text-sm font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Newsletter</a>
+            <a href="{{ route('services') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Services</a>
+            <a href="{{ route('home') }}#work" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Work</a>
+            <a href="{{ route('tutorials.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Journal</a>
+            <a href="{{ route('videos.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Videos</a>
+            <a href="{{ route('newsletter.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Newsletter</a>
+            <a href="{{ route('status') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Status</a>
             <div class="pt-3 border-t border-line mt-3">
-                <a href="{{ route('contact.index') }}" class="block w-full text-center bg-brand-500 hover:bg-brand-400 text-brand-ink font-medium text-sm px-4 py-3 rounded-sm transition">
+                <a href="{{ route('contact.index') }}" class="block w-full text-center bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-4 py-3 rounded-sm transition">
                     Book a project
                 </a>
             </div>

@@ -46,7 +46,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="block rounded-lg border border-line bg-surface/60 p-5 hover:border-lineH hover:bg-elev/60 transition group">
+                    <a href="mailto:buildwithabdallah@gmail.com?subject=20-minute%20intro%20call" class="block rounded-lg border border-line bg-surface/60 p-5 hover:border-lineH hover:bg-elev/60 transition group">
                         <div class="flex items-center gap-4">
                             <div class="w-10 h-10 rounded-full bg-bg border border-line flex items-center justify-center">
                                 <svg class="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,8 +54,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <div class="text-ink font-medium group-hover:text-brand-400 transition">Calendly</div>
-                                <div class="text-sm text-dim">Book a 20-min intro call</div>
+                                <div class="text-ink font-medium group-hover:text-brand-400 transition">Intro call</div>
+                                <div class="text-sm text-dim">Email to schedule 20 minutes</div>
                             </div>
                         </div>
                     </a>
