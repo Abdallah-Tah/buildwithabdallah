@@ -1,0 +1,10 @@
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Build With Abdallah">
+  
+  <path d="M19.2 3.5 L20.8 3.5 L13.8 36.5 L7.4 36.5 Z" fill="#01204f" class="bwa-leg-dark"></path>
+  
+  <path d="M19.2 3.5 L20.8 3.5 L32.6 36.5 L26.2 36.5 Z" fill="#005cff" class="bwa-leg-bright"></path>
+  
+  <path d="M14.4 21.5 L25.6 21.5 L24.4 25 L15.6 25 Z" fill="#005cff" class="bwa-bar"></path>
+  
+  <text x="20" y="33" text-anchor="middle" font-family="ui-monospace, &#39;Geist Mono&#39;, monospace" font-size="7.5" font-weight="800" fill="#01204f" class="bwa-mark">&lt;/&gt;</text>
+</svg>

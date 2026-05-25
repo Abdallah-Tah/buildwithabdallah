@@ -1,178 +1,428 @@
 @extends('layouts.app', [
-    'title' => 'Build With Abdallah',
-    'metaDescription' => 'Full-stack software, AI agents, dashboards, APIs, automation, and MVP builds by Abdallah Mohamed.',
+    'title' => 'Build With Abdallah — Ship faster with custom software, AI agents & automation',
+    'metaDescription' => 'Custom Laravel apps, AI agents, Telegram bots, workflow automation and dashboards — built by a senior full-stack engineer with 8+ years in production.',
 ])
 
 @section('content')
-<section class="mx-auto max-w-7xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:px-8 lg:pb-24 lg:pt-16">
-    <div class="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-        <div>
-            <div class="inline-flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-medium text-brand-blue">
-                Full-stack developer for practical business systems
-            </div>
-            <div class="mt-6 flex items-center gap-3 sm:mt-7 sm:gap-4">
-                <img src="{{ asset('brand/logo.jpg') }}" alt="Build With Abdallah logo" class="h-12 w-12 rounded-lg object-contain shadow-sm ring-1 ring-brand-gray sm:h-14 sm:w-14">
-                <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 sm:text-sm">Build With Abdallah</p>
-                    <p class="text-sm text-slate-600 sm:text-base">AI agents • dashboards • APIs • automation</p>
-                </div>
-            </div>
-            <h1 class="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-brand-navy sm:mt-7 sm:text-5xl lg:text-6xl">
-                I build websites, dashboards, AI agents, and automation systems for real business work.
-            </h1>
-            <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                I help small businesses and founders replace manual work with clean full-stack software: Laravel apps, APIs, Telegram bots, Stripe workflows, reports, and internal tools.
+{{-- ============================================================ HERO --}}
+<section class="relative overflow-hidden border-b border-line/70">
+    {{-- Grid + Aurora backdrop --}}
+    <div class="absolute inset-0 bg-grid-dark bg-grid pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_40%,transparent_85%)]"></div>
+    <div class="aurora"></div>
+
+    <div class="relative mx-auto max-w-[1280px] px-6 lg:px-10 pt-20 pb-28">
+        {{-- Eyebrow --}}
+        <div class="reveal flex items-center gap-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">
+            <span class="inline-flex items-center gap-2 px-2 py-1 rounded-xs border border-line bg-surface/60">
+                <span class="w-1.5 h-1.5 rounded-full bg-live"></span>
+                <span class="text-ink2">Booking Q3 2026</span>
+            </span>
+            <span>// senior full-stack · solo studio</span>
+        </div>
+
+        {{-- Headline --}}
+        <h1 class="reveal mt-7 font-display text-5xl sm:text-6xl lg:text-8xl text-ink max-w-[1100px]" data-delay="1">
+            Ship faster<br />
+            with <span class="relative inline-block">
+                <span class="text-brand-500">custom software</span>
+                <svg class="absolute -bottom-2 left-0 w-full" height="10" viewBox="0 0 280 10" fill="none" aria-hidden="true">
+                    <path d="M2 7c40-6 80-6 120 0s80 6 156-2" stroke="#005cff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </span>,<br />
+            AI&nbsp;agents &amp; <span class="text-ink2">automation</span>.
+        </h1>
+
+        <div class="reveal mt-10 grid grid-cols-1 lg:grid-cols-[1fr_440px] gap-10 lg:gap-16 items-start" data-delay="2">
+            <p class="text-lg text-dim max-w-[600px] leading-relaxed">
+                I'm Abdallah — a senior engineer with eight years of production Laravel,
+                Python and Vue. I build the things small teams can't afford to get wrong:
+                internal tools, MVPs, AI features, Telegram bots, workflow plumbing.
+                One direct line, no agency markup, no juniors to babysit.
             </p>
-            <div class="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
-                <a href="{{ route('contact.index') }}" class="primary-button">Start a Project</a>
-                <a href="{{ route('services') }}" class="secondary-button">View Services</a>
-            </div>
-            <div class="mt-8 grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
-                @foreach($proofPoints as $point)
-                    <div class="border-l-2 border-blue-200 pl-3">{{ $point }}</div>
-                @endforeach
+
+            {{-- Terminal card --}}
+            <div class="rounded-md border border-line bg-surface/80 shadow-card overflow-hidden">
+                <div class="flex items-center justify-between px-3.5 h-9 border-b border-line bg-bg/60">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
+                    </div>
+                    <span class="font-mono text-[0.6875rem] text-mute">~/buildwith.abdallah</span>
+                    <span class="font-mono text-[0.6875rem] text-mute">zsh</span>
+                </div>
+                <pre class="px-4 py-4 font-mono text-[12.5px] leading-relaxed text-ink2 m-0 whitespace-pre"><span class="tok-com"># who is this for?</span>
+<span class="tok-pun">$</span> <span class="tok-fn">curl</span> -s buildwith.abdallah/who | <span class="tok-fn">jq</span>
+<span class="tok-pun">{</span>
+  <span class="tok-str">"founders"</span><span class="tok-pun">:</span>     <span class="tok-str">"pre-PMF, need an MVP yesterday"</span><span class="tok-pun">,</span>
+  <span class="tok-str">"ops_leads"</span><span class="tok-pun">:</span>    <span class="tok-str">"drowning in spreadsheets &amp; zaps"</span><span class="tok-pun">,</span>
+  <span class="tok-str">"agencies"</span><span class="tok-pun">:</span>     <span class="tok-str">"need a senior to ship the hard bits"</span><span class="tok-pun">,</span>
+  <span class="tok-str">"in_house_eng"</span><span class="tok-pun">:</span> <span class="tok-str">"want a second pair of senior eyes"</span>
+<span class="tok-pun">}</span>
+<span class="tok-pun">$</span> <span class="caret"></span></pre>
             </div>
         </div>
-        <div class="relative lg:pl-4">
-            <div class="mx-auto max-w-[34rem] overflow-hidden border border-blue-100 bg-white p-3 shadow-sm sm:p-4">
-                <img src="{{ asset('brand/banner.jpg') }}" alt="Build With Abdallah banner" class="aspect-[1280/426] w-full border border-blue-100 object-cover object-center shadow-sm">
-                <div class="grid gap-3 p-4 text-sm text-slate-600 sm:grid-cols-2">
-                    <div><strong class="text-brand-navy">Web apps</strong><br>Laravel, APIs, admin panels</div>
-                    <div><strong class="text-brand-navy">AI workflows</strong><br>Agents, bots, approvals, alerts</div>
-                    <div><strong class="text-brand-navy">Business ops</strong><br>Dashboards, reports, payments</div>
-                    <div><strong class="text-brand-navy">Delivery</strong><br>Build, deploy, document, improve</div>
-                </div>
+
+        {{-- CTA row --}}
+        <div class="reveal mt-12 flex flex-wrap items-center gap-3" data-delay="3">
+            <a href="{{ route('contact.index') }}" data-magnetic data-magnetic-strength="0.25"
+               class="magnetic group inline-flex items-center gap-3 bg-brand-500 hover:bg-brand-400 text-brand-ink font-medium px-6 py-3.5 rounded-sm shadow-glow transition">
+                <span>Book a 20-min intro</span>
+                <span class="font-mono text-[0.6875rem] uppercase tracking-[0.22em] opacity-70 group-hover:opacity-100">free</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="transition-transform group-hover:translate-x-0.5"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+            <a href="#work" class="inline-flex items-center gap-2 border border-line hover:border-lineH bg-surface/40 hover:bg-elev/60 text-ink px-5 py-3.5 rounded-sm transition">
+                <span class="font-mono text-[0.6875rem] text-mute">▸</span>
+                See selected work
+            </a>
+            <span class="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-mute pl-2 hidden md:inline">
+                — or <a href="mailto:buildwithabdallah@gmail.com" class="text-ink2 hover:text-ink ul-link">buildwithabdallah@gmail.com</a>
+            </span>
+        </div>
+
+        {{-- Proof strip --}}
+        <div class="reveal mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-line/60 rounded-md overflow-hidden border border-line/70" data-delay="4">
+            <div class="bg-surface/60 p-5">
+                <div class="font-display text-4xl text-ink">47</div>
+                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">shipped apps</div>
+                <div class="mt-1 text-xs text-dim">since 2018</div>
+            </div>
+            <div class="bg-surface/60 p-5">
+                <div class="font-display text-4xl text-ink">$3.2<span class="text-brand-500">M</span></div>
+                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">tracked revenue</div>
+                <div class="mt-1 text-xs text-dim">across client products</div>
+            </div>
+            <div class="bg-surface/60 p-5">
+                <div class="font-display text-4xl text-ink">3.2<span class="text-mute">k</span></div>
+                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">github stars</div>
+                <div class="mt-1 text-xs text-dim">across OSS packages</div>
+            </div>
+            <div class="bg-surface/60 p-5">
+                <div class="font-display text-4xl text-ink">4.9<span class="text-brand-500">★</span></div>
+                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">avg. rating</div>
+                <div class="mt-1 text-xs text-dim">12 reviews / Upwork & refs</div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="page-section">
-    <div class="flex items-end justify-between gap-6">
-        <div>
-            <p class="section-eyebrow">Services</p>
-            <h2 class="section-title">Focused software and automation services</h2>
+{{-- ============================================================ STACK MARQUEE --}}
+<section class="border-b border-line/70 py-6 overflow-hidden">
+    <div class="relative">
+        <div class="marquee text-mute font-mono text-sm uppercase tracking-[0.14em] whitespace-nowrap">
+            <div class="flex items-center gap-10 px-5">
+                <span>▸ Laravel 11</span><span class="text-faint">/</span>
+                <span>▸ Livewire</span><span class="text-faint">/</span>
+                <span>▸ Vue 3 · Inertia</span><span class="text-faint">/</span>
+                <span>▸ Next.js</span><span class="text-faint">/</span>
+                <span>▸ Python · FastAPI</span><span class="text-faint">/</span>
+                <span>▸ PostgreSQL · Redis</span><span class="text-faint">/</span>
+                <span>▸ OpenAI · Claude · Ollama</span><span class="text-faint">/</span>
+                <span>▸ React Native</span><span class="text-faint">/</span>
+                <span>▸ Tailwind</span><span class="text-faint">/</span>
+                <span>▸ AWS · Hetzner</span><span class="text-faint">/</span>
+                <span>▸ Stripe</span><span class="text-faint">/</span>
+                <span>▸ Telegram Bot API</span><span class="text-faint">/</span>
+            </div>
+            <div class="flex items-center gap-10 px-5" aria-hidden="true">
+                <span>▸ Laravel 11</span><span class="text-faint">/</span>
+                <span>▸ Livewire</span><span class="text-faint">/</span>
+                <span>▸ Vue 3 · Inertia</span><span class="text-faint">/</span>
+                <span>▸ Next.js</span><span class="text-faint">/</span>
+                <span>▸ Python · FastAPI</span><span class="text-faint">/</span>
+                <span>▸ PostgreSQL · Redis</span><span class="text-faint">/</span>
+                <span>▸ OpenAI · Claude · Ollama</span><span class="text-faint">/</span>
+                <span>▸ React Native</span><span class="text-faint">/</span>
+                <span>▸ Tailwind</span><span class="text-faint">/</span>
+                <span>▸ AWS · Hetzner</span><span class="text-faint">/</span>
+                <span>▸ Stripe</span><span class="text-faint">/</span>
+                <span>▸ Telegram Bot API</span><span class="text-faint">/</span>
+            </div>
         </div>
+        <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg to-transparent pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg to-transparent pointer-events-none"></div>
     </div>
-    <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        @foreach($services as $service)
-            <article class="card-surface">
-                <div class="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-brand-blue">Service</div>
-                <h3 class="text-xl font-semibold text-brand-navy">{{ $service['title'] }}</h3>
-                <p class="mt-3 text-sm leading-7 text-slate-600">{{ $service['description'] }}</p>
+</section>
+
+{{-- =============================================================== SERVICES --}}
+<section id="services" class="relative border-b border-line/70">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
+        <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+            <div>
+                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// services</div>
+                <h2 class="mt-4 font-display text-5xl lg:text-6xl text-ink max-w-[800px]">
+                    Four ways to put<br/>
+                    <span class="text-brand-500 italic">a senior engineer</span> on it.
+                </h2>
+            </div>
+            <p class="text-dim max-w-md text-base">
+                Fixed-scope sprints for defined deliverables, retainers for ongoing work, agentic AI work for the moment, and office hours for everything in between.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-line/60 rounded-md overflow-hidden border border-line/70 reveal">
+            {{-- Featured card: AI/automation --}}
+            <article class="relative gradient-border bg-surface p-7 lg:p-9 md:row-span-2 group">
+                <div class="relative z-10 h-full flex flex-col">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">★ Most requested</span>
+                        <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">02 / 04</span>
+                    </div>
+                    <h3 class="mt-7 font-display text-4xl text-ink leading-[1.05] max-w-[420px]">
+                        AI agents &amp;<br/>
+                        <span class="text-brand-500">automation</span>
+                    </h3>
+                    <p class="mt-5 text-dim text-base max-w-[460px] leading-relaxed">
+                        Useful AI — RAG over your docs, scheduled agents that do actual work,
+                        Telegram & WhatsApp bots, scrapers, n8n / Make / custom pipelines.
+                        Wired into your existing stack without breaking it.
+                    </p>
+
+                    {{-- Inline code preview --}}
+                    <div class="mt-7 rounded-sm border border-line bg-bg/60 overflow-hidden">
+                        <div class="flex items-center justify-between px-3 h-7 border-b border-line">
+                            <span class="font-mono text-[0.6875rem] text-mute">agents/lead_qualifier.py</span>
+                            <span class="font-mono text-[0.6875rem] text-live">● running</span>
+                        </div>
+                        <pre class="m-0 px-4 py-3 font-mono text-[12px] leading-relaxed text-ink2 whitespace-pre"><span class="tok-com"># every 5min: triage new contacts</span>
+<span class="tok-kw">async def</span> <span class="tok-fn">qualify</span><span class="tok-pun">(</span><span class="tok-var">lead</span><span class="tok-pun">):</span>
+    <span class="tok-var">score</span> <span class="tok-pun">=</span> <span class="tok-kw">await</span> claude<span class="tok-pun">.</span><span class="tok-fn">rank</span><span class="tok-pun">(</span><span class="tok-var">lead</span><span class="tok-pun">.</span>message<span class="tok-pun">)</span>
+    <span class="tok-kw">if</span> <span class="tok-var">score</span> <span class="tok-pun">&gt;</span> <span class="tok-num">0.8</span><span class="tok-pun">:</span>  <span class="tok-com"># ping me on Telegram</span>
+        <span class="tok-kw">await</span> tg<span class="tok-pun">.</span><span class="tok-fn">notify</span><span class="tok-pun">(</span><span class="tok-str">"hot lead"</span><span class="tok-pun">,</span> <span class="tok-var">lead</span><span class="tok-pun">)</span></pre>
+                    </div>
+
+                    <div class="mt-auto pt-8 flex items-center justify-between">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">OpenAI</span>
+                            <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Claude</span>
+                            <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Ollama</span>
+                            <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Telegram</span>
+                        </div>
+                        <a href="{{ route('services') }}" class="text-sm text-brand-400 hover:text-brand-300 font-mono inline-flex items-center gap-1.5">
+                            Learn more <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
             </article>
-        @endforeach
+
+            {{-- Card 01: software --}}
+            <article class="bg-surface p-7 lg:p-9 hover:bg-elev/70 transition group">
+                <div class="flex items-center justify-between">
+                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">01 / 04</span>
+                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">— from $8k</span>
+                </div>
+                <h3 class="mt-6 font-display text-3xl text-ink">Custom software</h3>
+                <p class="mt-3 text-dim text-base max-w-[460px]">Multi-tenant SaaS, dashboards, internal tools, MVPs. Laravel + Livewire / Inertia or Next.js — whichever fits the team.</p>
+                <ul class="mt-5 space-y-2 text-sm text-ink2">
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Auth, billing, multi-tenancy from day one</li>
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Real CI/CD, real backups, real monitoring</li>
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Handover docs & Loom walkthroughs</li>
+                </ul>
+            </article>
+
+            {{-- Card 03: content / lead-gen --}}
+            <article class="bg-surface p-7 lg:p-9 hover:bg-elev/70 transition group">
+                <div class="flex items-center justify-between">
+                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">03 / 04</span>
+                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">— recurring</span>
+                </div>
+                <h3 class="mt-6 font-display text-3xl text-ink">Content & lead-gen</h3>
+                <p class="mt-3 text-dim text-base max-w-[460px]">Technical tutorials, video walkthroughs, newsletter ops, SEO that actually ranks. The exact playbook used to grow this site.</p>
+                <ul class="mt-5 space-y-2 text-sm text-ink2">
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Editorial calendar & publishing pipeline</li>
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Tutorial videos with chapter timestamps</li>
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Newsletter funnel + CRM</li>
+                </ul>
+            </article>
+
+            {{-- Card 04: office hours --}}
+            <article class="bg-surface p-7 lg:p-9 hover:bg-elev/70 transition group">
+                <div class="flex items-center justify-between">
+                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">04 / 04</span>
+                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">— $250 / 60min</span>
+                </div>
+                <h3 class="mt-6 font-display text-3xl text-ink">Office hours</h3>
+                <p class="mt-3 text-dim text-base max-w-[460px]">A single 60-min Zoom. Architecture review, code-roast, hiring help, AI strategy. Often the cheapest decision you'll make this quarter.</p>
+                <ul class="mt-5 space-y-2 text-sm text-ink2">
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> No NDA needed for first call</li>
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Recording + notes within 24h</li>
+                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Refund if it wasn't useful</li>
+                </ul>
+            </article>
+        </div>
     </div>
 </section>
 
-<section class="page-section">
-    <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
-        <div>
-            <p class="section-eyebrow">Latest tutorials</p>
-            <h2 class="section-title">Practical content that proves the work</h2>
-            @if($featuredTutorial)
-                <article class="card-surface mt-8 border-blue-200 bg-gradient-to-br from-white to-blue-50">
-                    <div class="inline-flex rounded-lg bg-brand-blue px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">Featured tutorial</div>
-                    <h3 class="mt-5 text-2xl font-semibold text-brand-navy">{{ $featuredTutorial->title }}</h3>
-                    <p class="mt-3 text-sm leading-7 text-slate-600">{{ $featuredTutorial->excerpt }}</p>
-                    <a href="{{ route('tutorials.show', $featuredTutorial->slug) }}" class="mt-6 inline-flex text-sm font-semibold text-brand-blue">Read featured tutorial →</a>
-                </article>
-            @else
-                <div class="empty-state mt-8">
-                    <h3 class="text-xl font-semibold text-brand-navy">Tutorials are coming soon</h3>
-                    <p class="mt-3 text-sm leading-7 text-slate-600">This section will feature practical Laravel, automation, and API tutorials once the first real articles are published.</p>
-                </div>
-            @endif
+{{-- =================================================================== WORK --}}
+<section id="work" class="border-b border-line/70 relative">
+    <div class="absolute inset-0 bg-grid-dark bg-grid-sm opacity-40 pointer-events-none [mask-image:radial-gradient(ellipse_at_top,#000,transparent_70%)]"></div>
+    <div class="relative mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
+        <div class="reveal flex items-end justify-between mb-14">
+            <div>
+                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// selected work</div>
+                <h2 class="mt-4 font-display text-5xl lg:text-6xl text-ink">Things I've <span class="italic text-brand-500">actually</span> shipped.</h2>
+            </div>
+            <a href="#" class="hidden md:inline-flex font-mono text-xs uppercase tracking-[0.22em] text-mute hover:text-ink2 pb-2 ul-link">All projects · 47 →</a>
         </div>
-        <div class="grid gap-4 self-end">
-            @forelse($latestTutorials as $post)
-                <article class="card-surface">
-                    <div class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{{ $post->category?->name ?? 'Tutorial' }}</div>
-                    <h3 class="mt-3 text-xl font-semibold text-brand-navy">{{ $post->title }}</h3>
-                    <p class="mt-2 text-sm leading-7 text-slate-600">{{ $post->excerpt }}</p>
-                    <a href="{{ route('tutorials.show', $post->slug) }}" class="mt-4 inline-flex text-sm font-semibold text-brand-blue">Read tutorial →</a>
+
+        {{-- Featured case study --}}
+        <article class="reveal rounded-lg border border-line bg-surface overflow-hidden mb-6 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
+            <div class="relative aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-[#1a1410] via-[#0e0e10] to-[#0a0a0a] overflow-hidden">
+                <div class="absolute inset-0 bg-grid-dark bg-grid-sm opacity-50 [mask-image:radial-gradient(ellipse_at_center,#000,transparent_70%)]"></div>
+                <div class="absolute inset-8 rounded-md border border-line bg-bg/70 p-4 shadow-pop">
+                    <div class="flex items-center gap-1.5 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-line"></span>
+                        <span class="w-2 h-2 rounded-full bg-line"></span>
+                        <span class="w-2 h-2 rounded-full bg-line"></span>
+                        <span class="ml-3 font-mono text-[0.6875rem] text-mute">app.amtaxpro.com / clients</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mb-3">
+                        <div class="p-2.5 rounded-xs border border-line bg-surface/60">
+                            <div class="text-[0.6875rem] font-mono text-mute uppercase tracking-[0.14em]">filings</div>
+                            <div class="text-xl font-medium text-ink mt-1">612</div>
+                        </div>
+                        <div class="p-2.5 rounded-xs border border-line bg-surface/60">
+                            <div class="text-[0.6875rem] font-mono text-mute uppercase tracking-[0.14em]">in review</div>
+                            <div class="text-xl font-medium text-brand-500 mt-1">38</div>
+                        </div>
+                        <div class="p-2.5 rounded-xs border border-line bg-surface/60">
+                            <div class="text-[0.6875rem] font-mono text-mute uppercase tracking-[0.14em]">refunds</div>
+                            <div class="text-xl font-medium text-live mt-1">$2.4M</div>
+                        </div>
+                    </div>
+                </div>
+                <span class="absolute top-4 left-4 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">★ Featured</span>
+            </div>
+
+            <div class="p-8 lg:p-10 flex flex-col">
+                <div class="flex items-center gap-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">
+                    <span>Saas · tax tech</span>
+                    <span class="w-1 h-1 rounded-full bg-brand-500"></span>
+                    <span>2025 — ongoing</span>
+                </div>
+                <h3 class="mt-4 font-display text-4xl text-ink">A&M Tax Pro Solutions</h3>
+                <p class="mt-4 text-dim leading-relaxed">
+                    Built the client portal that replaced fifteen years of XLSX, email and Dropbox: document intake, e-signature, billing, status tracking. Six hundred filers onboarded in season one, $2.4M in refunds processed without an incident.
+                </p>
+                <div class="mt-6 grid grid-cols-3 gap-px bg-line/60 rounded-sm overflow-hidden border border-line/70">
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">12<span class="text-mute text-base">wks</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">to launch</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">600<span class="text-brand-500">+</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">filers / yr 1</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">99.98<span class="text-mute text-base">%</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">uptime</div></div>
+                </div>
+                <div class="mt-5 flex flex-wrap gap-1.5">
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Laravel</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Livewire</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Postgres</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Stripe</span>
+                </div>
+                <a href="#" class="mt-auto pt-7 inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 ul-link self-start">
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em]">Read the case study</span>
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </article>
+    </div>
+</section>
+
+{{-- ============================================================== JOURNAL --}}
+<section id="journal" class="border-b border-line/70 bg-surface/30">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
+        <div class="reveal flex items-end justify-between mb-12">
+            <div>
+                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// journal</div>
+                <h2 class="mt-4 font-display text-5xl text-ink">Tutorials & field notes.</h2>
+            </div>
+            <a href="{{ route('tutorials.index') }}" class="font-mono text-xs uppercase tracking-[0.22em] text-mute hover:text-ink2 ul-link pb-2">All posts →</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @forelse($latestTutorials as $index => $post)
+                <article class="reveal group rounded-lg border border-line hover:border-lineH bg-bg/40 overflow-hidden transition" @if($index > 0) data-delay="{{ $index }}" @endif>
+                    <div class="relative aspect-[16/10] bg-gradient-to-br from-[#0a0e1a] via-[#0e0e10] to-[#0a0a0a] overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-grid-dark bg-grid-sm opacity-30"></div>
+                        <span class="relative font-display text-6xl text-ink/40">{{ strtoupper(substr($post->title, 0, 1)) }}</span>
+                        <span class="absolute top-3 left-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-400 bg-bg/80 border border-line/60 px-2 py-1 rounded-xs">▸ Tutorial</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">
+                            <span>{{ $post->category?->name ?? 'Tutorial' }}</span>
+                            <span class="w-1 h-1 rounded-full bg-mute"></span>
+                            <span>{{ ceil(str_word_count(strip_tags($post->body ?? '')) / 200) }} min</span>
+                        </div>
+                        <h3 class="mt-3 font-display text-xl text-ink leading-snug group-hover:text-brand-400 transition">{{ $post->title }}</h3>
+                        <p class="mt-3 text-sm text-dim line-clamp-2">{{ $post->excerpt }}</p>
+                        <div class="mt-5 flex items-center justify-between">
+                            <span class="text-[0.6875rem] font-mono text-mute">{{ $post->created_at?->format('M d, Y') ?? 'Recently' }}</span>
+                            <a href="{{ route('tutorials.show', $post->slug) }}" class="text-brand-400 group-hover:translate-x-0.5 transition">→</a>
+                        </div>
+                    </div>
                 </article>
             @empty
-                <div class="empty-state">
-                    <h3 class="text-xl font-semibold text-brand-navy">No published tutorials yet</h3>
-                    <p class="mt-3 text-sm leading-7 text-slate-600">Once articles are live, this area will show the latest technical tutorials and implementation notes.</p>
+                <div class="col-span-3 rounded-lg border border-dashed border-line bg-surface/40 p-12 text-center">
+                    <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 mb-4">// coming soon</div>
+                    <h3 class="font-display text-2xl text-ink">Tutorials are on the way</h3>
+                    <p class="mt-3 text-dim max-w-md mx-auto">Practical Laravel, automation, and AI tutorials will appear here once the first articles are published.</p>
                 </div>
             @endforelse
         </div>
     </div>
 </section>
 
-<section class="page-section">
-    <div class="flex items-end justify-between gap-6">
-        <div>
-            <p class="section-eyebrow">Latest videos</p>
-            <h2 class="section-title">Video explainers and demos</h2>
+{{-- =================================================================== CTA --}}
+<section class="relative overflow-hidden border-b border-line/70">
+    <div class="absolute inset-0 bg-brand-glow pointer-events-none"></div>
+    <div class="absolute inset-0 bg-grid-dark bg-grid pointer-events-none [mask-image:radial-gradient(ellipse_at_center,#000_30%,transparent_75%)]"></div>
+    <div class="relative mx-auto max-w-[1280px] px-6 lg:px-10 py-32 text-center">
+        <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 reveal">// Q3 — Q4 2026 booking</div>
+        <h2 class="reveal mt-6 font-display text-5xl sm:text-7xl lg:text-8xl text-ink max-w-[1100px] mx-auto leading-[0.95]" data-delay="1">
+            Got something <span class="italic text-brand-500">real</span><br/>
+            to build?
+        </h2>
+        <p class="reveal mt-8 text-dim text-lg max-w-[560px] mx-auto" data-delay="2">
+            Twenty minutes over Zoom. If we're a fit, we go. If not, I'll tell you where to look next.
+        </p>
+        <div class="reveal mt-12 flex flex-wrap gap-3 justify-center" data-delay="3">
+            <a href="{{ route('contact.index') }}" data-magnetic
+               class="magnetic group inline-flex items-center gap-3 bg-brand-500 hover:bg-brand-400 text-brand-ink font-medium px-7 py-4 rounded-sm shadow-glow transition">
+                <span>Book a 20-min intro</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="transition-transform group-hover:translate-x-0.5"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+            <a href="mailto:buildwithabdallah@gmail.com" class="inline-flex items-center gap-2 border border-line hover:border-lineH bg-surface/60 text-ink px-6 py-4 rounded-sm transition">
+                <span class="font-mono text-sm">buildwithabdallah@gmail.com</span>
+            </a>
         </div>
-    </div>
-    <div class="mt-8 grid gap-6 lg:grid-cols-3">
-        @forelse($latestVideos as $video)
-            <article class="card-surface flex flex-col overflow-hidden">
-                <div class="aspect-video overflow-hidden rounded-lg border border-blue-100 bg-slate-100">
-                    <iframe class="h-full w-full" src="{{ $video->youtube_embed_url }}" title="{{ $video->title }}" loading="lazy" allowfullscreen></iframe>
-                </div>
-                <h3 class="mt-5 text-xl font-semibold text-brand-navy">{{ $video->title }}</h3>
-                <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">{{ \Illuminate\Support\Str::limit($video->description, 120) }}</p>
-                <a href="{{ route('videos.show', $video->slug) }}" class="mt-6 inline-flex text-sm font-semibold text-brand-blue">Watch details →</a>
-            </article>
-        @empty
-            <div class="empty-state lg:col-span-3">
-                <h3 class="text-xl font-semibold text-brand-navy">No published videos yet</h3>
-                <p class="mt-3 text-sm leading-7 text-slate-600">Video explainers and walkthroughs will appear here once they are published.</p>
-            </div>
-        @endforelse
     </div>
 </section>
 
-<section class="page-section" id="newsletter-signup">
-    <div class="grid gap-10 border border-blue-200 bg-blue-50 p-6 lg:grid-cols-[0.95fr_1.05fr]">
+{{-- ============================================================= NEWSLETTER --}}
+<section class="border-b border-line/70 bg-bg">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-20 grid grid-cols-1 lg:grid-cols-[1fr_540px] gap-10 items-end">
         <div>
-            <p class="section-eyebrow">Newsletter</p>
-            <h2 class="section-title">Get practical software and automation notes.</h2>
-            <p class="mt-4 text-base leading-8 text-slate-600">
-                Short notes on AI agents, Laravel, APIs, dashboards, and business automation. No hype, no fake case studies.
-            </p>
-            <ul class="mt-6 space-y-3 text-sm text-slate-600">
-                <li>• Quick engineering takeaways</li>
-                <li>• Automation ideas you can actually use</li>
-                <li>• API patterns and implementation notes</li>
-            </ul>
+            <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// the newsletter</div>
+            <h2 class="mt-4 font-display text-4xl text-ink max-w-[600px]">Field notes on AI, Laravel and the messy parts of shipping.</h2>
+            <p class="mt-5 text-dim max-w-[520px]">One short email, every other Sunday. Real builds, broken things, what I'd do differently. 2,400+ engineers reading. No fluff, no funnel.</p>
         </div>
-        <div class="border border-blue-100 bg-white p-5 shadow-sm sm:p-6">
+        <form action="{{ route('newsletter.store') }}" method="POST" class="flex flex-col gap-3" x-data="{ email: '' }">
+            @csrf
+            <input type="hidden" name="source" value="home">
             @if(session('newsletter_success'))
-                <div class="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">{{ session('newsletter_success') }}</div>
+                <div class="mb-2 rounded-sm border border-live/40 bg-live/10 px-4 py-3 text-sm text-live">{{ session('newsletter_success') }}</div>
             @endif
-            <form action="{{ route('newsletter.store') }}" method="POST" class="grid gap-4 sm:grid-cols-2">
-                @csrf
-                <input type="hidden" name="source" value="home">
-                <div>
-                    <label class="label-text" for="newsletter-name-home">Name (optional)</label>
-                    <input id="newsletter-name-home" name="name" value="{{ old('name') }}" class="input-field-light" placeholder="Abdallah">
+            <div class="flex gap-2">
+                <div class="flex-1 flex items-center gap-2 px-4 h-12 rounded-sm border border-line bg-surface focus-within:border-brand-500 transition">
+                    <span class="font-mono text-mute">▸</span>
+                    <input type="email" name="email" x-model="email" value="{{ old('email') }}" placeholder="you@company.com" class="flex-1 bg-transparent outline-none placeholder-faint text-ink text-sm" required />
                 </div>
-                <div>
-                    <label class="label-text" for="newsletter-email-home">Email</label>
-                    <input id="newsletter-email-home" type="email" name="email" value="{{ old('email') }}" class="input-field-light" placeholder="you@example.com" required>
-                    @error('email') <p class="mt-2 text-sm text-rose-600">{{ $message }}</p> @enderror
-                </div>
-                <div class="sm:col-span-2">
-                    <button type="submit" class="primary-button w-full sm:w-auto">Join the Newsletter</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-
-<section class="mx-auto max-w-7xl px-4 pb-24 pt-4 sm:px-6 lg:px-8">
-    <div class="bg-brand-navy px-6 py-10 text-white sm:px-10 lg:flex lg:items-center lg:justify-between">
-        <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Contact</p>
-            <h2 class="mt-2 text-3xl font-semibold">Need a clean MVP, dashboard, API, or automation system?</h2>
-        </div>
-        <a href="{{ route('contact.index') }}" class="mt-6 inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-semibold text-brand-navy transition hover:bg-slate-100 lg:mt-0">Contact Me</a>
+                <button type="submit" class="h-12 px-5 rounded-sm bg-ink text-bg font-medium text-sm hover:bg-ink2 transition">
+                    Subscribe →
+                </button>
+            </div>
+            @error('email') <p class="text-sm text-crit">{{ $message }}</p> @enderror
+            <div class="flex items-center justify-between text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute">
+                <span>▸ free · unsubscribe in one click</span>
+                <span>2,412 subscribed</span>
+            </div>
+        </form>
     </div>
 </section>
 @endsection
