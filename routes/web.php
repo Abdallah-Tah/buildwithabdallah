@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\VideoController;
@@ -15,5 +16,7 @@ Route::get('/tutorials', [TutorialController::class, 'index'])->name('tutorials.
 Route::get('/tutorials/{post:slug}', [TutorialController::class, 'show'])->name('tutorials.show');
 Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
 Route::get('/videos/{video:slug}', [VideoController::class, 'show'])->name('videos.show');
+Route::get('/newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
+Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

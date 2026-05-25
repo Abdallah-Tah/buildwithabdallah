@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Build With Abdallah' }}</title>
     <meta name="description" content="{{ $metaDescription ?? 'Software, Automation, APIs, Tutorials, Videos, and Business Solutions.' }}">
-    <meta name="theme-color" content="#071427">
+    <meta name="theme-color" content="#2563EB">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <div class="absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.22),_transparent_50%)]"></div>
+<body class="min-h-screen bg-brand-white text-brand-navy antialiased">
+    <div class="page-orb page-orb-left"></div>
+    <div class="page-orb page-orb-right"></div>
     @include('partials.nav')
 
     <main>
-        {{ $slot ?? '' }}
         @yield('content')
     </main>
 
