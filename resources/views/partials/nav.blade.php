@@ -28,29 +28,7 @@
 
         {{-- Desktop CTA --}}
         <div class="hidden lg:flex items-center gap-2">
-            <button type="button" class="theme-toggle hidden" aria-label="Toggle theme"
-                    onclick="(function(){var k='bwa.theme',m=window.matchMedia('(prefers-color-scheme:dark)'),s=localStorage.getItem(k)||'auto',n=s==='dark'?'light':s==='light'?'dark':m.matches?'light':'dark';localStorage.setItem(k,n);var w=n==='dark'||(n==='auto'&&m.matches);document.documentElement.classList.toggle('dark',w);document.documentElement.dataset.theme=n;document.documentElement.dataset.resolvedTheme=w?'dark':'light';})()">
-                {{-- Sun icon (shown in dark mode) --}}
-                <svg class="dark-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.22a1 1 0 011.42 0l.7.7a1 1 0 01-1.41 1.42l-.71-.71a1 1 0 010-1.41zM17 9a1 1 0 110 2h-1a1 1 0 110-2h1zm-2.22 4.22a1 1 0 010 1.41l-.7.71a1 1 0 01-1.42-1.42l.71-.7a1 1 0 011.41 0zM10 15a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-5.22-1.78a1 1 0 01-1.42 1.42l-.7-.71a1 1 0 011.41-1.41l.71.7zM3 10a1 1 0 110-2h1a1 1 0 110 2H3zm1.78-5.22a1 1 0 010-1.42l.71-.7a1 1 0 011.41 1.41l-.7.71A1 1 0 014.78 4.78zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"/></svg>
-                {{-- Moon icon (shown in light mode) --}}
-                <svg class="light-icon hidden" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-            </button>
-            <script>
-                (function(){
-                    var t=document.documentElement.dataset.resolvedTheme||'dark';
-                    var btn=document.querySelector('.theme-toggle');
-                    if(!btn)return;
-                    var sun=btn.querySelector('.dark-icon');
-                    var moon=btn.querySelector('.light-icon');
-                    function update(){
-                        var r=document.documentElement.dataset.resolvedTheme||'dark';
-                        if(r==='dark'){sun.classList.remove('hidden');moon.classList.add('hidden');}
-                        else{sun.classList.add('hidden');moon.classList.remove('hidden');}
-                    }
-                    update();
-                    new MutationObserver(update).observe(document.documentElement,{attributes:true,attributeFilter:['data-resolved-theme']});
-                })();
-            </script>
+            {{-- Theme toggle hidden — dark mode only for now --}}
             <a href="{{ route('contact.index') }}" data-magnetic
                class="magnetic inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-5 py-3 rounded-sm shadow-glow transition">
                 Book a project
@@ -79,11 +57,7 @@
             <a href="{{ route('newsletter.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Newsletter</a>
             <a href="{{ route('status') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Status</a>
             <div class="pt-3 border-t border-line mt-3 flex items-center gap-3">
-                <button type="button" class="theme-toggle hidden" aria-label="Toggle theme"
-                    onclick="(function(){var k='bwa.theme',m=window.matchMedia('(prefers-color-scheme:dark)'),s=localStorage.getItem(k)||'auto',n=s==='dark'?'light':s==='light'?'dark':m.matches?'light':'dark';localStorage.setItem(k,n);var w=n==='dark'||(n==='auto'&&m.matches);document.documentElement.classList.toggle('dark',w);document.documentElement.dataset.theme=n;document.documentElement.dataset.resolvedTheme=w?'dark':'light';})()">
-                    <svg class="dark-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.22a1 1 0 011.42 0l.7.7a1 1 0 01-1.41 1.42l-.71-.71a1 1 0 010-1.41zM17 9a1 1 0 110 2h-1a1 1 0 110-2h1zm-2.22 4.22a1 1 0 010 1.41l-.7.71a1 1 0 01-1.42-1.42l.71-.7a1 1 0 011.41 0zM10 15a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-5.22-1.78a1 1 0 01-1.42 1.42l-.7-.71a1 1 0 011.41-1.41l.71.7zM3 10a1 1 0 110-2h1a1 1 0 110 2H3zm1.78-5.22a1 1 0 010-1.42l.71-.7a1 1 0 011.41 1.41l-.7.71A1 1 0 014.78 4.78zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"/></svg>
-                    <svg class="light-icon hidden" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
-                </button>
+                {{-- Theme toggle hidden — dark mode only for now --}}
                 <a href="{{ route('contact.index') }}" class="block w-full text-center bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-4 py-3 rounded-sm transition">
                     Book a project
                 </a>

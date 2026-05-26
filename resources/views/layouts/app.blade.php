@@ -17,21 +17,11 @@
     <script>
         (() => {
             const KEY = 'bwa.theme';
-            const mql = window.matchMedia('(prefers-color-scheme: dark)');
-            const t = localStorage.getItem(KEY) || 'dark';
-            const wantDark = t === 'dark' || (t === 'auto' && mql.matches);
-            if (wantDark) document.documentElement.classList.add('dark');
-            else document.documentElement.classList.remove('dark');
-            document.documentElement.dataset.theme = t;
-            document.documentElement.dataset.resolvedTheme = wantDark ? 'dark' : 'light';
-            // Persist on system change when set to auto
-            mql.addEventListener('change', (e) => {
-                if (localStorage.getItem(KEY) === 'auto' || !localStorage.getItem(KEY)) {
-                    const w = e.matches;
-                    document.documentElement.classList.toggle('dark', w);
-                    document.documentElement.dataset.resolvedTheme = w ? 'dark' : 'light';
-                }
-            });
+            // Force dark mode — toggle is hidden
+            localStorage.setItem(KEY, 'dark');
+            document.documentElement.classList.add('dark');
+            document.documentElement.dataset.theme = 'dark';
+            document.documentElement.dataset.resolvedTheme = 'dark';
         })();
     </script>
 
