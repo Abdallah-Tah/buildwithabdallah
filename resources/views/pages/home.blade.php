@@ -279,7 +279,7 @@
                         <span class="w-2 h-2 rounded-full bg-line"></span>
                         <span class="w-2 h-2 rounded-full bg-line"></span>
                         <span class="w-2 h-2 rounded-full bg-line"></span>
-                        <span class="ml-3 font-mono text-[0.6875rem] text-mute">app.amtaxpro.com / clients</span>
+                        <span class="ml-3 font-mono text-[0.6875rem] text-mute">portal.client-site.com / dashboard</span>
                     </div>
                     <div class="grid grid-cols-3 gap-2 mb-3">
                         <div class="p-2.5 rounded-xs border border-line bg-surface/60">
@@ -301,17 +301,17 @@
 
             <div class="p-8 lg:p-10 flex flex-col">
                 <div class="flex items-center gap-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">
-                    <span>Saas · tax tech</span>
+                    <span>SaaS · tax &amp; document platform</span>
                     <span class="w-1 h-1 rounded-full bg-brand-500"></span>
                     <span>2025 — ongoing</span>
                 </div>
-                <h3 class="mt-4 font-display text-4xl text-ink">A&M Tax Pro Solutions</h3>
+                <h3 class="mt-4 font-display text-4xl text-ink">Tax Client Portal</h3>
                 <p class="mt-4 text-dim leading-relaxed">
-                    Built the client portal that replaced fifteen years of XLSX, email and Dropbox: document intake, e-signature, billing, status tracking. Six hundred filers onboarded in season one, $2.4M in refunds processed without an incident.
+                    Built a client portal that replaced fifteen years of spreadsheets, email, and file-sharing: document intake, e-signatures, billing, and real-time status tracking. Six hundred users onboarded in season one, $2.4M processed without an incident.
                 </p>
                 <div class="mt-6 grid grid-cols-3 gap-px bg-line/60 rounded-sm overflow-hidden border border-line/70">
                     <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">12 <span class="text-mute text-base">wks</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">to launch</div></div>
-                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">600 <span class="text-brand-500">+</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">filers · yr 1</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">600 <span class="text-brand-500">+</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">users · yr 1</div></div>
                     <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">99.98<span class="text-mute text-base">%</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">uptime</div></div>
                 </div>
                 <div class="mt-5 flex flex-wrap gap-1.5">
