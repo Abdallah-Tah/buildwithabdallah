@@ -356,12 +356,12 @@ html:not(.dark) .bg-panel { background-color: #e1e9ff !important; }
 html:not(.dark) .bg-elev { background-color: #d4dfff !important; }
 html:not(.dark) .bg-elev\/60 { background-color: rgba(212,223,255,0.60) !important; }
 
-/* Text overrides — logo navy + blue */
-html:not(.dark) .text-ink { color: #01204f !important; }
-html:not(.dark) .text-ink2 { color: #0a3a8f !important; }
-html:not(.dark) .text-dim { color: #005cff !important; }
-html:not(.dark) .text-mute { color: #5c8aff !important; }
-html:not(.dark) .text-faint { color: #a3c4ff !important; }
+/* Text overrides — dark readable on blue backgrounds */
+html:not(.dark) .text-ink { color: #0a0a1a !important; }
+html:not(.dark) .text-ink2 { color: #1a1a2e !important; }
+html:not(.dark) .text-dim { color: #2d3a5c !important; }
+html:not(.dark) .text-mute { color: #5a6580 !important; }
+html:not(.dark) .text-faint { color: #8a94ab !important; }
 
 /* Border overrides — logo blue */
 html:not(.dark) .border-line { border-color: #bdd0ff !important; }
@@ -403,14 +403,14 @@ html:not(.dark) .shadow-glow {
 
 /* Code blocks light */
 html:not(.dark) .prose {
-    color: #0a3a8f;
+    color: #1a1a2e;
 }
 html:not(.dark) .prose h1,
 html:not(.dark) .prose h2,
 html:not(.dark) .prose h3,
 html:not(.dark) .prose h4,
 html:not(.dark) .prose strong {
-    color: #01204f;
+    color: #0a0a1a;
 }
 html:not(.dark) .prose a {
     color: #005cff;
@@ -419,7 +419,7 @@ html:not(.dark) .prose a:hover {
     color: #0044cc;
 }
 html:not(.dark) .prose code {
-    color: #01204f;
+    color: #0a0a1a;
     background: #d4dfff;
 }
 html:not(.dark) .prose pre {
@@ -428,28 +428,28 @@ html:not(.dark) .prose pre {
 }
 html:not(.dark) .prose blockquote {
     border-left-color: #005cff;
-    color: #0a3a8f;
+    color: #2d3a5c;
 }
 
 /* Syntax highlighting light */
 html:not(.dark) pre.code {
     background: #e1e9ff;
     border-color: #bdd0ff;
-    color: #0a3a8f;
+    color: #1a1a2e;
 }
 html:not(.dark) .tok-kw  { color: #005cff; }
-html:not(.dark) .tok-fn  { color: #01204f; }
+html:not(.dark) .tok-fn  { color: #0a0a1a; }
 html:not(.dark) .tok-str { color: #16a34a; }
 html:not(.dark) .tok-num { color: #7c3aed; }
 html:not(.dark) .tok-com { color: #5c8aff; font-style: italic; }
-html:not(.dark) .tok-pun { color: #0a3a8f; }
+html:not(.dark) .tok-pun { color: #2d3a5c; }
 html:not(.dark) .tok-var { color: #d97706; }
 html:not(.dark) .tok-tag { color: #dc2626; }
 
 /* Selection light */
 html:not(.dark) ::selection {
     background: rgba(0,92,255,0.35);
-    color: #01204f;
+    color: #0a0a1a;
 }
 
 /* Focus ring light */
