@@ -33,6 +33,10 @@ class PersonalAccessTokenForm
                         'videos:update' => 'videos:update',
                         'videos:delete' => 'videos:delete',
                         'videos:publish' => 'videos:publish',
+                        'social-posts:create' => 'social-posts:create',
+                        'social-posts:update' => 'social-posts:update',
+                        'social-posts:delete' => 'social-posts:delete',
+                        'social-posts:publish' => 'social-posts:publish',
                         'media:upload' => 'media:upload',
                         'admin:read' => 'admin:read',
                     ])

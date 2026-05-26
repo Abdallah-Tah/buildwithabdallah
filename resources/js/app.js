@@ -6,7 +6,7 @@ Alpine.start();
 
 /* ========================================================================
    Build With Abdallah — Global JS
-   Vanilla, framework-free. Alpine handles per-component state.
+   Keep the public site light: Alpine is fine here, but no global Livewire.
    ======================================================================== */
 
 // 1) Scroll fade-ups via IntersectionObserver
@@ -151,40 +151,3 @@ document.addEventListener('click', (e) => {
     window.scrollTo({ top, behavior: 'smooth' });
 });
 
-// 6) Re-initialize after Livewire updates (for dynamic content)
-document.addEventListener('livewire:navigated', () => {
-    // Re-observe reveal elements after Livewire navigation
-    document.querySelectorAll('.reveal:not(.in)').forEach(el => {
-        if (typeof IntersectionObserver !== 'undefined') {
-            const io = new IntersectionObserver((entries, observer) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('in');
-                        observer.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-            io.observe(el);
-        } else {
-            el.classList.add('in');
-        }
-    });
-
-    // Re-attach magnetic listeners
-    document.querySelectorAll('[data-magnetic]').forEach(el => {
-        if (el._magneticInit) return;
-        el._magneticInit = true;
-        const k = parseFloat(el.dataset.magneticStrength || '0.35');
-        el.addEventListener('pointermove', (e) => {
-            const r = el.getBoundingClientRect();
-            const x = e.clientX - (r.left + r.width / 2);
-            const y = e.clientY - (r.top + r.height / 2);
-            el.style.setProperty('--mx', (x * k).toFixed(2) + 'px');
-            el.style.setProperty('--my', (y * k).toFixed(2) + 'px');
-        });
-        el.addEventListener('pointerleave', () => {
-            el.style.setProperty('--mx', '0px');
-            el.style.setProperty('--my', '0px');
-        });
-    });
-});

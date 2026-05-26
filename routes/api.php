@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\MediaController;
 use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\PublicPostController;
 use App\Http\Controllers\Api\V1\PublicVideoController;
+use App\Http\Controllers\Api\V1\SocialPostController;
 use App\Http\Controllers\Api\V1\TagController;
 use App\Http\Controllers\Api\V1\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -52,5 +53,13 @@ Route::prefix('v1')
             Route::post('/tags', [TagController::class, 'store'])->middleware('ability:posts:create,videos:create')->name('api.v1.tags.store');
 
             Route::get('/contact-messages', [ContactMessageController::class, 'index'])->middleware('ability:admin:read')->name('api.v1.contact.index');
+
+            Route::get('/social-posts', [SocialPostController::class, 'index'])->middleware('ability:admin:read')->name('api.v1.social-posts.index');
+            Route::post('/social-posts', [SocialPostController::class, 'store'])->middleware('ability:social-posts:create')->name('api.v1.social-posts.store');
+            Route::get('/social-posts/{socialPost}', [SocialPostController::class, 'show'])->middleware('ability:admin:read')->name('api.v1.social-posts.show');
+            Route::patch('/social-posts/{socialPost}', [SocialPostController::class, 'update'])->middleware('ability:social-posts:update')->name('api.v1.social-posts.update');
+            Route::delete('/social-posts/{socialPost}', [SocialPostController::class, 'destroy'])->middleware('ability:social-posts:delete')->name('api.v1.social-posts.destroy');
+            Route::post('/social-posts/{socialPost}/publish', [SocialPostController::class, 'publish'])->middleware('ability:social-posts:publish')->name('api.v1.social-posts.publish');
+            Route::post('/social-posts/{socialPost}/unpublish', [SocialPostController::class, 'unpublish'])->middleware('ability:social-posts:publish')->name('api.v1.social-posts.unpublish');
         });
     });

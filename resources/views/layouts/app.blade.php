@@ -18,7 +18,7 @@
         (() => {
             const KEY = 'bwa.theme';
             const mql = window.matchMedia('(prefers-color-scheme: dark)');
-            const t = localStorage.getItem(KEY) || 'auto';
+            const t = localStorage.getItem(KEY) || 'dark';
             const wantDark = t === 'dark' || (t === 'auto' && mql.matches);
             if (wantDark) document.documentElement.classList.add('dark');
             else document.documentElement.classList.remove('dark');
