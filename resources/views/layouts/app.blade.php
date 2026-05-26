@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,11 +24,18 @@
             else document.documentElement.classList.remove('dark');
             document.documentElement.dataset.theme = t;
             document.documentElement.dataset.resolvedTheme = wantDark ? 'dark' : 'light';
+            // Persist on system change when set to auto
+            mql.addEventListener('change', (e) => {
+                if (localStorage.getItem(KEY) === 'auto' || !localStorage.getItem(KEY)) {
+                    const w = e.matches;
+                    document.documentElement.classList.toggle('dark', w);
+                    document.documentElement.dataset.resolvedTheme = w ? 'dark' : 'light';
+                }
+            });
         })();
     </script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
 </head>
 <body class="min-h-screen bg-bg text-ink font-sans antialiased">
     {{-- Top Status Strip --}}
@@ -44,7 +51,5 @@
 
     {{-- Footer --}}
     @include('partials.footer')
-
-    @livewireScripts
 </body>
 </html>

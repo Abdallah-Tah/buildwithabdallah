@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -60,9 +59,9 @@
     --color-ldim: #57534e;
 
     /* Typography */
-    --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
-    --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
-    --font-display: 'Geist', ui-sans-serif, sans-serif;
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+    --font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     /* Custom font sizes */
     --text-2xs: 0.6875rem;
@@ -96,7 +95,7 @@ html {
 body {
     background: #09090b;
     color: #fafafa;
-    font-family: Geist, system-ui, sans-serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Selection */
@@ -194,7 +193,7 @@ pre.code {
     border-radius: 6px;
     padding: 18px 20px;
     overflow-x: auto;
-    font: 13px/1.65 "Geist Mono", monospace;
+    font: 13px/1.65 "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     color: #d4d4d8;
 }
 pre.code .lineno {
@@ -329,6 +328,161 @@ html[data-animations="off"] *::before,
 html[data-animations="off"] *::after {
     animation: none !important;
     transition: none !important;
+}
+
+/* ========================================================================
+   Light Mode
+   ======================================================================== */
+html:not(.dark) {
+    color-scheme: light;
+}
+html:not(.dark) body {
+    background: var(--color-lbg);
+    color: var(--color-link);
+}
+
+/* Scrollbar light */
+html:not(.dark) ::-webkit-scrollbar-track { background: #f5f5f4; }
+html:not(.dark) ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 5px; }
+html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+
+/* Surface overrides */
+html:not(.dark) .bg-bg { background-color: var(--color-lbg) !important; }
+html:not(.dark) .bg-surface { background-color: var(--color-lsurface) !important; }
+html:not(.dark) .bg-surface\/80 { background-color: rgba(255,255,255,0.80) !important; }
+html:not(.dark) .bg-surface\/60 { background-color: rgba(255,255,255,0.60) !important; }
+html:not(.dark) .bg-surface\/40 { background-color: rgba(255,255,255,0.40) !important; }
+html:not(.dark) .bg-panel { background-color: var(--color-lpanel) !important; }
+html:not(.dark) .bg-elev { background-color: var(--color-lpanel) !important; }
+html:not(.dark) .bg-elev\/60 { background-color: rgba(245,245,244,0.60) !important; }
+
+/* Text overrides */
+html:not(.dark) .text-ink { color: var(--color-link) !important; }
+html:not(.dark) .text-ink2 { color: #57534e !important; }
+html:not(.dark) .text-dim { color: #78716c !important; }
+html:not(.dark) .text-mute { color: #a8a29e !important; }
+html:not(.dark) .text-faint { color: #d6d3d1 !important; }
+
+/* Border overrides */
+html:not(.dark) .border-line { border-color: var(--color-lline) !important; }
+html:not(.dark) .border-line\/70 { border-color: rgba(231,229,228,0.70) !important; }
+html:not(.dark) .border-line\/50 { border-color: rgba(231,229,228,0.50) !important; }
+html:not(.dark) .border-line\/40 { border-color: rgba(231,229,228,0.40) !important; }
+html:not(.dark) .ring-line { --tw-ring-color: var(--color-lline) !important; }
+
+/* Card backgrounds */
+html:not(.dark) .bg-bg\/60 { background-color: rgba(250,250,249,0.60) !important; }
+html:not(.dark) .bg-bg\/95 { background-color: rgba(250,250,249,0.95) !important; }
+
+/* Brand colors light — keep blue, adjust ink */
+html:not(.dark) .text-brand-ink { color: #ffffff !important; }
+
+/* Aurora glow — softer in light mode */
+html:not(.dark) .aurora::before {
+    background: rgba(0,92,255,0.18) !important;
+    opacity: 0.5;
+}
+html:not(.dark) .aurora::after {
+    background: rgba(124,140,255,0.12) !important;
+    opacity: 0.4;
+}
+
+/* Grid background light */
+html:not(.dark) .bg-grid-dark {
+    background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px) !important;
+}
+
+/* Shadow overrides light */
+html:not(.dark) .shadow-card {
+    box-shadow: 0 1px 0 0 rgba(255,255,255,0.6) inset, 0 4px 16px -8px rgba(0,0,0,0.1) !important;
+}
+html:not(.dark) .shadow-glow {
+    box-shadow: 0 0 0 1px rgba(0,92,255,0.4), 0 4px 20px -6px rgba(0,92,255,0.25) !important;
+}
+
+/* Code blocks light */
+html:not(.dark) .prose {
+    color: #44403c;
+}
+html:not(.dark) .prose h1,
+html:not(.dark) .prose h2,
+html:not(.dark) .prose h3,
+html:not(.dark) .prose h4,
+html:not(.dark) .prose strong {
+    color: #1c1917;
+}
+html:not(.dark) .prose a {
+    color: #005cff;
+}
+html:not(.dark) .prose a:hover {
+    color: #0044cc;
+}
+html:not(.dark) .prose code {
+    color: #1c1917;
+    background: #f5f5f4;
+}
+html:not(.dark) .prose pre {
+    background: #fafaf9;
+    border-color: #e7e5e4;
+}
+html:not(.dark) .prose blockquote {
+    border-left-color: #005cff;
+    color: #78716c;
+}
+
+/* Syntax highlighting light */
+html:not(.dark) pre.code {
+    background: #fafaf9;
+    border-color: #e7e5e4;
+    color: #44403c;
+}
+html:not(.dark) .tok-kw  { color: #005cff; }
+html:not(.dark) .tok-fn  { color: #1c1917; }
+html:not(.dark) .tok-str { color: #16a34a; }
+html:not(.dark) .tok-num { color: #9333ea; }
+html:not(.dark) .tok-com { color: #a8a29e; }
+html:not(.dark) .tok-pun { color: #78716c; }
+html:not(.dark) .tok-var { color: #d97706; }
+html:not(.dark) .tok-tag { color: #ea580c; }
+
+/* Selection light */
+html:not(.dark) ::selection {
+    background: rgba(0,92,255,0.25);
+    color: #1c1917;
+}
+
+/* Focus ring light */
+html:not(.dark) :focus-visible {
+    outline-color: #005cff;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    color: var(--color-dim);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.theme-toggle:hover {
+    background: var(--color-elev);
+    color: var(--color-ink);
+    border-color: var(--color-lineH);
+}
+.theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s cubic-bezier(.2,.7,.3,1);
+}
+.theme-toggle:hover svg {
+    transform: rotate(15deg);
 }
 
 /* ========================================================================
