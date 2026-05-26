@@ -310,8 +310,8 @@
                     Built the client portal that replaced fifteen years of XLSX, email and Dropbox: document intake, e-signature, billing, status tracking. Six hundred filers onboarded in season one, $2.4M in refunds processed without an incident.
                 </p>
                 <div class="mt-6 grid grid-cols-3 gap-px bg-line/60 rounded-sm overflow-hidden border border-line/70">
-                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">12<span class="text-mute text-base">wks</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">to launch</div></div>
-                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">600<span class="text-brand-500">+</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">filers / yr 1</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">12 <span class="text-mute text-base">wks</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">to launch</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">600 <span class="text-brand-500">+</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">filers · yr 1</div></div>
                     <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">99.98<span class="text-mute text-base">%</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">uptime</div></div>
                 </div>
                 <div class="mt-5 flex flex-wrap gap-1.5">
