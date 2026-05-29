@@ -48,7 +48,7 @@
             <ul class="space-y-3 text-base text-ink2">
                 <li><a href="https://github.com/Abdallah-Tah" target="_blank" rel="noopener" class="hover:text-ink transition">GitHub ↗</a></li>
                 <li><a href="https://www.facebook.com/buildwithabdallah" target="_blank" rel="noopener" class="hover:text-ink transition">Facebook ↗</a></li>
-                <li><a href="https://www.linkedin.com/in/abdallah-mohamed" target="_blank" rel="noopener" class="hover:text-ink transition">LinkedIn ↗</a></li>
+                <li><a href="https://www.linkedin.com/in/abdallahmohamed86/?skipRedirect=true" target="_blank" rel="noopener" class="hover:text-ink transition">LinkedIn ↗</a></li>
                 <li><a href="{{ route('videos.index') }}" class="hover:text-ink transition">YouTube ↗</a></li>
             </ul>
         </div>

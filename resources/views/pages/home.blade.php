@@ -343,11 +343,9 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @forelse($latestTutorials as $index => $post)
                 <article class="reveal group rounded-lg border border-line hover:border-lineH bg-bg/40 overflow-hidden transition" @if($index > 0) data-delay="{{ $index }}" @endif>
-                    <div class="relative aspect-[16/10] bg-gradient-to-br from-[#0a0e1a] via-[#0e0e10] to-[#0a0a0a] overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-grid-dark bg-grid-sm opacity-30"></div>
-                        <span class="relative font-display text-6xl text-ink/40">{{ strtoupper(substr($post->title, 0, 1)) }}</span>
+                    <x-post-cover :post="$post">
                         <span class="absolute top-3 left-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-400 bg-bg/80 border border-line/60 px-2 py-1 rounded-xs">▸ Tutorial</span>
-                    </div>
+                    </x-post-cover>
                     <div class="p-6">
                         <div class="flex items-center gap-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">
                             <span>{{ $post->category?->name ?? 'Tutorial' }}</span>

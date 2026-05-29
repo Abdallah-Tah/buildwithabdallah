@@ -44,6 +44,15 @@
     </div>
 </section>
 
+{{-- Cover Banner --}}
+@if($post->cover_image)
+<section class="border-b border-line/70 bg-surface/30">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-10">
+        <x-post-cover :post="$post" aspect="aspect-[21/9]" class="reveal rounded-lg border border-line" />
+    </div>
+</section>
+@endif
+
 {{-- Article Content --}}
 <section class="border-b border-line/70">
     <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-16">
