@@ -77,5 +77,10 @@ MD,
             ],
         );
         $post->tags()->sync($tags->take(4)->pluck('id'));
+
+        $this->call([
+            ClaudeLatencyPostSeeder::class,
+            OpenAIIpoPostSeeder::class,
+        ]);
     }
 }
