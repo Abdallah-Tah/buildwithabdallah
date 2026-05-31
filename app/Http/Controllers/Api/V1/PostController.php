@@ -63,6 +63,13 @@ class PostController extends Controller
             $post->status = $data['status'];
         }
 
+        // A published post must always have a timestamp — agents that send
+        // status:"published" directly (without publish:true) shouldn't end up
+        // with a null published_at (which renders as "Recently").
+        if ($post->status === 'published' && empty($post->published_at)) {
+            $post->published_at = $data['published_at'] ?? now();
+        }
+
         $post->save();
 
         if ($tagIds !== null) {
@@ -105,6 +112,11 @@ class PostController extends Controller
 
         if (array_key_exists('featured', $data)) {
             $post->featured = (bool) $data['featured'];
+        }
+
+        // Keep published posts timestamped even when status is set directly.
+        if ($post->status === 'published' && empty($post->published_at)) {
+            $post->published_at = $data['published_at'] ?? now();
         }
 
         $post->save();
