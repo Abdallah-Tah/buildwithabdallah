@@ -457,10 +457,15 @@ html:not(.dark) :focus-visible {
     outline-color: #005cff;
 }
 
-/* Theme toggle button */
-.theme-toggle {
-    display: none !important;
-}
+/* ========================================================================
+   Theme Toggle (Auto / Light / Dark) — icon driven by html[data-theme]
+   ======================================================================== */
+[data-theme-toggle] .ti { display: none; }
+html[data-theme="auto"]  [data-theme-toggle] .ti-auto  { display: block; }
+html[data-theme="light"] [data-theme-toggle] .ti-light { display: block; }
+html[data-theme="dark"]  [data-theme-toggle] .ti-dark  { display: block; }
+/* Fallback before JS sets data-theme: show the auto icon */
+html:not([data-theme]) [data-theme-toggle] .ti-auto { display: block; }
 
 /* ========================================================================
    Prose Typography (for blog posts)

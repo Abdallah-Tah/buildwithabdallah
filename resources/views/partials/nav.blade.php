@@ -28,7 +28,7 @@
 
         {{-- Desktop CTA --}}
         <div class="hidden lg:flex items-center gap-2">
-            {{-- Theme toggle hidden — dark mode only for now --}}
+            @include('partials.theme-toggle')
             <a href="{{ route('contact.index') }}" data-magnetic
                class="magnetic inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-5 py-3 rounded-sm shadow-glow transition">
                 Book a project
@@ -57,8 +57,8 @@
             <a href="{{ route('newsletter.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Newsletter</a>
             <a href="{{ route('status') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Status</a>
             <div class="pt-3 border-t border-line mt-3 flex items-center gap-3">
-                {{-- Theme toggle hidden — dark mode only for now --}}
-                <a href="{{ route('contact.index') }}" class="block w-full text-center bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-4 py-3 rounded-sm transition">
+                @include('partials.theme-toggle')
+                <a href="{{ route('contact.index') }}" class="block flex-1 text-center bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-4 py-3 rounded-sm transition">
                     Book a project
                 </a>
             </div>

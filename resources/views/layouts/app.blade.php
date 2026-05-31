@@ -13,15 +13,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicons/favicon-16x16.png') }}?v={{ $faviconVersion }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicons/apple-touch-icon.png') }}?v={{ $faviconVersion }}">
 
-    {{-- Theme initialization (before CSS to prevent flash) --}}
+    {{-- Theme initialization (before CSS to prevent flash).
+         Defaults to 'auto' so we follow the visitor's OS preference; an
+         explicit choice via the nav toggle is remembered in localStorage. --}}
     <script>
         (() => {
             const KEY = 'bwa.theme';
-            // Force dark mode — toggle is hidden
-            localStorage.setItem(KEY, 'dark');
-            document.documentElement.classList.add('dark');
-            document.documentElement.dataset.theme = 'dark';
-            document.documentElement.dataset.resolvedTheme = 'dark';
+            const t = localStorage.getItem(KEY) || 'auto';
+            const dark = t === 'dark' || (t === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            const el = document.documentElement;
+            el.classList.toggle('dark', dark);
+            el.dataset.theme = t;
+            el.dataset.resolvedTheme = dark ? 'dark' : 'light';
         })();
     </script>
 

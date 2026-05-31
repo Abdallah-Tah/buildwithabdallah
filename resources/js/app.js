@@ -71,10 +71,10 @@ Alpine.start();
         html.dataset.theme = t;
         html.dataset.resolvedTheme = wantDark ? 'dark' : 'light';
 
-        // Update theme-color meta tag
+        // Update theme-color meta tag (match the actual page backgrounds)
         const themeMeta = document.querySelector('meta[name="theme-color"]');
         if (themeMeta) {
-            themeMeta.setAttribute('content', wantDark ? '#09090b' : '#fafafa');
+            themeMeta.setAttribute('content', wantDark ? '#09090b' : '#eaf0ff');
         }
     };
 
@@ -94,7 +94,7 @@ Alpine.start();
             apply(t);
         },
         cycle: () => {
-            const order = ['auto', 'dark', 'light'];
+            const order = ['auto', 'light', 'dark'];
             const i = order.indexOf(get());
             const next = order[(i + 1) % order.length];
             localStorage.setItem(KEY, next);
@@ -105,6 +105,23 @@ Alpine.start();
 
     // Back-compat
     window.__bwaToggleTheme = window.__bwaTheme.cycle;
+
+    // Wire up nav theme toggle buttons. The visible icon is driven by CSS off
+    // html[data-theme]; here we just cycle and keep the a11y label in sync.
+    const labelFor = (t) => `Theme: ${t} (click to change)`;
+    const initToggles = () => {
+        document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+            btn.setAttribute('aria-label', labelFor(get()));
+            btn.addEventListener('click', () => {
+                btn.setAttribute('aria-label', labelFor(window.__bwaTheme.cycle()));
+            });
+        });
+    };
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initToggles);
+    } else {
+        initToggles();
+    }
 })();
 
 // 4) Live "now" clock (used in hero status strip) — pure cosmetic.
