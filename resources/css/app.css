@@ -352,8 +352,11 @@ html:not(.dark) .bg-surface { background-color: #f2f6ff !important; }
 html:not(.dark) .bg-surface\/80 { background-color: rgba(242,246,255,0.80) !important; }
 html:not(.dark) .bg-surface\/60 { background-color: rgba(242,246,255,0.60) !important; }
 html:not(.dark) .bg-surface\/40 { background-color: rgba(242,246,255,0.40) !important; }
+html:not(.dark) .bg-surface\/70 { background-color: rgba(242,246,255,0.70) !important; }
+html:not(.dark) .bg-surface\/30 { background-color: rgba(242,246,255,0.30) !important; }
 html:not(.dark) .bg-panel { background-color: #e1e9ff !important; }
 html:not(.dark) .bg-elev { background-color: #d4dfff !important; }
+html:not(.dark) .bg-elev\/70 { background-color: rgba(212,223,255,0.70) !important; }
 html:not(.dark) .bg-elev\/60 { background-color: rgba(212,223,255,0.60) !important; }
 
 /* Text overrides — dark readable on blue backgrounds */
@@ -370,9 +373,12 @@ html:not(.dark) .border-line\/50 { border-color: rgba(189,208,255,0.50) !importa
 html:not(.dark) .border-line\/40 { border-color: rgba(189,208,255,0.40) !important; }
 html:not(.dark) .ring-line { --tw-ring-color: #bdd0ff !important; }
 
-/* Card backgrounds */
-html:not(.dark) .bg-bg\/60 { background-color: rgba(234,240,255,0.60) !important; }
+/* Card backgrounds — every bg-bg opacity variant used in the views */
 html:not(.dark) .bg-bg\/95 { background-color: rgba(234,240,255,0.95) !important; }
+html:not(.dark) .bg-bg\/80 { background-color: rgba(234,240,255,0.80) !important; }
+html:not(.dark) .bg-bg\/70 { background-color: rgba(234,240,255,0.70) !important; }
+html:not(.dark) .bg-bg\/60 { background-color: rgba(234,240,255,0.60) !important; }
+html:not(.dark) .bg-bg\/40 { background-color: rgba(234,240,255,0.40) !important; }
 
 /* Brand colors light — white ink on blue buttons */
 html:not(.dark) .text-brand-ink { color: #ffffff !important; }
