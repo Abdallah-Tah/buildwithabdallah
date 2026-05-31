@@ -331,94 +331,94 @@ html[data-animations="off"] *::after {
 }
 
 /* ========================================================================
-   Light Mode — Neutral (white / gray, blue accent only)
-   Clean professional surface: white canvas, gray cards & borders,
-   near-black text, brand blue reserved for links / CTAs / accents.
+   Light Mode — Dimmed Blue (soft blue surfaces, low brightness)
+   Not a bright white page: a calm blue-grey canvas with lighter blue
+   cards, deep navy-ink text, and brand blue (#005cff) for CTAs/links.
    ======================================================================== */
 html:not(.dark) {
     color-scheme: light;
 }
 html:not(.dark) body {
-    background: #ffffff;
-    color: #1f2328;
+    background: #dbe4f2;
+    color: #16213a;
 }
 
 /* Scrollbar light */
-html:not(.dark) ::-webkit-scrollbar-track { background: #f0f1f3; }
-html:not(.dark) ::-webkit-scrollbar-thumb { background: #c2cad2; border-radius: 5px; }
-html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #9aa3ad; }
+html:not(.dark) ::-webkit-scrollbar-track { background: #d0dcec; }
+html:not(.dark) ::-webkit-scrollbar-thumb { background: #a8bcd8; border-radius: 5px; }
+html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #7d99c4; }
 
-/* Surface overrides — white canvas, light-gray cards */
-html:not(.dark) .bg-bg { background-color: #ffffff !important; }
-html:not(.dark) .bg-surface { background-color: #f6f8fa !important; }
-html:not(.dark) .bg-surface\/80 { background-color: rgba(246,248,250,0.80) !important; }
-html:not(.dark) .bg-surface\/70 { background-color: rgba(246,248,250,0.70) !important; }
-html:not(.dark) .bg-surface\/60 { background-color: rgba(246,248,250,0.60) !important; }
-html:not(.dark) .bg-surface\/40 { background-color: rgba(246,248,250,0.40) !important; }
-html:not(.dark) .bg-surface\/30 { background-color: rgba(246,248,250,0.30) !important; }
-html:not(.dark) .bg-panel { background-color: #eef1f4 !important; }
-html:not(.dark) .bg-elev { background-color: #e7ebf0 !important; }
-html:not(.dark) .bg-elev\/70 { background-color: rgba(231,235,240,0.70) !important; }
-html:not(.dark) .bg-elev\/60 { background-color: rgba(231,235,240,0.60) !important; }
+/* Surface overrides — dim blue canvas, lighter blue cards */
+html:not(.dark) .bg-bg { background-color: #dbe4f2 !important; }
+html:not(.dark) .bg-surface { background-color: #e8eef8 !important; }
+html:not(.dark) .bg-surface\/80 { background-color: rgba(232,238,248,0.80) !important; }
+html:not(.dark) .bg-surface\/70 { background-color: rgba(232,238,248,0.70) !important; }
+html:not(.dark) .bg-surface\/60 { background-color: rgba(232,238,248,0.60) !important; }
+html:not(.dark) .bg-surface\/40 { background-color: rgba(232,238,248,0.40) !important; }
+html:not(.dark) .bg-surface\/30 { background-color: rgba(232,238,248,0.30) !important; }
+html:not(.dark) .bg-panel { background-color: #eef3fa !important; }
+html:not(.dark) .bg-elev { background-color: #f3f7fc !important; }
+html:not(.dark) .bg-elev\/70 { background-color: rgba(243,247,252,0.70) !important; }
+html:not(.dark) .bg-elev\/60 { background-color: rgba(243,247,252,0.60) !important; }
 
 /* Card / overlay backgrounds — every bg-bg opacity variant used in views */
-html:not(.dark) .bg-bg\/95 { background-color: rgba(255,255,255,0.95) !important; }
-html:not(.dark) .bg-bg\/80 { background-color: rgba(255,255,255,0.80) !important; }
-html:not(.dark) .bg-bg\/70 { background-color: rgba(255,255,255,0.70) !important; }
-html:not(.dark) .bg-bg\/60 { background-color: rgba(255,255,255,0.60) !important; }
-html:not(.dark) .bg-bg\/40 { background-color: rgba(255,255,255,0.40) !important; }
+html:not(.dark) .bg-bg\/95 { background-color: rgba(219,228,242,0.95) !important; }
+html:not(.dark) .bg-bg\/80 { background-color: rgba(219,228,242,0.80) !important; }
+html:not(.dark) .bg-bg\/70 { background-color: rgba(219,228,242,0.70) !important; }
+html:not(.dark) .bg-bg\/60 { background-color: rgba(219,228,242,0.60) !important; }
+html:not(.dark) .bg-bg\/40 { background-color: rgba(219,228,242,0.40) !important; }
 
-/* Text overrides — near-black on white */
-html:not(.dark) .text-ink { color: #1f2328 !important; }
-html:not(.dark) .text-ink2 { color: #3a4046 !important; }
-html:not(.dark) .text-dim { color: #57606a !important; }
-html:not(.dark) .text-mute { color: #6e7781 !important; }
-html:not(.dark) .text-faint { color: #8c959f !important; }
+/* Text overrides — deep navy-ink on blue */
+html:not(.dark) .text-ink { color: #16213a !important; }
+html:not(.dark) .text-ink2 { color: #2b3850 !important; }
+html:not(.dark) .text-dim { color: #495872 !important; }
+html:not(.dark) .text-mute { color: #6b7890 !important; }
+html:not(.dark) .text-faint { color: #93a0b6 !important; }
 
-/* Border overrides — neutral gray */
-html:not(.dark) .border-line { border-color: #d8dee4 !important; }
-html:not(.dark) .border-line\/70 { border-color: rgba(216,222,228,0.70) !important; }
-html:not(.dark) .border-line\/50 { border-color: rgba(216,222,228,0.50) !important; }
-html:not(.dark) .border-line\/40 { border-color: rgba(216,222,228,0.40) !important; }
-html:not(.dark) .ring-line { --tw-ring-color: #d8dee4 !important; }
+/* Border overrides — soft blue */
+html:not(.dark) .border-line { border-color: #c3d2e6 !important; }
+html:not(.dark) .border-line\/70 { border-color: rgba(195,210,230,0.70) !important; }
+html:not(.dark) .border-line\/50 { border-color: rgba(195,210,230,0.50) !important; }
+html:not(.dark) .border-line\/40 { border-color: rgba(195,210,230,0.40) !important; }
+html:not(.dark) .ring-line { --tw-ring-color: #c3d2e6 !important; }
 
 /* Brand colors light — white ink on blue buttons (accent unchanged) */
 html:not(.dark) .text-brand-ink { color: #ffffff !important; }
 
 /* Aurora glow — subtle blue accent only */
 html:not(.dark) .aurora::before {
-    background: rgba(0,92,255,0.16) !important;
+    background: rgba(0,92,255,0.18) !important;
     opacity: 0.6;
 }
 html:not(.dark) .aurora::after {
-    background: rgba(99,130,255,0.12) !important;
+    background: rgba(99,130,255,0.14) !important;
     opacity: 0.5;
 }
 
-/* Grid background light — faint neutral lines */
+/* Grid background light — faint blue lines */
 html:not(.dark) .bg-grid-dark {
-    background-image: linear-gradient(rgba(31,35,40,0.05) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(31,35,40,0.05) 1px, transparent 1px) !important;
+    background-image: linear-gradient(rgba(22,33,58,0.06) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(22,33,58,0.06) 1px, transparent 1px) !important;
 }
 
-/* Shadow overrides light — soft neutral cards, blue glow only on CTAs */
+/* Shadow overrides light — soft blue cards, blue glow on CTAs */
 html:not(.dark) .shadow-card {
-    box-shadow: 0 1px 2px rgba(31,35,40,0.06), 0 6px 16px -8px rgba(31,35,40,0.12) !important;
+    box-shadow: 0 1px 2px rgba(22,33,58,0.07), 0 6px 16px -8px rgba(22,33,58,0.16) !important;
 }
 html:not(.dark) .shadow-glow {
-    box-shadow: 0 0 0 1px rgba(0,92,255,0.5), 0 6px 22px -8px rgba(0,92,255,0.35) !important;
+    box-shadow: 0 0 0 1px rgba(0,92,255,0.5), 0 6px 22px -8px rgba(0,92,255,0.38) !important;
 }
 
 /* Prose / article light */
 html:not(.dark) .prose {
-    color: #3a4046;
+    color: #2b3850;
 }
 html:not(.dark) .prose h1,
 html:not(.dark) .prose h2,
 html:not(.dark) .prose h3,
 html:not(.dark) .prose h4,
 html:not(.dark) .prose strong {
-    color: #1f2328;
+    color: #16213a;
 }
 html:not(.dark) .prose a {
     color: #005cff;
@@ -427,23 +427,23 @@ html:not(.dark) .prose a:hover {
     color: #0044cc;
 }
 html:not(.dark) .prose code {
-    color: #1f2328;
-    background: #eff1f3;
+    color: #16213a;
+    background: #dde6f4;
 }
 html:not(.dark) .prose pre {
-    background: #f6f8fa;
-    border-color: #d8dee4;
+    background: #e8eef8;
+    border-color: #c3d2e6;
 }
 html:not(.dark) .prose blockquote {
     border-left-color: #005cff;
-    color: #57606a;
+    color: #495872;
 }
 
-/* Legacy syntax highlighter (pre.code) — GitHub-light tokens */
+/* Legacy syntax highlighter (pre.code) — GitHub-light tokens on blue */
 html:not(.dark) pre.code {
-    background: #f6f8fa;
-    border-color: #d8dee4;
-    color: #1f2328;
+    background: #e8eef8;
+    border-color: #c3d2e6;
+    color: #16213a;
 }
 html:not(.dark) .tok-kw  { color: #cf222e; }
 html:not(.dark) .tok-fn  { color: #8250df; }
@@ -456,8 +456,8 @@ html:not(.dark) .tok-tag { color: #116329; }
 
 /* Selection light */
 html:not(.dark) ::selection {
-    background: rgba(0,92,255,0.16);
-    color: #1f2328;
+    background: rgba(0,92,255,0.20);
+    color: #16213a;
 }
 
 /* Focus ring light */
