@@ -74,7 +74,7 @@ Alpine.start();
         // Update theme-color meta tag (match the actual page backgrounds)
         const themeMeta = document.querySelector('meta[name="theme-color"]');
         if (themeMeta) {
-            themeMeta.setAttribute('content', wantDark ? '#09090b' : '#eaf0ff');
+            themeMeta.setAttribute('content', wantDark ? '#09090b' : '#ffffff');
         }
     };
 

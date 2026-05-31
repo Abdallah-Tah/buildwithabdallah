@@ -331,92 +331,94 @@ html[data-animations="off"] *::after {
 }
 
 /* ========================================================================
-   Light Mode — Logo Blue (#005cff)
+   Light Mode — Neutral (white / gray, blue accent only)
+   Clean professional surface: white canvas, gray cards & borders,
+   near-black text, brand blue reserved for links / CTAs / accents.
    ======================================================================== */
 html:not(.dark) {
     color-scheme: light;
 }
 html:not(.dark) body {
-    background: #eaf0ff;
-    color: #01204f;
+    background: #ffffff;
+    color: #1f2328;
 }
 
 /* Scrollbar light */
-html:not(.dark) ::-webkit-scrollbar-track { background: #dbe4ff; }
-html:not(.dark) ::-webkit-scrollbar-thumb { background: #a8bfff; border-radius: 5px; }
-html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #005cff; }
+html:not(.dark) ::-webkit-scrollbar-track { background: #f0f1f3; }
+html:not(.dark) ::-webkit-scrollbar-thumb { background: #c2cad2; border-radius: 5px; }
+html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #9aa3ad; }
 
-/* Surface overrides — logo blue tinted */
-html:not(.dark) .bg-bg { background-color: #eaf0ff !important; }
-html:not(.dark) .bg-surface { background-color: #f2f6ff !important; }
-html:not(.dark) .bg-surface\/80 { background-color: rgba(242,246,255,0.80) !important; }
-html:not(.dark) .bg-surface\/60 { background-color: rgba(242,246,255,0.60) !important; }
-html:not(.dark) .bg-surface\/40 { background-color: rgba(242,246,255,0.40) !important; }
-html:not(.dark) .bg-surface\/70 { background-color: rgba(242,246,255,0.70) !important; }
-html:not(.dark) .bg-surface\/30 { background-color: rgba(242,246,255,0.30) !important; }
-html:not(.dark) .bg-panel { background-color: #e1e9ff !important; }
-html:not(.dark) .bg-elev { background-color: #d4dfff !important; }
-html:not(.dark) .bg-elev\/70 { background-color: rgba(212,223,255,0.70) !important; }
-html:not(.dark) .bg-elev\/60 { background-color: rgba(212,223,255,0.60) !important; }
+/* Surface overrides — white canvas, light-gray cards */
+html:not(.dark) .bg-bg { background-color: #ffffff !important; }
+html:not(.dark) .bg-surface { background-color: #f6f8fa !important; }
+html:not(.dark) .bg-surface\/80 { background-color: rgba(246,248,250,0.80) !important; }
+html:not(.dark) .bg-surface\/70 { background-color: rgba(246,248,250,0.70) !important; }
+html:not(.dark) .bg-surface\/60 { background-color: rgba(246,248,250,0.60) !important; }
+html:not(.dark) .bg-surface\/40 { background-color: rgba(246,248,250,0.40) !important; }
+html:not(.dark) .bg-surface\/30 { background-color: rgba(246,248,250,0.30) !important; }
+html:not(.dark) .bg-panel { background-color: #eef1f4 !important; }
+html:not(.dark) .bg-elev { background-color: #e7ebf0 !important; }
+html:not(.dark) .bg-elev\/70 { background-color: rgba(231,235,240,0.70) !important; }
+html:not(.dark) .bg-elev\/60 { background-color: rgba(231,235,240,0.60) !important; }
 
-/* Text overrides — dark readable on blue backgrounds */
-html:not(.dark) .text-ink { color: #0a0a1a !important; }
-html:not(.dark) .text-ink2 { color: #1a1a2e !important; }
-html:not(.dark) .text-dim { color: #2d3a5c !important; }
-html:not(.dark) .text-mute { color: #5a6580 !important; }
-html:not(.dark) .text-faint { color: #8a94ab !important; }
+/* Card / overlay backgrounds — every bg-bg opacity variant used in views */
+html:not(.dark) .bg-bg\/95 { background-color: rgba(255,255,255,0.95) !important; }
+html:not(.dark) .bg-bg\/80 { background-color: rgba(255,255,255,0.80) !important; }
+html:not(.dark) .bg-bg\/70 { background-color: rgba(255,255,255,0.70) !important; }
+html:not(.dark) .bg-bg\/60 { background-color: rgba(255,255,255,0.60) !important; }
+html:not(.dark) .bg-bg\/40 { background-color: rgba(255,255,255,0.40) !important; }
 
-/* Border overrides — logo blue */
-html:not(.dark) .border-line { border-color: #bdd0ff !important; }
-html:not(.dark) .border-line\/70 { border-color: rgba(189,208,255,0.70) !important; }
-html:not(.dark) .border-line\/50 { border-color: rgba(189,208,255,0.50) !important; }
-html:not(.dark) .border-line\/40 { border-color: rgba(189,208,255,0.40) !important; }
-html:not(.dark) .ring-line { --tw-ring-color: #bdd0ff !important; }
+/* Text overrides — near-black on white */
+html:not(.dark) .text-ink { color: #1f2328 !important; }
+html:not(.dark) .text-ink2 { color: #3a4046 !important; }
+html:not(.dark) .text-dim { color: #57606a !important; }
+html:not(.dark) .text-mute { color: #6e7781 !important; }
+html:not(.dark) .text-faint { color: #8c959f !important; }
 
-/* Card backgrounds — every bg-bg opacity variant used in the views */
-html:not(.dark) .bg-bg\/95 { background-color: rgba(234,240,255,0.95) !important; }
-html:not(.dark) .bg-bg\/80 { background-color: rgba(234,240,255,0.80) !important; }
-html:not(.dark) .bg-bg\/70 { background-color: rgba(234,240,255,0.70) !important; }
-html:not(.dark) .bg-bg\/60 { background-color: rgba(234,240,255,0.60) !important; }
-html:not(.dark) .bg-bg\/40 { background-color: rgba(234,240,255,0.40) !important; }
+/* Border overrides — neutral gray */
+html:not(.dark) .border-line { border-color: #d8dee4 !important; }
+html:not(.dark) .border-line\/70 { border-color: rgba(216,222,228,0.70) !important; }
+html:not(.dark) .border-line\/50 { border-color: rgba(216,222,228,0.50) !important; }
+html:not(.dark) .border-line\/40 { border-color: rgba(216,222,228,0.40) !important; }
+html:not(.dark) .ring-line { --tw-ring-color: #d8dee4 !important; }
 
-/* Brand colors light — white ink on blue buttons */
+/* Brand colors light — white ink on blue buttons (accent unchanged) */
 html:not(.dark) .text-brand-ink { color: #ffffff !important; }
 
-/* Aurora glow — bold blue in light mode */
+/* Aurora glow — subtle blue accent only */
 html:not(.dark) .aurora::before {
-    background: rgba(0,92,255,0.30) !important;
-    opacity: 0.7;
-}
-html:not(.dark) .aurora::after {
-    background: rgba(99,130,255,0.22) !important;
+    background: rgba(0,92,255,0.16) !important;
     opacity: 0.6;
 }
-
-/* Grid background light */
-html:not(.dark) .bg-grid-dark {
-    background-image: linear-gradient(rgba(1,32,79,0.07) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(1,32,79,0.07) 1px, transparent 1px) !important;
+html:not(.dark) .aurora::after {
+    background: rgba(99,130,255,0.12) !important;
+    opacity: 0.5;
 }
 
-/* Shadow overrides light */
+/* Grid background light — faint neutral lines */
+html:not(.dark) .bg-grid-dark {
+    background-image: linear-gradient(rgba(31,35,40,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(31,35,40,0.05) 1px, transparent 1px) !important;
+}
+
+/* Shadow overrides light — soft neutral cards, blue glow only on CTAs */
 html:not(.dark) .shadow-card {
-    box-shadow: 0 1px 0 0 rgba(242,246,255,0.9) inset, 0 4px 20px -8px rgba(0,92,255,0.16) !important;
+    box-shadow: 0 1px 2px rgba(31,35,40,0.06), 0 6px 16px -8px rgba(31,35,40,0.12) !important;
 }
 html:not(.dark) .shadow-glow {
-    box-shadow: 0 0 0 1px rgba(0,92,255,0.7), 0 4px 24px -6px rgba(0,92,255,0.40) !important;
+    box-shadow: 0 0 0 1px rgba(0,92,255,0.5), 0 6px 22px -8px rgba(0,92,255,0.35) !important;
 }
 
-/* Code blocks light */
+/* Prose / article light */
 html:not(.dark) .prose {
-    color: #1a1a2e;
+    color: #3a4046;
 }
 html:not(.dark) .prose h1,
 html:not(.dark) .prose h2,
 html:not(.dark) .prose h3,
 html:not(.dark) .prose h4,
 html:not(.dark) .prose strong {
-    color: #0a0a1a;
+    color: #1f2328;
 }
 html:not(.dark) .prose a {
     color: #005cff;
@@ -425,37 +427,37 @@ html:not(.dark) .prose a:hover {
     color: #0044cc;
 }
 html:not(.dark) .prose code {
-    color: #0a0a1a;
-    background: #d4dfff;
+    color: #1f2328;
+    background: #eff1f3;
 }
 html:not(.dark) .prose pre {
-    background: #e1e9ff;
-    border-color: #bdd0ff;
+    background: #f6f8fa;
+    border-color: #d8dee4;
 }
 html:not(.dark) .prose blockquote {
     border-left-color: #005cff;
-    color: #2d3a5c;
+    color: #57606a;
 }
 
-/* Syntax highlighting light */
+/* Legacy syntax highlighter (pre.code) — GitHub-light tokens */
 html:not(.dark) pre.code {
-    background: #e1e9ff;
-    border-color: #bdd0ff;
-    color: #1a1a2e;
+    background: #f6f8fa;
+    border-color: #d8dee4;
+    color: #1f2328;
 }
-html:not(.dark) .tok-kw  { color: #005cff; }
-html:not(.dark) .tok-fn  { color: #0a0a1a; }
-html:not(.dark) .tok-str { color: #16a34a; }
-html:not(.dark) .tok-num { color: #7c3aed; }
-html:not(.dark) .tok-com { color: #5c8aff; font-style: italic; }
-html:not(.dark) .tok-pun { color: #2d3a5c; }
-html:not(.dark) .tok-var { color: #d97706; }
-html:not(.dark) .tok-tag { color: #dc2626; }
+html:not(.dark) .tok-kw  { color: #cf222e; }
+html:not(.dark) .tok-fn  { color: #8250df; }
+html:not(.dark) .tok-str { color: #0a3069; }
+html:not(.dark) .tok-num { color: #0550ae; }
+html:not(.dark) .tok-com { color: #6e7781; font-style: italic; }
+html:not(.dark) .tok-pun { color: #1f2328; }
+html:not(.dark) .tok-var { color: #953800; }
+html:not(.dark) .tok-tag { color: #116329; }
 
 /* Selection light */
 html:not(.dark) ::selection {
-    background: rgba(0,92,255,0.35);
-    color: #0a0a1a;
+    background: rgba(0,92,255,0.16);
+    color: #1f2328;
 }
 
 /* Focus ring light */
