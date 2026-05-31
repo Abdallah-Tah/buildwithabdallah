@@ -158,6 +158,14 @@ document.addEventListener('click', (e) => {
     const COPY_ICON = '<svg class="gh-code__copy-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/></svg>';
     const CHECK_ICON = '<svg class="gh-code__check" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L1.72 8.78a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>';
 
+    // Normalize the label-facing language and the highlighter language id.
+    const LANG_ALIAS = {
+        sh: 'bash', shell: 'bash', zsh: 'bash', console: 'bash', env: 'bash',
+        dotenv: 'bash', js: 'javascript', mjs: 'javascript', cjs: 'javascript',
+        ts: 'typescript', py: 'python', rb: 'ruby', yml: 'yaml',
+        html: 'xml', vue: 'xml', svelte: 'xml', jsonc: 'json', 'c#': 'csharp',
+    };
+
     const langFromPre = (pre) => {
         const code = pre.querySelector('code');
         const cls = (code && code.className) || pre.className || '';
@@ -167,10 +175,24 @@ document.addEventListener('click', (e) => {
         return 'code';
     };
 
-    const enhance = (pre) => {
+    const enhance = (pre, hljs) => {
         if (pre.closest('.gh-code')) return; // already wrapped
 
         const lang = langFromPre(pre);
+
+        // Syntax-highlight the code (GitHub token classes) when a highlighter
+        // is available and the language is recognised.
+        const code = pre.querySelector('code');
+        if (hljs && code) {
+            const raw = code.textContent;
+            const id = LANG_ALIAS[lang.toLowerCase()] || lang.toLowerCase();
+            try {
+                code.innerHTML = hljs.getLanguage(id)
+                    ? hljs.highlight(raw, { language: id, ignoreIllegals: true }).value
+                    : hljs.highlightAuto(raw).value;
+                code.classList.add('hljs');
+            } catch (_) { /* leave code as plain text */ }
+        }
 
         const wrap = document.createElement('div');
         wrap.className = 'gh-code';
@@ -222,8 +244,42 @@ document.addEventListener('click', (e) => {
         wrap.appendChild(pre);
     };
 
-    const init = () => {
-        document.querySelectorAll('article pre, .prose pre').forEach(enhance);
+    // Lazy-load highlight.js + a curated language set ONLY on pages that
+    // actually contain code (Vite splits this into a separate chunk).
+    const loadHighlighter = async () => {
+        try {
+            const hljs = (await import('highlight.js/lib/core')).default;
+            const langs = await Promise.all([
+                import('highlight.js/lib/languages/bash'),
+                import('highlight.js/lib/languages/php'),
+                import('highlight.js/lib/languages/javascript'),
+                import('highlight.js/lib/languages/typescript'),
+                import('highlight.js/lib/languages/json'),
+                import('highlight.js/lib/languages/xml'),
+                import('highlight.js/lib/languages/css'),
+                import('highlight.js/lib/languages/scss'),
+                import('highlight.js/lib/languages/sql'),
+                import('highlight.js/lib/languages/yaml'),
+                import('highlight.js/lib/languages/python'),
+                import('highlight.js/lib/languages/dockerfile'),
+                import('highlight.js/lib/languages/markdown'),
+                import('highlight.js/lib/languages/ini'),
+                import('highlight.js/lib/languages/diff'),
+            ]);
+            const names = ['bash', 'php', 'javascript', 'typescript', 'json', 'xml',
+                'css', 'scss', 'sql', 'yaml', 'python', 'dockerfile', 'markdown', 'ini', 'diff'];
+            langs.forEach((m, i) => hljs.registerLanguage(names[i], m.default));
+            return hljs;
+        } catch (_) {
+            return null; // highlighting is a progressive enhancement — code still renders
+        }
+    };
+
+    const init = async () => {
+        const pres = document.querySelectorAll('article pre, .prose pre');
+        if (!pres.length) return;
+        const hljs = await loadHighlighter();
+        pres.forEach((pre) => enhance(pre, hljs));
     };
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);

@@ -573,15 +573,48 @@ html:not(.dark) :focus-visible {
     white-space: pre;
 }
 
-/* GitHub-dark syntax tokens (applied by the highlighter in app.js) */
-.gh-code .tok-kw  { color: #ff7b72; }
-.gh-code .tok-fn  { color: #d2a8ff; }
-.gh-code .tok-str { color: #a5d6ff; }
-.gh-code .tok-num { color: #79c0ff; }
-.gh-code .tok-com { color: #8b949e; font-style: italic; }
-.gh-code .tok-pun { color: #c9d1d9; }
-.gh-code .tok-var { color: #ffa657; }
-.gh-code .tok-tag { color: #7ee787; }
+/* highlight.js — GitHub Primer dark token palette */
+.gh-code .hljs { color: #e6edf3; background: transparent; }
+.gh-code .hljs-doctag,
+.gh-code .hljs-keyword,
+.gh-code .hljs-meta .hljs-keyword,
+.gh-code .hljs-template-tag,
+.gh-code .hljs-template-variable,
+.gh-code .hljs-type,
+.gh-code .hljs-variable.language_ { color: #ff7b72; }
+.gh-code .hljs-title,
+.gh-code .hljs-title.class_,
+.gh-code .hljs-title.class_.inherited__,
+.gh-code .hljs-title.function_ { color: #d2a8ff; }
+.gh-code .hljs-attr,
+.gh-code .hljs-attribute,
+.gh-code .hljs-literal,
+.gh-code .hljs-meta,
+.gh-code .hljs-number,
+.gh-code .hljs-operator,
+.gh-code .hljs-variable,
+.gh-code .hljs-selector-attr,
+.gh-code .hljs-selector-class,
+.gh-code .hljs-selector-id { color: #79c0ff; }
+.gh-code .hljs-regexp,
+.gh-code .hljs-string,
+.gh-code .hljs-meta .hljs-string { color: #a5d6ff; }
+.gh-code .hljs-built_in,
+.gh-code .hljs-symbol { color: #ffa657; }
+.gh-code .hljs-comment,
+.gh-code .hljs-code,
+.gh-code .hljs-formula { color: #8b949e; font-style: italic; }
+.gh-code .hljs-name,
+.gh-code .hljs-quote,
+.gh-code .hljs-selector-tag,
+.gh-code .hljs-selector-pseudo { color: #7ee787; }
+.gh-code .hljs-subst { color: #c9d1d9; }
+.gh-code .hljs-section { color: #1f6feb; font-weight: 700; }
+.gh-code .hljs-bullet { color: #f2cc60; }
+.gh-code .hljs-emphasis { color: #c9d1d9; font-style: italic; }
+.gh-code .hljs-strong { color: #c9d1d9; font-weight: 700; }
+.gh-code .hljs-addition { color: #aff5b4; background: #033a16; }
+.gh-code .hljs-deletion { color: #ffdcd7; background: #67060c; }
 
 /* Light mode — GitHub light palette */
 html:not(.dark) .gh-code,
@@ -594,11 +627,44 @@ html:not(.dark) .gh-code pre,
 html:not(.dark) .prose .gh-code pre { color: #1f2328; }
 html:not(.dark) .gh-code__copy { color: #24292f; border-color: #d0d7de; }
 html:not(.dark) .gh-code__copy:hover { background: #f3f4f6; border-color: #57606a; }
-html:not(.dark) .gh-code .tok-kw  { color: #cf222e; }
-html:not(.dark) .gh-code .tok-fn  { color: #8250df; }
-html:not(.dark) .gh-code .tok-str { color: #0a3069; }
-html:not(.dark) .gh-code .tok-num { color: #0550ae; }
-html:not(.dark) .gh-code .tok-com { color: #6e7781; }
-html:not(.dark) .gh-code .tok-pun { color: #1f2328; }
-html:not(.dark) .gh-code .tok-var { color: #953800; }
-html:not(.dark) .gh-code .tok-tag { color: #116329; }
+
+/* highlight.js — GitHub Primer light token palette */
+html:not(.dark) .gh-code .hljs { color: #1f2328; }
+html:not(.dark) .gh-code .hljs-doctag,
+html:not(.dark) .gh-code .hljs-keyword,
+html:not(.dark) .gh-code .hljs-meta .hljs-keyword,
+html:not(.dark) .gh-code .hljs-template-tag,
+html:not(.dark) .gh-code .hljs-template-variable,
+html:not(.dark) .gh-code .hljs-type,
+html:not(.dark) .gh-code .hljs-variable.language_ { color: #cf222e; }
+html:not(.dark) .gh-code .hljs-title,
+html:not(.dark) .gh-code .hljs-title.class_,
+html:not(.dark) .gh-code .hljs-title.class_.inherited__,
+html:not(.dark) .gh-code .hljs-title.function_ { color: #8250df; }
+html:not(.dark) .gh-code .hljs-attr,
+html:not(.dark) .gh-code .hljs-attribute,
+html:not(.dark) .gh-code .hljs-literal,
+html:not(.dark) .gh-code .hljs-meta,
+html:not(.dark) .gh-code .hljs-number,
+html:not(.dark) .gh-code .hljs-operator,
+html:not(.dark) .gh-code .hljs-variable,
+html:not(.dark) .gh-code .hljs-selector-attr,
+html:not(.dark) .gh-code .hljs-selector-class,
+html:not(.dark) .gh-code .hljs-selector-id { color: #0550ae; }
+html:not(.dark) .gh-code .hljs-regexp,
+html:not(.dark) .gh-code .hljs-string,
+html:not(.dark) .gh-code .hljs-meta .hljs-string { color: #0a3069; }
+html:not(.dark) .gh-code .hljs-built_in,
+html:not(.dark) .gh-code .hljs-symbol { color: #953800; }
+html:not(.dark) .gh-code .hljs-comment,
+html:not(.dark) .gh-code .hljs-code,
+html:not(.dark) .gh-code .hljs-formula { color: #6e7781; }
+html:not(.dark) .gh-code .hljs-name,
+html:not(.dark) .gh-code .hljs-quote,
+html:not(.dark) .gh-code .hljs-selector-tag,
+html:not(.dark) .gh-code .hljs-selector-pseudo { color: #116329; }
+html:not(.dark) .gh-code .hljs-subst { color: #1f2328; }
+html:not(.dark) .gh-code .hljs-section { color: #0550ae; font-weight: 700; }
+html:not(.dark) .gh-code .hljs-bullet { color: #4d2d00; }
+html:not(.dark) .gh-code .hljs-addition { color: #116329; background: #dafbe1; }
+html:not(.dark) .gh-code .hljs-deletion { color: #82071e; background: #ffebe9; }
