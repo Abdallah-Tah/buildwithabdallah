@@ -26,6 +26,7 @@ class Post extends Model
         'status',
         'featured',
         'published_at',
+        'newsletter_sent_at',
         'meta_title',
         'meta_description',
     ];
@@ -35,6 +36,7 @@ class Post extends Model
         return [
             'featured' => 'boolean',
             'published_at' => 'datetime',
+            'newsletter_sent_at' => 'datetime',
         ];
     }
 

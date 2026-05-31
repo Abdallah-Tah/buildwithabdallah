@@ -18,6 +18,7 @@ Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
 Route::get('/videos/{video:slug}', [VideoController::class, 'show'])->name('videos.show');
 Route::get('/newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
 Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
+Route::get('/newsletter/unsubscribe/{token}', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::view('/status', 'pages.status')->name('status');
