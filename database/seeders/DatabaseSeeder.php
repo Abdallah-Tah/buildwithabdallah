@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Automation', 'type' => 'post'],
             ['name' => 'APIs', 'type' => 'post'],
             ['name' => 'Laravel', 'type' => 'post'],
+            ['name' => 'Tutorial', 'type' => 'post'],
+            ['name' => 'News', 'type' => 'post'],
             ['name' => 'Videos', 'type' => 'video'],
         ])->map(fn (array $category) => Category::query()->updateOrCreate(
             ['slug' => Str::slug($category['name'])],
