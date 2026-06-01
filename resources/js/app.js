@@ -293,7 +293,7 @@ document.addEventListener('click', (e) => {
     };
 
     const init = async () => {
-        const pres = document.querySelectorAll('article pre, .prose pre');
+        const pres = document.querySelectorAll('article pre, .prose pre, pre[data-gh-code]');
         if (!pres.length) return;
         const hljs = await loadHighlighter();
         pres.forEach((pre) => enhance(pre, hljs));

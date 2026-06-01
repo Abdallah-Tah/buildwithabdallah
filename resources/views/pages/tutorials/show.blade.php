@@ -74,10 +74,16 @@
                 prose-li:text-ink2
                 prose-img:rounded-md prose-img:border prose-img:border-line
             ">
-                @if(str_contains($post->body ?? '', '<h2>') || str_contains($post->body ?? '', '<h3>'))
-                    {!! $post->body !!}
+                @php($body = $post->body ?? '')
+                @if(str_contains($body, '```'))
+                    {{-- Markdown with fenced code blocks — parse so ``` becomes <pre><code>. Inline HTML (e.g. a stray heading) is preserved. --}}
+                    {!! \Illuminate\Support\Str::markdown($body, ['html_input' => 'allow', 'allow_unsafe_links' => false]) !!}
+                @elseif(str_contains($body, '<pre') || str_contains($body, '<h2>') || str_contains($body, '<h3>'))
+                    {{-- Pre-rendered HTML body --}}
+                    {!! $body !!}
                 @else
-                    {!! \Illuminate\Support\Str::markdown($post->body, ['html_input' => 'strip', 'allow_unsafe_links' => false]) !!}
+                    {{-- Plain markdown --}}
+                    {!! \Illuminate\Support\Str::markdown($body, ['html_input' => 'strip', 'allow_unsafe_links' => false]) !!}
                 @endif
             </article>
 

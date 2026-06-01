@@ -45,27 +45,15 @@
                 @endforeach
             </div>
 
-            {{-- Terminal card --}}
-            <div class="rounded-md border border-line bg-surface/80 shadow-card overflow-hidden">
-                <div class="flex items-center justify-between px-3.5 h-9 border-b border-line bg-bg/60">
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-line"></span>
-                    </div>
-                    <span class="font-mono text-[0.6875rem] text-mute">~/buildwith.abdallah</span>
-                    <span class="font-mono text-[0.6875rem] text-mute">zsh</span>
-                </div>
-                <pre class="px-4 py-4 font-mono text-[12.5px] leading-relaxed text-ink2 m-0 whitespace-pre"><span class="tok-com"># who is this for?</span>
-<span class="tok-pun">$</span> <span class="tok-fn">curl</span> -s buildwith.abdallah/who | <span class="tok-fn">jq</span>
-<span class="tok-pun">{</span>
-  <span class="tok-str">"founders"</span><span class="tok-pun">:</span>     <span class="tok-str">"pre-PMF, need an MVP yesterday"</span><span class="tok-pun">,</span>
-  <span class="tok-str">"ops_leads"</span><span class="tok-pun">:</span>    <span class="tok-str">"drowning in spreadsheets &amp; zaps"</span><span class="tok-pun">,</span>
-  <span class="tok-str">"agencies"</span><span class="tok-pun">:</span>     <span class="tok-str">"need a senior to ship the hard bits"</span><span class="tok-pun">,</span>
-  <span class="tok-str">"in_house_eng"</span><span class="tok-pun">:</span> <span class="tok-str">"want a second pair of senior eyes"</span>
-<span class="tok-pun">}</span>
-<span class="tok-pun">$</span> <span class="caret"></span></pre>
-            </div>
+            {{-- Code preview — GitHub-style block (chrome + highlight.js added by app.js) --}}
+            <pre data-gh-code><code class="language-bash"># who is this for?
+$ curl -s buildwith.abdallah/who | jq
+{
+  "founders":     "pre-PMF, need an MVP yesterday",
+  "ops_leads":    "drowning in spreadsheets &amp; zaps",
+  "agencies":     "need a senior to ship the hard bits",
+  "in_house_eng": "want a second pair of senior eyes"
+}</code></pre>
         </div>
 
         {{-- CTA row --}}
@@ -183,18 +171,12 @@
                         Wired into your existing stack without breaking it.
                     </p>
 
-                    {{-- Inline code preview --}}
-                    <div class="mt-7 rounded-sm border border-line bg-bg/60 overflow-hidden">
-                        <div class="flex items-center justify-between px-3 h-7 border-b border-line">
-                            <span class="font-mono text-[0.6875rem] text-mute">agents/lead_qualifier.py</span>
-                            <span class="font-mono text-[0.6875rem] text-live">● running</span>
-                        </div>
-                        <pre class="m-0 px-4 py-3 font-mono text-[12px] leading-relaxed text-ink2 whitespace-pre"><span class="tok-com"># every 5min: triage new contacts</span>
-<span class="tok-kw">async def</span> <span class="tok-fn">qualify</span><span class="tok-pun">(</span><span class="tok-var">lead</span><span class="tok-pun">):</span>
-    <span class="tok-var">score</span> <span class="tok-pun">=</span> <span class="tok-kw">await</span> claude<span class="tok-pun">.</span><span class="tok-fn">rank</span><span class="tok-pun">(</span><span class="tok-var">lead</span><span class="tok-pun">.</span>message<span class="tok-pun">)</span>
-    <span class="tok-kw">if</span> <span class="tok-var">score</span> <span class="tok-pun">&gt;</span> <span class="tok-num">0.8</span><span class="tok-pun">:</span>  <span class="tok-com"># ping me on Telegram</span>
-        <span class="tok-kw">await</span> tg<span class="tok-pun">.</span><span class="tok-fn">notify</span><span class="tok-pun">(</span><span class="tok-str">"hot lead"</span><span class="tok-pun">,</span> <span class="tok-var">lead</span><span class="tok-pun">)</span></pre>
-                    </div>
+                    {{-- Code preview — GitHub-style block (chrome + highlight.js added by app.js) --}}
+                    <pre data-gh-code class="mt-7"><code class="language-python"># every 5min: triage new contacts
+async def qualify(lead):
+    score = await claude.rank(lead.message)
+    if score &gt; 0.8:  # ping me on Telegram
+        await tg.notify("hot lead", lead)</code></pre>
 
                     <div class="mt-auto pt-8 flex items-center justify-between">
                         <div class="flex flex-wrap gap-1.5">
