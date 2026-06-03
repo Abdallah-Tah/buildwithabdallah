@@ -72,6 +72,11 @@ class SocialOAuthController extends Controller
         $state = Str::random(40);
         session()->put("oauth_state_$provider", $state);
 
+        Log::info("$provider OAuth: state issued", [
+            'state'      => substr($state, 0, 8) . '…',
+            'session_id' => session()->getId(),
+        ]);
+
         $query = http_build_query([
             'response_type' => 'code',
             'client_id'     => $config['client_id'],
@@ -99,8 +104,17 @@ class SocialOAuthController extends Controller
         $expected = session()->pull("oauth_state_$provider");
         $state = $request->query('state');
         if (! $expected || ! $state || ! hash_equals($expected, $state)) {
-            return $this->result($provider, false, 'Invalid state',
-                'Security check failed (state mismatch). Please start the connection again.');
+            Log::warning("$provider OAuth: state mismatch", [
+                'received'   => $state ? substr($state, 0, 8) . '…' : '(none in query)',
+                'expected'   => $expected ? substr($expected, 0, 8) . '…' : '(NONE in session)',
+                'session_id' => session()->getId(),
+            ]);
+
+            $hint = $expected
+                ? 'Please start the connection again.'
+                : 'No saved state for this session — start at /auth/' . $provider . ' instead of opening the provider URL directly.';
+
+            return $this->result($provider, false, 'Invalid state', 'Security check failed (state mismatch). ' . $hint);
         }
 
         $code = $request->query('code');
