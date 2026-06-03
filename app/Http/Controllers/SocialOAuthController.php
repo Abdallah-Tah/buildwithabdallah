@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SocialAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -161,6 +162,24 @@ class SocialOAuthController extends Controller
         file_put_contents(
             storage_path("app/{$provider}_oauth.json"),
             json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+        );
+
+        // Persist to the database too (one row per provider, upserted) so the
+        // connection is visible/manageable in the admin and queryable by the app.
+        SocialAccount::updateOrCreate(
+            ['provider' => $provider],
+            [
+                'provider_user_id' => $identity['id'] ?? null,
+                'name'             => $identity['name'] ?? null,
+                'email'            => $identity['email'] ?? null,
+                'access_token'     => $accessToken,
+                'refresh_token'    => $token['refresh_token'] ?? null,
+                'token_type'       => $token['token_type'] ?? 'Bearer',
+                'scope'            => $payload['scope'],
+                'expires_at'       => isset($token['expires_in'])
+                    ? now()->addSeconds((int) $token['expires_in'])
+                    : null,
+            ]
         );
 
         Log::info("$provider OAuth connected", [
