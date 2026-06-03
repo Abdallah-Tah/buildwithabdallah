@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SocialOAuthController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,11 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::view('/status', 'pages.status')->name('status');
 Route::view('/privacy', 'pages.privacy')->name('privacy');
 Route::view('/terms', 'pages.terms')->name('terms');
+
+// Social OAuth (LinkedIn, Facebook) — authorization-code flow.
+Route::get('/auth/{provider}', [SocialOAuthController::class, 'redirect'])
+    ->whereIn('provider', ['linkedin', 'facebook'])->name('social.redirect');
+Route::get('/auth/{provider}/callback', [SocialOAuthController::class, 'callback'])
+    ->whereIn('provider', ['linkedin', 'facebook'])->name('social.callback');
+Route::get('/auth/{provider}/status', [SocialOAuthController::class, 'status'])
+    ->whereIn('provider', ['linkedin', 'facebook'])->name('social.status');

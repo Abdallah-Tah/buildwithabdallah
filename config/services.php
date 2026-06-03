@@ -35,4 +35,23 @@ return [
         ],
     ],
 
+    // Social OAuth providers (handled by App\Http\Controllers\SocialOAuthController).
+    // `redirect` is optional — leave null to auto-derive from APP_URL via the
+    // social.callback route (e.g. https://buildwithabdallah.com/auth/linkedin/callback).
+    'linkedin' => [
+        'client_id' => env('LINKEDIN_CLIENT_ID'),
+        'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+        'redirect' => env('LINKEDIN_REDIRECT_URI'),
+        // Add 'w_member_social' once the "Share on LinkedIn" product is enabled.
+        'scopes' => env('LINKEDIN_SCOPES', 'openid profile email'),
+    ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT_URI'),
+        'scopes' => env('FACEBOOK_SCOPES', 'public_profile,email'),
+        'graph_version' => env('FACEBOOK_GRAPH_VERSION', 'v23.0'),
+    ],
+
 ];
