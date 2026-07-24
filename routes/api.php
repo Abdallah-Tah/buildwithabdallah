@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\PublicPostController;
 use App\Http\Controllers\Api\V1\PublicVideoController;
 use App\Http\Controllers\Api\V1\SocialPostController;
+use App\Http\Controllers\Api\V1\SocialTokenController;
 use App\Http\Controllers\Api\V1\TagController;
 use App\Http\Controllers\Api\V1\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,9 @@ Route::prefix('v1')
             Route::post('/tags', [TagController::class, 'store'])->middleware('ability:posts:create,videos:create')->name('api.v1.tags.store');
 
             Route::get('/contact-messages', [ContactMessageController::class, 'index'])->middleware('ability:admin:read')->name('api.v1.contact.index');
+
+            Route::get('/social/linkedin/token', [SocialTokenController::class, 'linkedin'])->middleware('ability:social-tokens:read')->name('api.v1.social.linkedin.token');
+            Route::get('/social/gumroad/token', [SocialTokenController::class, 'gumroad'])->middleware('ability:social-tokens:read')->name('api.v1.social.gumroad.token');
 
             Route::get('/social-posts', [SocialPostController::class, 'index'])->middleware('ability:admin:read')->name('api.v1.social-posts.index');
             Route::post('/social-posts', [SocialPostController::class, 'store'])->middleware('ability:social-posts:create')->name('api.v1.social-posts.store');
