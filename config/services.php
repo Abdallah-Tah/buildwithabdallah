@@ -54,4 +54,11 @@ return [
         'graph_version' => env('FACEBOOK_GRAPH_VERSION', 'v23.0'),
     ],
 
+    'gumroad' => [
+        'client_id' => env('GUMROAD_CLIENT_ID'),
+        'client_secret' => env('GUMROAD_CLIENT_SECRET'),
+        'redirect' => env('GUMROAD_REDIRECT_URI'),
+        'scopes' => env('GUMROAD_SCOPES', 'view_sales view_profile'),
+    ],
+
 ];

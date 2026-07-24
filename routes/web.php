@@ -28,10 +28,10 @@ Route::view('/status', 'pages.status')->name('status');
 Route::view('/privacy', 'pages.privacy')->name('privacy');
 Route::view('/terms', 'pages.terms')->name('terms');
 
-// Social OAuth (LinkedIn, Facebook) — authorization-code flow.
+// Social OAuth (LinkedIn, Facebook, Gumroad) — authorization-code flow.
 Route::get('/auth/{provider}', [SocialOAuthController::class, 'redirect'])
-    ->whereIn('provider', ['linkedin', 'facebook'])->name('social.redirect');
+    ->whereIn('provider', ['linkedin', 'facebook', 'gumroad'])->name('social.redirect');
 Route::get('/auth/{provider}/callback', [SocialOAuthController::class, 'callback'])
-    ->whereIn('provider', ['linkedin', 'facebook'])->name('social.callback');
+    ->whereIn('provider', ['linkedin', 'facebook', 'gumroad'])->name('social.callback');
 Route::get('/auth/{provider}/status', [SocialOAuthController::class, 'status'])
-    ->whereIn('provider', ['linkedin', 'facebook'])->name('social.status');
+    ->whereIn('provider', ['linkedin', 'facebook', 'gumroad'])->name('social.status');

@@ -43,6 +43,15 @@ class SocialOAuthController extends Controller
                 'uses_grant_type' => false, // Facebook's token endpoint takes no grant_type
                 'id_field'        => 'id',
             ],
+            'gumroad' => [
+                'authorize_url'   => 'https://gumroad.com/oauth/authorize',
+                'token_url'       => 'https://api.gumroad.com/oauth/token',
+                'userinfo_url'    => 'https://api.gumroad.com/v2/user',
+                'default_scopes'  => 'view_sales view_profile',
+                'uses_grant_type' => true,   // Gumroad requires grant_type=authorization_code
+                'id_field'        => 'user_id',
+                'userinfo_root'   => 'user', // /v2/user nests identity under "user"
+            ],
         ];
 
         abort_unless(isset($providers[$provider]), 404);
@@ -225,6 +234,11 @@ class SocialOAuthController extends Controller
                 : Http::withToken($token)->get($meta['userinfo_url']);
 
             $d = $res->json() ?: [];
+
+            // Some providers (Gumroad) nest identity under a root key.
+            if (! empty($meta['userinfo_root'])) {
+                $d = $d[$meta['userinfo_root']] ?? [];
+            }
 
             return [
                 'id'    => $d[$meta['id_field']] ?? null,
