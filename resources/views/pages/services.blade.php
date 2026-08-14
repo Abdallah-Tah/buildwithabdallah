@@ -1,165 +1,121 @@
-@extends('layouts.app', ['title' => 'Services — Build With Abdallah'])
+@extends('layouts.app', [
+    'title' => 'Services & pricing — Build With Abdallah',
+    'metaDescription' => 'Websites, Laravel dashboards, AI agents and Telegram bots, API integrations, automation workflows and MVP builds — with starting prices and a clear process.',
+])
 
 @section('content')
-{{-- Hero --}}
-<section class="relative overflow-hidden border-b border-line/70">
-    <div class="absolute inset-0 bg-grid-dark bg-grid pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_40%,transparent_85%)]"></div>
+
+{{-- ================================================================= HERO --}}
+<section class="relative overflow-hidden border-b border-line">
+    <div class="pointer-events-none absolute inset-0 bg-grid-dark bg-grid [mask-image:radial-gradient(ellipse_70%_60%_at_50%_20%,#000_35%,transparent_85%)]"></div>
     <div class="aurora"></div>
 
-    <div class="relative mx-auto max-w-[1280px] px-6 lg:px-10 pt-20 pb-24">
-        <nav class="reveal flex items-center gap-2 text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mb-8">
-            <a href="{{ route('home') }}" class="hover:text-ink2 transition">Home</a>
-            <span>/</span>
+    <div class="relative mx-auto max-w-[1280px] px-5 py-16 lg:px-10 lg:py-24">
+        <nav aria-label="Breadcrumb" class="reveal mb-8 flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-mute">
+            <a href="{{ route('home') }}" class="transition hover:text-ink2">Home</a>
+            <span aria-hidden="true">/</span>
             <span class="text-ink2">Services</span>
         </nav>
 
-        <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div class="grid items-end gap-10 lg:grid-cols-[1fr_minmax(0,420px)]">
             <div>
-                <div class="eyebrow">Services</div>
-                <h1 class="mt-4 font-display text-5xl lg:text-6xl text-ink max-w-[800px]">
-                    Services for businesses that need<br/>
-                    <span class="text-brand-500 italic">clearer systems</span> and less manual work.
+                <div class="eyebrow reveal">Services &amp; pricing</div>
+                <h1 class="reveal mt-5 max-w-[18ch] font-display text-[2.5rem] leading-[1.06] tracking-tight text-ink sm:text-5xl lg:text-6xl" data-delay="1">
+                    Scoped work with a <span class="text-brand-500">price attached</span>.
                 </h1>
             </div>
-            <p class="text-dim max-w-md text-base" data-delay="1">
-                Fixed-scope delivery when possible, honest quotes when discovery is needed, and practical implementation over buzzwords.
+            <p class="reveal max-w-[52ch] text-lg leading-relaxed text-dim" data-delay="2">
+                Starting prices are real, not anchors. Anything marked "quote after review" needs a
+                short conversation first, because guessing would waste your money and my time.
             </p>
         </div>
     </div>
 </section>
 
-{{-- Main Services Grid --}}
-<section class="border-b border-line/70">
-    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-line/60 rounded-md overflow-hidden border border-line/70 reveal">
-            {{-- Featured: AI Agents --}}
-            <article class="relative gradient-border bg-surface p-7 lg:p-9 md:row-span-2 group">
-                <div class="relative z-10 h-full flex flex-col">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">★ Most requested</span>
-                        <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">02 / 04</span>
+{{-- ============================================================== CATALOGUE --}}
+<section class="border-b border-line">
+    <div class="mx-auto max-w-[1280px] px-5 py-20 lg:px-10 lg:py-28">
+        <div class="grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+            @foreach ($services as $index => $service)
+                @php
+                    // Split the trailing price sentence out of the description so it
+                    // can sit in its own slot rather than trailing the paragraph.
+                    $copy = $service['description'];
+                    $price = null;
+                    if (preg_match('/\s*((?:Starting from \$[\d,]+|Quote after review))\.?\s*$/u', $copy, $m)) {
+                        $price = $m[1];
+                        $copy = trim(preg_replace('/\s*(?:Starting from \$[\d,]+|Quote after review)\.?\s*$/u', '', $copy));
+                    }
+                @endphp
+                <article class="reveal flex flex-col bg-surface p-7 transition hover:bg-elev lg:p-8" @if ($index > 0) data-delay="{{ min($index, 6) }}" @endif>
+                    <div class="flex items-center justify-between gap-3 font-mono text-2xs uppercase tracking-[0.12em] text-mute">
+                        <span>{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }} / {{ str_pad((string) count($services), 2, '0', STR_PAD_LEFT) }}</span>
+                        @if ($price)
+                            <span class="text-brand-read">{{ $price }}</span>
+                        @endif
                     </div>
-                    <h2 class="mt-7 font-display text-4xl text-ink leading-[1.05] max-w-[420px]">
-                        AI agents &amp;<br/>
-                        <span class="text-brand-500">automation</span>
-                    </h2>
-                    <p class="mt-5 text-dim text-base max-w-[460px] leading-relaxed">
-                        Useful AI — RAG over your docs, scheduled agents that do actual work,
-                        Telegram & WhatsApp bots, scrapers, n8n / Make / custom pipelines.
-                        Wired into your existing stack without breaking it.
-                    </p>
-
-                    <div class="mt-7 rounded-sm border border-line bg-bg/60 overflow-hidden">
-                        <div class="flex items-center justify-between px-3 h-7 border-b border-line">
-                            <span class="font-mono text-[0.6875rem] text-mute">agents/lead_qualifier.py</span>
-                            <span class="font-mono text-[0.6875rem] text-live">● running</span>
-                        </div>
-                        <pre class="m-0 px-4 py-3 font-mono text-[12px] leading-relaxed text-ink2 whitespace-pre"><span class="tok-com"># every 5min: triage new contacts</span>
-<span class="tok-kw">async def</span> <span class="tok-fn">qualify</span><span class="tok-pun">(</span><span class="tok-var">lead</span><span class="tok-pun">):</span>
-    <span class="tok-var">score</span> <span class="tok-pun">=</span> <span class="tok-kw">await</span> claude<span class="tok-pun">.</span><span class="tok-fn">rank</span><span class="tok-pun">(</span><span class="tok-var">lead</span><span class="tok-pun">.</span>message<span class="tok-pun">)</span>
-    <span class="tok-kw">if</span> <span class="tok-var">score</span> <span class="tok-pun">&gt;</span> <span class="tok-num">0.8</span><span class="tok-pun">:</span>
-        <span class="tok-kw">await</span> tg<span class="tok-pun">.</span><span class="tok-fn">notify</span><span class="tok-pun">(</span><span class="tok-str">"hot lead"</span><span class="tok-pun">,</span> <span class="tok-var">lead</span><span class="tok-pun">)</span></pre>
-                    </div>
-
-                    <div class="mt-auto pt-8 flex flex-wrap gap-1.5">
-                        <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">OpenAI</span>
-                        <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Claude</span>
-                        <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Ollama</span>
-                        <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Telegram</span>
-                        <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">n8n</span>
-                    </div>
-                </div>
-            </article>
-
-            {{-- Custom Software --}}
-            <article class="bg-surface p-7 lg:p-9 hover:bg-elev/70 transition group">
-                <div class="flex items-center justify-between">
-                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">01 / 04</span>
-                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">— from $8k</span>
-                </div>
-                <h2 class="mt-6 font-display text-3xl text-ink">Custom software</h2>
-                <p class="mt-3 text-dim text-base max-w-[460px]">Multi-tenant SaaS, dashboards, internal tools, MVPs. Laravel + Livewire / Inertia or Next.js — whichever fits the team.</p>
-                <ul class="mt-5 space-y-2 text-sm text-ink2">
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Auth, billing, multi-tenancy from day one</li>
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Real CI/CD, real backups, real monitoring</li>
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Handover docs & Loom walkthroughs</li>
-                </ul>
-            </article>
-
-            {{-- Content & Lead-gen --}}
-            <article class="bg-surface p-7 lg:p-9 hover:bg-elev/70 transition group">
-                <div class="flex items-center justify-between">
-                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">03 / 04</span>
-                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">— recurring</span>
-                </div>
-                <h2 class="mt-6 font-display text-3xl text-ink">Content & lead-gen</h2>
-                <p class="mt-3 text-dim text-base max-w-[460px]">Technical tutorials, video walkthroughs, newsletter ops, SEO that actually ranks.</p>
-                <ul class="mt-5 space-y-2 text-sm text-ink2">
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Editorial calendar & publishing pipeline</li>
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Tutorial videos with chapter timestamps</li>
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Newsletter funnel + CRM</li>
-                </ul>
-            </article>
-
-            {{-- Office Hours --}}
-            <article class="bg-surface p-7 lg:p-9 hover:bg-elev/70 transition group">
-                <div class="flex items-center justify-between">
-                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">04 / 04</span>
-                    <span class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">— $250 / 60min</span>
-                </div>
-                <h2 class="mt-6 font-display text-3xl text-ink">Office hours</h2>
-                <p class="mt-3 text-dim text-base max-w-[460px]">A single 60-min Zoom. Architecture review, code-roast, hiring help, AI strategy.</p>
-                <ul class="mt-5 space-y-2 text-sm text-ink2">
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> No NDA needed for first call</li>
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Recording + notes within 24h</li>
-                    <li class="flex gap-3"><span class="text-brand-500 font-mono text-xs">→</span> Refund if it wasn't useful</li>
-                </ul>
-            </article>
+                    <h2 class="mt-6 font-display text-2xl text-ink">{{ $service['title'] }}</h2>
+                    <p class="mt-3 flex-1 leading-relaxed text-dim">{{ $copy }}</p>
+                    <a href="{{ route('contact.index') }}"
+                       class="ul-link mt-6 inline-flex items-center gap-2 self-start font-mono text-2xs uppercase tracking-[0.1em] text-brand-read">
+                        Start here <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </article>
+            @endforeach
         </div>
     </div>
 </section>
 
-{{-- Details Section --}}
-<section class="border-b border-line/70 bg-surface/30">
-    <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
-        <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6">
-            <article class="rounded-lg border border-line bg-bg/40 p-7">
-                <div class="eyebrow mb-4">Ideal for</div>
-                <h3 class="font-display text-2xl text-ink">Who this is for</h3>
-                <p class="mt-4 text-dim leading-relaxed">Small businesses, solo founders, local services, and teams that need a working system without hiring a full dev team.</p>
-            </article>
-
-            <article class="rounded-lg border border-line bg-bg/40 p-7">
-                <div class="eyebrow mb-4">Delivery</div>
-                <h3 class="font-display text-2xl text-ink">How I deliver</h3>
-                <p class="mt-4 text-dim leading-relaxed">Clear scope, clean implementation, professional UI, deployment help, and documentation you can understand.</p>
-            </article>
-
-            <article class="rounded-lg border border-line bg-bg/40 p-7">
-                <div class="eyebrow mb-4">Focus</div>
-                <h3 class="font-display text-2xl text-ink">What matters</h3>
-                <p class="mt-4 text-dim leading-relaxed">Saving time, reducing mistakes, improving follow-up, and making the business easier to operate.</p>
-            </article>
+{{-- ============================================================== PROCESS --}}
+<section class="border-b border-line bg-panel/40">
+    <div class="mx-auto max-w-[1280px] px-5 py-20 lg:px-10 lg:py-28">
+        <div class="reveal mb-14 max-w-[46ch]">
+            <div class="eyebrow">Process</div>
+            <h2 class="mt-4 font-display text-3xl tracking-tight text-ink sm:text-4xl lg:text-5xl">
+                Four steps, no surprises.
+            </h2>
         </div>
+
+        <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            @foreach ([
+                ['Intro call', 'Twenty minutes. What is broken, who it affects, what done looks like. Free, no NDA needed.'],
+                ['Written scope', 'A short document: deliverables, price, timeline and what is explicitly out of scope.'],
+                ['Build in the open', 'Weekly demo links against a real environment. You see progress, not status reports.'],
+                ['Handover', 'Deployed, documented and walked through on video. You own the code and the infrastructure.'],
+            ] as $index => [$heading, $copy])
+                <li class="reveal flex flex-col rounded-lg border border-line bg-surface p-7" @if ($index > 0) data-delay="{{ $index }}" @endif>
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-500/12 font-mono text-2xs text-brand-read">
+                        {{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}
+                    </span>
+                    <h3 class="mt-5 font-display text-xl text-ink">{{ $heading }}</h3>
+                    <p class="mt-3 leading-relaxed text-dim">{{ $copy }}</p>
+                </li>
+            @endforeach
+        </ol>
     </div>
 </section>
 
-{{-- CTA --}}
+{{-- ================================================================== CTA --}}
 <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-brand-glow pointer-events-none"></div>
-    <div class="absolute inset-0 bg-grid-dark bg-grid pointer-events-none [mask-image:radial-gradient(ellipse_at_center,#000_30%,transparent_75%)]"></div>
-    <div class="relative mx-auto max-w-[1280px] px-6 lg:px-10 py-28 text-center">
-        <h2 class="reveal font-display text-5xl text-ink">Ready to start?</h2>
-        <p class="reveal mt-6 text-dim text-lg max-w-[500px] mx-auto" data-delay="1">
-            Let's talk about what you need built. Twenty minutes, no commitment.
+    <div class="pointer-events-none absolute inset-0 bg-brand-glow"></div>
+    <div class="relative mx-auto max-w-[1280px] px-5 py-24 text-center lg:px-10">
+        <h2 class="reveal mx-auto max-w-[20ch] font-display text-3xl tracking-tight text-ink sm:text-4xl lg:text-5xl">
+            Not sure which one fits?
+        </h2>
+        <p class="reveal mx-auto mt-6 max-w-[50ch] text-lg text-dim" data-delay="1">
+            Describe the problem and I'll tell you which of these it is &mdash; or that you don't need me.
         </p>
-        <div class="reveal mt-10" data-delay="2">
+        <div class="reveal mt-9 flex flex-col justify-center gap-3 sm:flex-row" data-delay="2">
             <a href="{{ route('contact.index') }}" data-magnetic
-               class="magnetic inline-flex items-center gap-3 bg-brand-500 hover:bg-brand-400 text-brand-ink font-medium px-7 py-4 rounded-sm shadow-glow transition">
-                <span>Book a call</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+               class="magnetic inline-flex items-center justify-center gap-3 rounded-sm bg-brand-500 px-7 py-4 font-semibold text-brand-ink shadow-glow transition hover:bg-brand-400">
+                Book a 20-min intro
+            </a>
+            <a href="{{ route('home') }}#work"
+               class="inline-flex items-center justify-center rounded-sm border border-line bg-surface px-6 py-4 text-ink transition hover:border-lineH hover:bg-elev">
+                See selected work
             </a>
         </div>
     </div>
 </section>
+
 @endsection
