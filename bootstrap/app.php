@@ -5,6 +5,7 @@ use App\Http\Middleware\LogApiRequest;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -39,6 +40,12 @@ return Application::configure(basePath: dirname(__DIR__))
                     'message' => 'Validation failed.',
                     'errors' => $exception->errors(),
                 ], 422);
+            }
+
+            if ($exception instanceof AuthenticationException) {
+                return response()->json([
+                    'message' => 'Unauthenticated.',
+                ], 401);
             }
 
             if ($exception instanceof NotFoundHttpException) {

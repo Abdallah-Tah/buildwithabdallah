@@ -15,7 +15,7 @@
 
         <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// services</div>
+                <div class="eyebrow">Services</div>
                 <h1 class="mt-4 font-display text-5xl lg:text-6xl text-ink max-w-[800px]">
                     Services for businesses that need<br/>
                     <span class="text-brand-500 italic">clearer systems</span> and less manual work.
@@ -124,19 +124,19 @@
     <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
         <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6">
             <article class="rounded-lg border border-line bg-bg/40 p-7">
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 mb-4">// ideal for</div>
+                <div class="eyebrow mb-4">Ideal for</div>
                 <h3 class="font-display text-2xl text-ink">Who this is for</h3>
                 <p class="mt-4 text-dim leading-relaxed">Small businesses, solo founders, local services, and teams that need a working system without hiring a full dev team.</p>
             </article>
 
             <article class="rounded-lg border border-line bg-bg/40 p-7">
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 mb-4">// delivery</div>
+                <div class="eyebrow mb-4">Delivery</div>
                 <h3 class="font-display text-2xl text-ink">How I deliver</h3>
                 <p class="mt-4 text-dim leading-relaxed">Clear scope, clean implementation, professional UI, deployment help, and documentation you can understand.</p>
             </article>
 
             <article class="rounded-lg border border-line bg-bg/40 p-7">
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 mb-4">// focus</div>
+                <div class="eyebrow mb-4">Focus</div>
                 <h3 class="font-display text-2xl text-ink">What matters</h3>
                 <p class="mt-4 text-dim leading-relaxed">Saving time, reducing mistakes, improving follow-up, and making the business easier to operate.</p>
             </article>

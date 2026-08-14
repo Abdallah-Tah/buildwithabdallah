@@ -38,6 +38,7 @@ class PersonalAccessTokenForm
                         'social-posts:delete' => 'social-posts:delete',
                         'social-posts:publish' => 'social-posts:publish',
                         'media:upload' => 'media:upload',
+                        'social-tokens:read' => 'social-tokens:read',
                         'admin:read' => 'admin:read',
                     ])
                     ->columns(2)

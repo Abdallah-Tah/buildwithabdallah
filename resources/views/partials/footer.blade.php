@@ -7,6 +7,10 @@
                 <img
                     src="{{ asset('brand/logo.jpg') }}"
                     alt="Build With Abdallah logo"
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
                     class="h-12 w-12 rounded-full object-cover ring-1 ring-line"
                 >
                 <span class="leading-tight">

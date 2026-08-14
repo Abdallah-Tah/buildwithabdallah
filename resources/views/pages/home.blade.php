@@ -66,36 +66,13 @@ $ curl -s buildwith.abdallah/who | jq
             </a>
             <a href="#work" class="inline-flex items-center gap-2 border border-line hover:border-lineH bg-surface/40 hover:bg-elev/60 text-ink px-5 py-3.5 rounded-sm transition">
                 <span class="font-mono text-[0.6875rem] text-mute">▸</span>
-                See selected work
+                See current projects
             </a>
             <span class="font-mono text-[0.6875rem] uppercase tracking-[0.22em] text-mute pl-2 hidden md:inline">
                 — or <a href="mailto:buildwithabdallah@gmail.com" class="text-ink2 hover:text-ink ul-link">buildwithabdallah@gmail.com</a>
             </span>
         </div>
 
-        {{-- Proof strip --}}
-        <div class="reveal mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-line/60 rounded-md overflow-hidden border border-line/70" data-delay="4">
-            <div class="bg-surface/60 p-5">
-                <div class="font-display text-4xl text-ink">47</div>
-                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">shipped apps</div>
-                <div class="mt-1 text-xs text-dim">since 2018</div>
-            </div>
-            <div class="bg-surface/60 p-5">
-                <div class="font-display text-4xl text-ink">$3.2<span class="text-brand-500">M</span></div>
-                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">tracked revenue</div>
-                <div class="mt-1 text-xs text-dim">across client products</div>
-            </div>
-            <div class="bg-surface/60 p-5">
-                <div class="font-display text-4xl text-ink">3.2<span class="text-mute">k</span></div>
-                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">github stars</div>
-                <div class="mt-1 text-xs text-dim">across OSS packages</div>
-            </div>
-            <div class="bg-surface/60 p-5">
-                <div class="font-display text-4xl text-ink">4.9<span class="text-brand-500">★</span></div>
-                <div class="mt-1.5 text-xs text-mute font-mono uppercase tracking-[0.14em]">avg. rating</div>
-                <div class="mt-1 text-xs text-dim">12 reviews / Upwork & refs</div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -142,7 +119,7 @@ $ curl -s buildwith.abdallah/who | jq
     <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
         <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
             <div>
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// services</div>
+                <div class="eyebrow">Services</div>
                 <h2 class="mt-4 font-display text-5xl lg:text-6xl text-ink max-w-[800px]">
                     Four ways to put<br/>
                     <span class="text-brand-500 italic">a senior engineer</span> on it.
@@ -246,66 +223,74 @@ async def qualify(lead):
     <div class="relative mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
         <div class="reveal flex items-end justify-between mb-14">
             <div>
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// selected work</div>
-                <h2 class="mt-4 font-display text-5xl lg:text-6xl text-ink">Things I've <span class="italic text-brand-500">actually</span> shipped.</h2>
+                <div class="eyebrow">Current projects</div>
+                <h2 class="mt-4 font-display text-5xl lg:text-6xl text-ink">What I am <span class="italic text-brand-500">building</span> now.</h2>
             </div>
             <a href="{{ route('contact.index') }}" class="hidden md:inline-flex font-mono text-xs uppercase tracking-[0.22em] text-mute hover:text-ink2 pb-2 ul-link">Discuss your project →</a>
         </div>
 
-        {{-- Featured case study --}}
+        {{-- Active projects --}}
         <article class="reveal rounded-lg border border-line bg-surface overflow-hidden mb-6 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
-            <div class="relative aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-[#1a1410] via-[#0e0e10] to-[#0a0a0a] overflow-hidden">
-                <div class="absolute inset-0 bg-grid-dark bg-grid-sm opacity-50 [mask-image:radial-gradient(ellipse_at_center,#000,transparent_70%)]"></div>
-                <div class="absolute inset-8 rounded-md border border-line bg-bg/70 p-4 shadow-pop">
-                    <div class="flex items-center gap-1.5 mb-3">
-                        <span class="w-2 h-2 rounded-full bg-line"></span>
-                        <span class="w-2 h-2 rounded-full bg-line"></span>
-                        <span class="w-2 h-2 rounded-full bg-line"></span>
-                        <span class="ml-3 font-mono text-[0.6875rem] text-mute">portal.client-site.com / dashboard</span>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2 mb-3">
-                        <div class="p-2.5 rounded-xs border border-line bg-surface/60">
-                            <div class="text-[0.6875rem] font-mono text-mute uppercase tracking-[0.14em]">filings</div>
-                            <div class="text-xl font-medium text-ink mt-1">612</div>
-                        </div>
-                        <div class="p-2.5 rounded-xs border border-line bg-surface/60">
-                            <div class="text-[0.6875rem] font-mono text-mute uppercase tracking-[0.14em]">in review</div>
-                            <div class="text-xl font-medium text-brand-500 mt-1">38</div>
-                        </div>
-                        <div class="p-2.5 rounded-xs border border-line bg-surface/60">
-                            <div class="text-[0.6875rem] font-mono text-mute uppercase tracking-[0.14em]">refunds</div>
-                            <div class="text-xl font-medium text-live mt-1">$2.4M</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="relative aspect-[4/3] lg:aspect-auto overflow-hidden bg-bg">
+                <img src="https://buildwithabdallah.com/storage/covers/01KXXD1NG9X4YDDVRGCH9SKGV1.png" alt="Kirada rental management application" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent"></div>
                 <span class="absolute top-4 left-4 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">★ Featured</span>
             </div>
 
             <div class="p-8 lg:p-10 flex flex-col">
                 <div class="flex items-center gap-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute">
-                    <span>SaaS · tax &amp; document platform</span>
+                    <span>SaaS · rental management</span>
                     <span class="w-1 h-1 rounded-full bg-brand-500"></span>
-                    <span>2025 — ongoing</span>
+                    <span>In development</span>
                 </div>
-                <h3 class="mt-4 font-display text-4xl text-ink">Tax Client Portal</h3>
+                <h3 class="mt-4 font-display text-4xl text-ink">Kirada</h3>
                 <p class="mt-4 text-dim leading-relaxed">
-                    Built a client portal that replaced fifteen years of spreadsheets, email, and file-sharing: document intake, e-signatures, billing, and real-time status tracking. Six hundred users onboarded in season one, $2.4M processed without an incident.
+                    A connected operating system for rental teams. Kirada brings properties, units, tenants, leases, invoices, payment proofs, maintenance, documents, and messaging into one workflow.
                 </p>
                 <div class="mt-6 grid grid-cols-3 gap-px bg-line/60 rounded-sm overflow-hidden border border-line/70">
-                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">12 <span class="text-mute text-base">wks</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">to launch</div></div>
-                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">600 <span class="text-brand-500">+</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">users · yr 1</div></div>
-                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">99.98<span class="text-mute text-base">%</span></div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">uptime</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">01</div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">properties</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">02</div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">leases</div></div>
+                    <div class="bg-bg/40 p-3.5"><div class="text-2xl text-ink font-display">03</div><div class="text-[0.6875rem] font-mono uppercase tracking-[0.14em] text-mute mt-1">payments</div></div>
                 </div>
                 <div class="mt-5 flex flex-wrap gap-1.5">
-                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Laravel</span>
-                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Livewire</span>
-                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Postgres</span>
-                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Stripe</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Rental operations</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Lease workflows</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Payments</span>
                 </div>
-                <a href="{{ route('contact.index') }}" class="mt-auto pt-7 inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 ul-link self-start">
-                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em]">Build something similar</span>
+                <a href="https://kirada.buildwithabdallah.com" target="_blank" rel="noopener noreferrer" class="mt-auto pt-7 inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 ul-link self-start">
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em]">Visit Kirada</span>
                     <span aria-hidden="true">→</span>
                 </a>
+            </div>
+        </article>
+
+        <article class="reveal rounded-lg border border-line bg-surface overflow-hidden grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]" data-delay="1">
+            <div class="relative aspect-[4/3] lg:aspect-auto bg-bg overflow-hidden p-8 lg:p-10">
+                <div class="absolute inset-0 bg-grid-dark bg-grid-sm opacity-40 [mask-image:radial-gradient(ellipse_at_center,#000,transparent_70%)]"></div>
+                <div class="relative h-full min-h-[260px] border border-line bg-surface/80 p-4 shadow-pop">
+                    <div class="flex items-center gap-1.5 border-b border-line pb-3">
+                        <span class="w-2 h-2 rounded-full bg-line"></span><span class="w-2 h-2 rounded-full bg-line"></span><span class="w-2 h-2 rounded-full bg-line"></span>
+                        <span class="ml-3 font-mono text-[0.6875rem] text-mute">adstudio.buildwithabdallah.com</span>
+                    </div>
+                    <div class="mt-5 grid grid-cols-3 gap-3">
+                        <div class="aspect-[3/4] border border-line bg-bg/70"></div>
+                        <div class="aspect-[3/4] border border-brand-500/50 bg-brand-500/10"></div>
+                        <div class="aspect-[3/4] border border-line bg-bg/70"></div>
+                    </div>
+                    <div class="mt-5 flex items-center justify-between font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-mute"><span>Product assets</span><span class="text-brand-400">Review ready</span></div>
+                </div>
+            </div>
+            <div class="p-8 lg:p-10 flex flex-col">
+                <div class="flex items-center gap-3 text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-mute"><span>AI · creative automation</span><span class="w-1 h-1 rounded-full bg-brand-500"></span><span>In development</span></div>
+                <h3 class="mt-4 font-display text-4xl text-ink">AI Ad Studio</h3>
+                <p class="mt-4 text-dim leading-relaxed">A controlled workflow for turning real product photos into platform-ready video ads. The work connects media processing, generation jobs, review states, and delivery so teams can create variations without losing the approved product asset.</p>
+                <div class="mt-5 flex flex-wrap gap-1.5">
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Python</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">FastAPI</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">Celery</span>
+                    <span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] border border-line bg-bg/40 text-ink2 px-2 py-1 rounded-xs">AI media</span>
+                </div>
+                <a href="https://adstudio.buildwithabdallah.com" target="_blank" rel="noopener noreferrer" class="mt-auto pt-7 inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 ul-link self-start"><span class="font-mono text-[0.6875rem] uppercase tracking-[0.14em]">Visit AI Ad Studio</span><span aria-hidden="true">→</span></a>
             </div>
         </article>
     </div>
@@ -316,7 +301,7 @@ async def qualify(lead):
     <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-28">
         <div class="reveal flex items-end justify-between mb-12">
             <div>
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// journal</div>
+                <div class="eyebrow">Journal</div>
                 <h2 class="mt-4 font-display text-5xl text-ink">Tutorials & field notes.</h2>
             </div>
             <a href="{{ route('tutorials.index') }}" class="font-mono text-xs uppercase tracking-[0.22em] text-mute hover:text-ink2 ul-link pb-2">All posts →</a>
@@ -344,7 +329,7 @@ async def qualify(lead):
                 </article>
             @empty
                 <div class="col-span-3 rounded-lg border border-dashed border-line bg-surface/40 p-12 text-center">
-                    <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 mb-4">// coming soon</div>
+                    <div class="eyebrow justify-center mb-4">Coming soon</div>
                     <h3 class="font-display text-2xl text-ink">Tutorials are on the way</h3>
                     <p class="mt-3 text-dim max-w-md mx-auto">Practical Laravel, automation, and AI tutorials will appear here once the first articles are published.</p>
                 </div>
@@ -358,7 +343,7 @@ async def qualify(lead):
     <div class="absolute inset-0 bg-brand-glow pointer-events-none"></div>
     <div class="absolute inset-0 bg-grid-dark bg-grid pointer-events-none [mask-image:radial-gradient(ellipse_at_center,#000_30%,transparent_75%)]"></div>
     <div class="relative mx-auto max-w-[1280px] px-6 lg:px-10 py-32 text-center">
-        <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 reveal">// Q3 — Q4 2026 booking</div>
+        <div class="eyebrow reveal justify-center">Q3 — Q4 2026 booking</div>
         <h2 class="reveal mt-6 font-display text-5xl sm:text-7xl lg:text-8xl text-ink max-w-[1100px] mx-auto leading-[0.95]" data-delay="1">
             Got something <span class="italic text-brand-500">real</span><br/>
             to build?
@@ -383,7 +368,7 @@ async def qualify(lead):
 <section class="border-b border-line/70 bg-bg">
     <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-20 grid grid-cols-1 lg:grid-cols-[1fr_540px] gap-10 items-end">
         <div>
-            <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500">// the newsletter</div>
+            <div class="eyebrow">The newsletter</div>
             <h2 class="mt-4 font-display text-4xl text-ink max-w-[600px]">Field notes on AI, Laravel and the messy parts of shipping.</h2>
             <p class="mt-5 text-dim max-w-[520px]">One short email, every other Sunday. Real builds, broken things, what I'd do differently. 2,400+ engineers reading. No fluff, no funnel.</p>
         </div>

@@ -28,7 +28,8 @@ Route::prefix('v1')
 
         Route::middleware('auth:sanctum')->group(function (): void {
             Route::get('/posts', [PostController::class, 'index'])->middleware('ability:admin:read')->name('api.v1.posts.index');
-            Route::post('/posts', [PostController::class, 'store'])->middleware('ability:posts:create')->name('api.v1.posts.store');
+            
+            Route::post('/projects', [PostController::class, 'store'])->middleware('ability:posts:create')->name('api.v1.projects.store');
             Route::get('/posts/{post}', [PostController::class, 'show'])->middleware('ability:admin:read')->name('api.v1.posts.show');
             Route::patch('/posts/{post}', [PostController::class, 'update'])->middleware('ability:posts:update')->name('api.v1.posts.update');
             Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware('ability:posts:delete')->name('api.v1.posts.destroy');

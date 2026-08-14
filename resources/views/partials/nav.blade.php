@@ -6,6 +6,9 @@
             <img
                 src="{{ asset('brand/logo.jpg') }}"
                 alt="Build With Abdallah logo"
+                width="44"
+                height="44"
+                decoding="async"
                 class="h-11 w-11 rounded-full object-cover ring-1 ring-line transition group-hover:ring-brand-500/60"
             >
             <span class="leading-none">
@@ -16,13 +19,13 @@
 
         {{-- Desktop Navigation --}}
         <nav class="hidden lg:flex items-center gap-1 text-base">
-            <a href="{{ route('services') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Services</a>
-            <a href="{{ route('home') }}#work" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Work</a>
-            <a href="{{ route('tutorials.index') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Journal</a>
-            <a href="{{ route('videos.index') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition">Videos</a>
-            <a href="{{ route('status') }}" class="px-3.5 py-2.5 rounded-sm text-ink2 hover:text-ink hover:bg-elev/60 transition flex items-center gap-1.5">
+            <a href="{{ route('services') }}" @if(request()->routeIs('services')) aria-current="page" @endif class="nav-link px-3.5 py-2.5 text-ink2 hover:text-ink hover:bg-elev/60">Services</a>
+            <a href="{{ route('home') }}#work" class="nav-link px-3.5 py-2.5 text-ink2 hover:text-ink hover:bg-elev/60">Work</a>
+            <a href="{{ route('tutorials.index') }}" @if(request()->routeIs('tutorials.*')) aria-current="page" @endif class="nav-link px-3.5 py-2.5 text-ink2 hover:text-ink hover:bg-elev/60">Journal</a>
+            <a href="{{ route('videos.index') }}" @if(request()->routeIs('videos.*')) aria-current="page" @endif class="nav-link px-3.5 py-2.5 text-ink2 hover:text-ink hover:bg-elev/60">Videos</a>
+            <a href="{{ route('status') }}" @if(request()->routeIs('status')) aria-current="page" @endif class="nav-link px-3.5 py-2.5 text-ink2 hover:text-ink hover:bg-elev/60 flex items-center gap-2">
                 API
-                <span class="font-mono text-xs text-brand-400 px-1.5 py-0.5 rounded-xs border border-brand-500/30 bg-brand-500/10">v1</span>
+                <span class="font-mono text-[0.6875rem] font-medium text-brand-300 px-1.5 py-0.5 rounded-xs bg-brand-500/15">v1</span>
             </a>
         </nav>
 
@@ -50,12 +53,12 @@
     {{-- Mobile Menu --}}
     <div x-cloak x-show="open" x-transition.origin.top class="border-t border-line bg-surface lg:hidden">
         <div class="mx-auto max-w-[1280px] px-6 py-4 space-y-1">
-            <a href="{{ route('services') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Services</a>
-            <a href="{{ route('home') }}#work" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Work</a>
-            <a href="{{ route('tutorials.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Journal</a>
-            <a href="{{ route('videos.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Videos</a>
-            <a href="{{ route('newsletter.index') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Newsletter</a>
-            <a href="{{ route('status') }}" class="block rounded-sm px-3 py-3 text-base font-medium text-ink2 transition hover:bg-elev/60 hover:text-ink">Status</a>
+            <a href="{{ route('services') }}" @if(request()->routeIs('services')) aria-current="page" @endif class="nav-link block px-3 py-3 text-base font-medium text-ink2 hover:bg-elev/60 hover:text-ink">Services</a>
+            <a href="{{ route('home') }}#work" class="nav-link block px-3 py-3 text-base font-medium text-ink2 hover:bg-elev/60 hover:text-ink">Work</a>
+            <a href="{{ route('tutorials.index') }}" @if(request()->routeIs('tutorials.*')) aria-current="page" @endif class="nav-link block px-3 py-3 text-base font-medium text-ink2 hover:bg-elev/60 hover:text-ink">Journal</a>
+            <a href="{{ route('videos.index') }}" @if(request()->routeIs('videos.*')) aria-current="page" @endif class="nav-link block px-3 py-3 text-base font-medium text-ink2 hover:bg-elev/60 hover:text-ink">Videos</a>
+            <a href="{{ route('newsletter.index') }}" @if(request()->routeIs('newsletter.*')) aria-current="page" @endif class="nav-link block px-3 py-3 text-base font-medium text-ink2 hover:bg-elev/60 hover:text-ink">Newsletter</a>
+            <a href="{{ route('status') }}" @if(request()->routeIs('status')) aria-current="page" @endif class="nav-link block px-3 py-3 text-base font-medium text-ink2 hover:bg-elev/60 hover:text-ink">Status</a>
             <div class="pt-3 border-t border-line mt-3 flex items-center gap-3">
                 @include('partials.theme-toggle')
                 <a href="{{ route('contact.index') }}" class="block flex-1 text-center bg-brand-500 hover:bg-brand-400 text-brand-ink font-semibold text-base px-4 py-3 rounded-sm transition">

@@ -13,7 +13,7 @@
             <span class="text-ink2">Contact</span>
         </nav>
 
-        <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 reveal">// contact</div>
+        <div class="eyebrow reveal">Contact</div>
         <h1 class="reveal mt-4 font-display text-5xl lg:text-6xl text-ink max-w-[800px]" data-delay="1">
             Tell me what you want to <span class="text-brand-500 italic">build</span>.
         </h1>
@@ -29,7 +29,7 @@
         <div class="grid gap-16 lg:grid-cols-[400px_1fr]">
             {{-- Contact Channels --}}
             <div class="reveal">
-                <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 mb-6">// channels</div>
+                <div class="eyebrow mb-6">Channels</div>
 
                 <div class="space-y-4">
                     <a href="mailto:buildwithabdallah@gmail.com" class="block rounded-lg border border-line bg-surface/60 p-5 hover:border-lineH hover:bg-elev/60 transition group">

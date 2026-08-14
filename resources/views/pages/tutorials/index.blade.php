@@ -13,7 +13,7 @@
             <span class="text-ink2">Journal</span>
         </nav>
 
-        <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 reveal">// journal</div>
+        <div class="eyebrow reveal">Journal</div>
         <h1 class="reveal mt-4 font-display text-5xl lg:text-6xl text-ink max-w-[800px]" data-delay="1">
             Tutorials & <span class="text-brand-500 italic">field notes</span>.
         </h1>
@@ -115,7 +115,7 @@
                 </article>
             @empty
                 <div class="col-span-full rounded-lg border border-dashed border-line bg-surface/40 p-16 text-center">
-                    <div class="text-[0.6875rem] font-mono uppercase tracking-[0.22em] text-brand-500 mb-4">// coming soon</div>
+                    <div class="eyebrow justify-center mb-4">Coming soon</div>
                     <h3 class="font-display text-2xl text-ink">No tutorials available yet</h3>
                     <p class="mt-3 text-dim max-w-md mx-auto">Once real posts are published, this page will list tutorials for Laravel, automation, APIs, and implementation notes.</p>
                 </div>

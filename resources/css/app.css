@@ -58,28 +58,30 @@
     --color-link: #0c0a09;
     --color-ldim: #57534e;
 
-    /* Typography */
-    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* Typography — geometric sans (Space Grotesk display / Manrope body),
+       chosen to avoid the generic system-ui / Inter "AI slop" look. */
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
-    --font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Space Grotesk', 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
     /* Custom font sizes */
     --text-2xs: 0.6875rem;
     --text-2xs--line-height: 1;
     --text-2xs--letter-spacing: 0.08em;
 
-    /* Letter spacing */
-    --tracking-kicker: 0.22em;
-    --tracking-eyebrow: 0.14em;
+    /* Letter spacing — calmer than the cramped 0.22em caps the video flags */
+    --tracking-kicker: 0.14em;
+    --tracking-eyebrow: 0.1em;
 
     /* Border radius */
     --radius-xs: 3px;
     --radius-sm: 5px;
 
-    /* Shadows */
-    --shadow-glow: 0 0 0 1px rgba(0,92,255,0.5), 0 6px 30px -8px rgba(0,92,255,0.45);
-    --shadow-glow-sm: 0 0 24px -4px rgba(0,92,255,0.35);
-    --shadow-card: 0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 24px -12px rgba(0,0,0,0.6);
+    /* Shadows — elevated, layered drop shadows instead of "random light" glow
+       rings. Primary CTAs keep a soft brand tint; cards rely on depth, not light. */
+    --shadow-glow: 0 2px 4px -2px rgba(0,0,0,0.4), 0 10px 24px -8px rgba(0,92,255,0.35);
+    --shadow-glow-sm: 0 1px 2px -1px rgba(0,0,0,0.4), 0 6px 16px -8px rgba(0,92,255,0.28);
+    --shadow-card: 0 1px 0 0 rgba(255,255,255,0.04) inset, 0 1px 2px rgba(0,0,0,0.4), 0 12px 28px -16px rgba(0,0,0,0.7);
     --shadow-pop: 0 24px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06);
 }
 
@@ -95,7 +97,7 @@ html {
 body {
     background: #09090b;
     color: #fafafa;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Selection */
@@ -127,7 +129,8 @@ body {
     transition: transform .25s cubic-bezier(.2,.7,.3,1);
 }
 
-/* Animated gradient border for featured cards */
+/* Featured-card edge — a static, top-weighted brand border. Replaces the old
+   spinning conic "light" that read as AI-slop motion. */
 .gradient-border { position: relative; isolation: isolate; }
 .gradient-border::before {
     content: "";
@@ -135,17 +138,14 @@ body {
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: conic-gradient(from var(--a, 0deg), rgba(0,92,255,0.75), rgba(0,92,255,0) 25%, rgba(0,92,255,0) 75%, rgba(0,92,255,0.75));
+    background: linear-gradient(160deg, rgba(0,92,255,0.55), rgba(0,92,255,0.08) 45%, rgba(255,255,255,0.04));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    animation: spin 6s linear infinite;
     pointer-events: none;
     z-index: 0;
 }
-@keyframes spin { to { --a: 360deg; transform: rotate(360deg); } }
-@property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 
 /* Scroll reveal animations */
 .reveal { opacity: 1; transform: none; }
@@ -209,39 +209,21 @@ pre.code .lineno {
    Background Effects
    ======================================================================== */
 
-/* Aurora glow behind hero */
+/* Aurora — retired. The blurred floating blobs were the exact "random lights"
+   that read as AI slop. We keep a single, very subtle, *static* brand wash so
+   the hero still has depth without the grey light show. */
 .aurora {
     position: absolute;
-    inset: -120px;
+    inset: 0;
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
 }
-.aurora::before, .aurora::after {
+.aurora::before {
     content: "";
     position: absolute;
-    width: 760px;
-    height: 760px;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: .45;
-}
-.aurora::before {
-    background: rgba(0,92,255,0.55);
-    top: -200px;
-    left: 18%;
-    animation: blob 22s ease-in-out infinite;
-}
-.aurora::after {
-    background: rgba(124,140,255,0.30);
-    top: 100px;
-    right: 0%;
-    animation: blob 34s ease-in-out -8s infinite;
-}
-@keyframes blob {
-    0%,100% { transform: translate(0,0) scale(1); }
-    33%     { transform: translate(40px,-30px) scale(1.08); }
-    66%     { transform: translate(-30px,30px) scale(0.94); }
+    inset: 0;
+    background: radial-gradient(60% 50% at 50% 0%, rgba(0,92,255,0.10), transparent 70%);
 }
 
 /* Grid background */
@@ -252,9 +234,10 @@ pre.code .lineno {
 .bg-grid { background-size: 64px 64px; }
 .bg-grid-sm { background-size: 32px 32px; }
 
-/* Brand glow */
+/* Brand glow — toned right down. Was a strong center light on the CTA band;
+   now a faint, even wash so the section reads as a calm panel, not a spotlight. */
 .bg-brand-glow {
-    background: radial-gradient(60% 60% at 50% 50%, rgba(0,92,255,0.22), transparent 70%);
+    background: radial-gradient(70% 90% at 50% 50%, rgba(0,92,255,0.07), transparent 75%);
 }
 
 /* ========================================================================
@@ -293,6 +276,49 @@ pre.code .lineno {
     border-radius: 3px;
 }
 button:focus-visible, a:focus-visible { outline-offset: 3px; }
+
+/* ========================================================================
+   De-slop overrides
+   Calmer caps tracking + consistent eyebrows. The video flags uppercase
+   eyebrows with "too much space" that cramp the layout — 0.22em was the worst
+   offender, used as an arbitrary value across every section. One override
+   relaxes it everywhere without touching each template.
+   ======================================================================== */
+.tracking-\[0\.22em\] { letter-spacing: 0.12em; }
+
+/* Consistent eyebrow: small brand tick + label, even baseline spacing */
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font: 500 0.6875rem/1 var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-brand-400);
+}
+.eyebrow::before {
+    content: "";
+    width: 1.5rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+}
+
+/* Nav selected state — an even, filled pill (not the lopsided lone border the
+   video calls out). Same top/left padding, same hit area as inactive links. */
+.nav-link {
+    position: relative;
+    border-radius: var(--radius-sm);
+    transition: color .15s, background-color .15s;
+}
+.nav-link[aria-current="page"] {
+    color: var(--color-ink);
+    background-color: var(--color-elev);
+}
+html:not(.dark) .nav-link[aria-current="page"] {
+    color: #16213a;
+    background-color: #d3deef;
+}
 
 /* ========================================================================
    Accent Color Overrides
@@ -385,14 +411,9 @@ html:not(.dark) .ring-line { --tw-ring-color: #c3d2e6 !important; }
 /* Brand colors light — white ink on blue buttons (accent unchanged) */
 html:not(.dark) .text-brand-ink { color: #ffffff !important; }
 
-/* Aurora glow — subtle blue accent only */
+/* Aurora wash — faint blue accent only (light) */
 html:not(.dark) .aurora::before {
-    background: rgba(0,92,255,0.18) !important;
-    opacity: 0.6;
-}
-html:not(.dark) .aurora::after {
-    background: rgba(99,130,255,0.14) !important;
-    opacity: 0.5;
+    background: radial-gradient(60% 50% at 50% 0%, rgba(0,92,255,0.08), transparent 70%) !important;
 }
 
 /* Grid background light — faint blue lines */

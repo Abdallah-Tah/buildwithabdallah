@@ -22,6 +22,10 @@ return [
         'key' => env('RESEND_API_KEY'),
     ],
 
+    'ga' => [
+        'measurement_id' => env('GA_MEASUREMENT_ID'),
+    ],
+
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
@@ -44,6 +48,9 @@ return [
         'redirect' => env('LINKEDIN_REDIRECT_URI'),
         // Add 'w_member_social' once the "Share on LinkedIn" product is enabled.
         'scopes' => env('LINKEDIN_SCOPES', 'openid profile email'),
+        // Author the posting bot writes as. Org pages use urn:li:organization:<id>;
+        // a personal feed uses urn:li:person:<member-id>.
+        'author_urn' => env('LINKEDIN_AUTHOR_URN', 'urn:li:organization:119694084'),
     ],
 
     'facebook' => [
