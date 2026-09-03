@@ -12,9 +12,16 @@ class ContactMessageInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
+                TextEntry::make('organization')
+                    ->placeholder('-'),
                 TextEntry::make('email')
                     ->label('Email address'),
-                TextEntry::make('subject'),
+                TextEntry::make('phone')
+                    ->placeholder('-'),
+                TextEntry::make('project_type')
+                    ->placeholder('-'),
+                TextEntry::make('timeline')
+                    ->placeholder('-'),
                 TextEntry::make('message')
                     ->columnSpanFull(),
                 TextEntry::make('read_at')

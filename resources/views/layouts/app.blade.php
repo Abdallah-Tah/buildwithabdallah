@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @php
-        $pageTitle = $title ?? 'Build With Abdallah — Ship faster with custom software, AI agents & automation';
-        $pageDescription = $metaDescription ?? 'Custom Laravel apps, AI agents, Telegram bots, workflow automation and dashboards — built by a senior full-stack engineer with 8+ years in production.';
+        $pageTitle = $title ?? 'Build With Abdallah | Software Development & IT Consulting';
+        $pageDescription = $metaDescription ?? 'Maine-based software development and IT consulting company specializing in custom software, legacy modernization, APIs, databases, automation, system integration and application support.';
         $ogImage = $ogImage ?? asset('brand/logo.jpg');
         $faviconVersion = file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : time();
     @endphp
@@ -25,6 +25,18 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ $ogImage }}">
     <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => ['Organization', 'ProfessionalService'],
+        'name' => 'Build With Abdallah',
+        'url' => config('app.url'),
+        'logo' => asset('brand/logo.jpg'),
+        'description' => $pageDescription,
+        'founder' => ['@type' => 'Person', 'name' => 'Abdallah Mohamed', 'jobTitle' => 'Founder & Lead Software Engineer'],
+        'areaServed' => ['Maine', 'United States'],
+        'address' => ['@type' => 'PostalAddress', 'addressRegion' => 'Maine', 'addressCountry' => 'US'],
+        'sameAs' => ['https://github.com/Abdallah-Tah', 'https://www.linkedin.com/in/abdallahmohamed86/'],
+    ], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE) !!}</script>
 
     <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ $faviconVersion }}" sizes="any">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v={{ $faviconVersion }}">

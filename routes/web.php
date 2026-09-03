@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsletterController;
@@ -15,6 +16,12 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/services', ServiceController::class)->name('services');
+Route::view('/government', 'pages.government')->name('government');
+Route::view('/government/capability-statement', 'pages.capability-statement')->name('government.capability-statement');
+Route::view('/manufacturing', 'pages.manufacturing')->name('manufacturing');
+Route::get('/work/{caseStudy}', CaseStudyController::class)
+    ->whereIn('caseStudy', array_keys(config('case-studies')))
+    ->name('case-studies.show');
 Route::get('/tutorials', [TutorialController::class, 'index'])->name('tutorials.index');
 Route::get('/tutorials/{post:slug}', [TutorialController::class, 'show'])->name('tutorials.show');
 Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');

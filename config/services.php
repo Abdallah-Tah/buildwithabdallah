@@ -26,6 +26,14 @@ return [
         'measurement_id' => env('GA_MEASUREMENT_ID'),
     ],
 
+    'contracting' => [
+        'duns' => env('CONTRACTING_DUNS'),
+        'uei' => env('CONTRACTING_UEI'),
+        'maine_vendor_code' => env('CONTRACTING_MAINE_VENDOR_CODE'),
+        'cage_code' => env('CONTRACTING_CAGE_CODE'),
+        'capability_statement_url' => env('CAPABILITY_STATEMENT_URL'),
+    ],
+
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),

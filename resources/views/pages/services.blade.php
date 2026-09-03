@@ -1,6 +1,6 @@
 @extends('layouts.app', [
-    'title' => 'Services & pricing — Build With Abdallah',
-    'metaDescription' => 'Websites, Laravel dashboards, AI agents and Telegram bots, API integrations, automation workflows and MVP builds — with starting prices and a clear process.',
+    'title' => 'Software Development & IT Consulting Services | Build With Abdallah',
+    'metaDescription' => 'Custom software development, legacy modernization, API integration, SQL database solutions, automation and application support from Maine.',
 ])
 
 @section('content')
@@ -19,14 +19,14 @@
 
         <div class="grid items-end gap-10 lg:grid-cols-[1fr_minmax(0,420px)]">
             <div>
-                <div class="eyebrow reveal">Services &amp; pricing</div>
+                <div class="eyebrow reveal">Software Development &amp; IT Consulting</div>
                 <h1 class="reveal mt-5 max-w-[18ch] font-display text-[2.5rem] leading-[1.06] tracking-tight text-ink sm:text-5xl lg:text-6xl" data-delay="1">
-                    Scoped work with a <span class="text-brand-500">price attached</span>.
+                    Systems built, integrated and <span class="motion-accent text-brand-500">modernized responsibly.</span>
                 </h1>
             </div>
             <p class="reveal max-w-[52ch] text-lg leading-relaxed text-dim" data-delay="2">
-                Starting prices are real, not anchors. Anything marked "quote after review" needs a
-                short conversation first, because guessing would waste your money and my time.
+                Engineering services for organizations that need dependable applications, connected
+                systems, better data workflows and ongoing technical support.
             </p>
         </div>
     </div>
@@ -47,7 +47,7 @@
                         $copy = trim(preg_replace('/\s*(?:Starting from \$[\d,]+|Quote after review)\.?\s*$/u', '', $copy));
                     }
                 @endphp
-                <article class="reveal flex flex-col bg-surface p-7 transition hover:bg-elev lg:p-8" @if ($index > 0) data-delay="{{ min($index, 6) }}" @endif>
+                <article class="reveal motion-card flex flex-col bg-surface p-7 transition hover:bg-elev lg:p-8" @if ($index > 0) data-delay="{{ min($index, 6) }}" @endif>
                     <div class="flex items-center justify-between gap-3 font-mono text-2xs uppercase tracking-[0.12em] text-mute">
                         <span>{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }} / {{ str_pad((string) count($services), 2, '0', STR_PAD_LEFT) }}</span>
                         @if ($price)
@@ -83,7 +83,7 @@
                 ['Build in the open', 'Weekly demo links against a real environment. You see progress, not status reports.'],
                 ['Handover', 'Deployed, documented and walked through on video. You own the code and the infrastructure.'],
             ] as $index => [$heading, $copy])
-                <li class="reveal flex flex-col rounded-lg border border-line bg-surface p-7" @if ($index > 0) data-delay="{{ $index }}" @endif>
+                <li class="reveal motion-card flex flex-col rounded-lg border border-line bg-surface p-7" @if ($index > 0) data-delay="{{ $index }}" @endif>
                     <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-500/12 font-mono text-2xs text-brand-read">
                         {{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}
                     </span>
@@ -108,11 +108,11 @@
         <div class="reveal mt-9 flex flex-col justify-center gap-3 sm:flex-row" data-delay="2">
             <a href="{{ route('contact.index') }}" data-magnetic
                class="magnetic inline-flex items-center justify-center gap-3 rounded-sm bg-brand-500 px-7 py-4 font-semibold text-brand-ink shadow-glow transition hover:bg-brand-400">
-                Book a 20-min intro
+                Discuss Your Project
             </a>
             <a href="{{ route('home') }}#work"
                class="inline-flex items-center justify-center rounded-sm border border-line bg-surface px-6 py-4 text-ink transition hover:border-lineH hover:bg-elev">
-                See selected work
+                View Selected Work
             </a>
         </div>
     </div>

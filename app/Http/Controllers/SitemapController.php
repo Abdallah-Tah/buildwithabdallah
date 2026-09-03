@@ -26,26 +26,33 @@ class SitemapController extends Controller
 
         // Static pages (route name => [changefreq, priority]).
         $static = [
-            'home'             => ['weekly', '1.0'],
-            'services'         => ['monthly', '0.8'],
-            'about'            => ['monthly', '0.7'],
-            'tutorials.index'  => ['daily', '0.9'],
-            'videos.index'     => ['weekly', '0.7'],
+            'home' => ['weekly', '1.0'],
+            'services' => ['monthly', '0.8'],
+            'government' => ['monthly', '0.8'],
+            'government.capability-statement' => ['monthly', '0.6'],
+            'manufacturing' => ['monthly', '0.9'],
+            'about' => ['monthly', '0.7'],
+            'tutorials.index' => ['daily', '0.9'],
+            'videos.index' => ['weekly', '0.7'],
             'newsletter.index' => ['monthly', '0.5'],
-            'contact.index'    => ['monthly', '0.5'],
-            'privacy'          => ['yearly', '0.3'],
-            'terms'            => ['yearly', '0.3'],
+            'contact.index' => ['monthly', '0.5'],
+            'privacy' => ['yearly', '0.3'],
+            'terms' => ['yearly', '0.3'],
         ];
         foreach ($static as $name => [$freq, $priority]) {
             $urls[] = ['loc' => route($name), 'lastmod' => null, 'freq' => $freq, 'priority' => $priority];
         }
 
+        foreach (array_keys(config('case-studies')) as $caseStudy) {
+            $urls[] = ['loc' => route('case-studies.show', $caseStudy), 'lastmod' => null, 'freq' => 'yearly', 'priority' => '0.7'];
+        }
+
         // Published posts.
         foreach (Post::published()->get(['slug', 'updated_at']) as $post) {
             $urls[] = [
-                'loc'      => route('tutorials.show', $post->slug),
-                'lastmod'  => $post->updated_at?->toAtomString(),
-                'freq'     => 'monthly',
+                'loc' => route('tutorials.show', $post->slug),
+                'lastmod' => $post->updated_at?->toAtomString(),
+                'freq' => 'monthly',
                 'priority' => '0.8',
             ];
         }
@@ -53,23 +60,23 @@ class SitemapController extends Controller
         // Published videos.
         foreach (Video::published()->get(['slug', 'updated_at']) as $video) {
             $urls[] = [
-                'loc'      => route('videos.show', $video->slug),
-                'lastmod'  => $video->updated_at?->toAtomString(),
-                'freq'     => 'monthly',
+                'loc' => route('videos.show', $video->slug),
+                'lastmod' => $video->updated_at?->toAtomString(),
+                'freq' => 'monthly',
                 'priority' => '0.6',
             ];
         }
 
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
         foreach ($urls as $u) {
             $xml .= "  <url>\n";
-            $xml .= '    <loc>' . e($u['loc']) . "</loc>\n";
+            $xml .= '    <loc>'.e($u['loc'])."</loc>\n";
             if ($u['lastmod']) {
-                $xml .= '    <lastmod>' . $u['lastmod'] . "</lastmod>\n";
+                $xml .= '    <lastmod>'.$u['lastmod']."</lastmod>\n";
             }
-            $xml .= '    <changefreq>' . $u['freq'] . "</changefreq>\n";
-            $xml .= '    <priority>' . $u['priority'] . "</priority>\n";
+            $xml .= '    <changefreq>'.$u['freq']."</changefreq>\n";
+            $xml .= '    <priority>'.$u['priority']."</priority>\n";
             $xml .= "  </url>\n";
         }
         $xml .= '</urlset>';

@@ -4,6 +4,70 @@ import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
 
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion-ready');
+}
+
+// Compact, solid header after the hero begins moving underneath it.
+(function () {
+    const header = document.querySelector('[data-site-header]');
+    if (!header) return;
+    const update = () => header.classList.toggle('is-scrolled', window.scrollY > 20);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+})();
+
+// Highlight delivery stages and advance the rail as they pass the viewport.
+(function () {
+    const timeline = document.querySelector('[data-process-timeline]');
+    if (!timeline) return;
+    const stages = [...timeline.querySelectorAll('[data-process-stage]')];
+    const progress = timeline.querySelector('[data-process-progress]');
+    const update = () => {
+        const focus = window.innerHeight * 0.48;
+        let activeIndex = 0;
+        let best = Infinity;
+        stages.forEach((stage, index) => {
+            const distance = Math.abs(stage.getBoundingClientRect().top - focus);
+            if (distance < best) { best = distance; activeIndex = index; }
+        });
+        stages.forEach((stage, index) => stage.classList.toggle('is-active', index === activeIndex));
+        const percent = stages.length > 1 ? (activeIndex / (stages.length - 1)) * 100 : 100;
+        timeline.style.setProperty('--process-progress', `${percent}%`);
+        if (progress) progress.style.height = `${percent}%`;
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+})();
+
+// Lightweight depth for marked scene layers. No scroll hijacking.
+(function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const layers = [...document.querySelectorAll('[data-parallax]')];
+    const nodes = [...document.querySelectorAll('[data-system-map] [data-depth]')];
+    if (!layers.length && !nodes.length) return;
+    let scheduled = false;
+    const paint = () => {
+        const y = window.scrollY;
+        layers.forEach((layer) => {
+            const speed = Number(layer.dataset.parallax || 0);
+            layer.style.transform = `translate3d(0, ${Math.min(y * speed, 48)}px, 0)`;
+        });
+        nodes.forEach((node) => {
+            const speed = Number(node.dataset.depth || 0);
+            node.style.setProperty('--node-y', `${Math.min(y * speed * .025, 8)}px`);
+        });
+        scheduled = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!scheduled) {
+            scheduled = true;
+            requestAnimationFrame(paint);
+        }
+    }, { passive: true });
+})();
+
 /* ========================================================================
    Build With Abdallah — Global JS
    Keep the public site light: Alpine is fine here, but no global Livewire.
@@ -304,4 +368,3 @@ document.addEventListener('click', (e) => {
         init();
     }
 })();
-

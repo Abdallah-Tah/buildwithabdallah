@@ -12,19 +12,21 @@ class HomeController extends Controller
     public function __invoke(): View
     {
         $services = [
-            ['title' => 'Business Websites', 'description' => 'Professional websites and landing pages that explain your offer clearly and capture leads.'],
-            ['title' => 'Dashboards and Internal Tools', 'description' => 'Laravel dashboards, admin panels, and reporting systems for real operations.'],
-            ['title' => 'AI Agents and Telegram Bots', 'description' => 'Approval-based agents for alerts, research, support, content workflows, and business monitoring.'],
-            ['title' => 'API Integrations', 'description' => 'Connect Stripe, GitHub, CRMs, forms, spreadsheets, and internal systems without brittle manual steps.'],
-            ['title' => 'Automation Workflows', 'description' => 'Replace repetitive email, spreadsheet, and reporting work with small reliable systems.'],
-            ['title' => 'MVP Builds', 'description' => 'Lean product builds with Laravel, APIs, clean UI, and an admin workflow you can actually use.'],
+            ['title' => 'Custom Software Development', 'description' => 'Secure web applications, internal platforms, dashboards, portals and operational tools.'],
+            ['title' => 'Legacy System Modernization', 'description' => 'Incrementally improve aging applications, databases, workflows and architecture.'],
+            ['title' => 'Systems Integration & APIs', 'description' => 'Connect internal systems, third-party services, payments and data workflows reliably.'],
+            ['title' => 'Automation & AI', 'description' => 'Reduce repetitive work with monitored automation and approval-based intelligent tools.'],
+            ['title' => 'Data & Reporting', 'description' => 'Database design, data integration, transformation and operational reporting.'],
+            ['title' => 'Application Maintenance & Support', 'description' => 'Bug fixes, upgrades, monitoring, deployment, documentation and continued development.'],
         ];
 
         $proofPoints = [
-            'Full-stack software developer at Kyocera AVX',
-            'Computer Science student at the University of Southern Maine',
-            'Builds real AI agent, Telegram, GitHub, dashboard, and API workflows',
-            'Works across Laravel, PHP, Python, React, APIs, automation, and deployment',
+            'Maine-based',
+            '8+ years software experience',
+            'Custom software',
+            'Systems integration',
+            'Secure development',
+            'Long-term support',
         ];
 
         return view('pages.home', [

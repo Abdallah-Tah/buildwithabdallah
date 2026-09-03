@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\ContactMessages\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class ContactMessageForm
@@ -15,12 +15,15 @@ class ContactMessageForm
             ->components([
                 TextInput::make('name')
                     ->required(),
+                TextInput::make('organization'),
                 TextInput::make('email')
                     ->label('Email address')
                     ->email()
                     ->required(),
-                TextInput::make('subject')
-                    ->required(),
+                TextInput::make('phone'),
+                TextInput::make('project_type'),
+                TextInput::make('timeline'),
+                TextInput::make('subject'),
                 Textarea::make('message')
                     ->required()
                     ->columnSpanFull(),

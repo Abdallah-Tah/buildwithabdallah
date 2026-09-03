@@ -17,10 +17,12 @@ class ContactMessagesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('organization')
+                    ->searchable(),
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
-                TextColumn::make('subject')
+                TextColumn::make('project_type')
                     ->searchable(),
                 TextColumn::make('read_at')
                     ->dateTime()

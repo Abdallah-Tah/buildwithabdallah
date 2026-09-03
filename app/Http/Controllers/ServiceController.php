@@ -10,28 +10,28 @@ class ServiceController extends Controller
     {
         $services = [
             [
-                'title' => 'Starter Website',
-                'description' => 'A clean business website or landing page with clear copy, contact flow, and responsive design. Starting from $499.',
+                'title' => 'Custom Software Development',
+                'description' => 'Secure web applications, internal platforms, dashboards, SaaS systems, portals and operational tools using Laravel, PHP, Python, React, Livewire and modern SQL databases.',
             ],
             [
-                'title' => 'Business Dashboard',
-                'description' => 'A Laravel dashboard for reports, admin workflows, status tracking, and internal visibility. Quote after review.',
+                'title' => 'Legacy System Modernization',
+                'description' => 'Legacy PHP modernization, desktop-to-web migrations, database improvements, API enablement, security improvements and incremental replacement strategies.',
             ],
             [
-                'title' => 'AI Agent or Telegram Bot',
-                'description' => 'A monitored agent for alerts, research, follow-ups, summaries, and approval-based actions. Starting from $799.',
+                'title' => 'Systems Integration & APIs',
+                'description' => 'REST APIs, third-party services, data synchronization, webhooks, authentication, background processing, payment platforms and enterprise databases.',
             ],
             [
-                'title' => 'API Integration',
-                'description' => 'Connect Stripe, GitHub, forms, CRMs, email, dashboards, or existing tools. Quote after review.',
+                'title' => 'Automation & AI',
+                'description' => 'Workflow automation, document processing, alerts, monitoring, scheduled processing and AI-assisted tools with appropriate human approval.',
             ],
             [
-                'title' => 'Automation Workflow',
-                'description' => 'Turn repetitive spreadsheet, email, and reporting work into reliable automated steps. Starting from $799.',
+                'title' => 'Data & Reporting',
+                'description' => 'SQL Server, PostgreSQL and MySQL solutions for database design, data integration, transformation, synchronization and operational dashboards.',
             ],
             [
-                'title' => 'MVP or Internal Tool',
-                'description' => 'A practical product, portal, or internal app with database, admin, API, and deployment support. Quote after review.',
+                'title' => 'Application Maintenance & Support',
+                'description' => 'Existing application support, bug fixes, security and dependency updates, performance improvements, monitoring, deployment, documentation and feature enhancements.',
             ],
         ];
 

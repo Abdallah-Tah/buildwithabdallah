@@ -19,7 +19,7 @@ class ContactSubmission extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New contact: ' . $this->contact->subject,
+            subject: 'New project inquiry: '.($this->contact->organization ?: $this->contact->name),
             // Reply goes straight to the person who filled in the form.
             replyTo: [new Address($this->contact->email, $this->contact->name)],
         );

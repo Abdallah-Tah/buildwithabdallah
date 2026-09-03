@@ -2,11 +2,13 @@
     $footerColumns = [
         'Services' => [
             ['Custom software', route('services')],
-            ['AI &amp; automation', route('services')],
-            ['Content &amp; lead-gen', route('services')],
-            ['Office hours', route('services')],
+            ['Legacy modernization', route('services')],
+            ['Systems integration', route('services')],
+            ['Automation', route('services')],
+            ['Application support', route('services')],
+            ['Government &amp; public sector', route('government')],
         ],
-        'Studio' => [
+        'Company' => [
             ['Selected work', route('home').'#work'],
             ['Journal', route('tutorials.index')],
             ['Videos', route('videos.index')],
@@ -30,17 +32,17 @@
                      class="h-12 w-12 rounded-full object-cover ring-1 ring-line">
                 <span class="leading-tight">
                     <span class="block text-lg font-semibold text-ink">Build With <span class="text-brand-500">Abdallah</span></span>
-                    <span class="mt-1 block font-mono text-2xs uppercase tracking-[0.16em] text-mute">Software &middot; AI &middot; Automation</span>
+                    <span class="mt-1 block font-mono text-2xs uppercase tracking-[0.16em] text-mute">Software Development &middot; IT Consulting</span>
                 </span>
             </div>
 
             <p class="mt-5 max-w-[420px] text-base leading-7 text-dim">
-                A senior engineer building custom software, AI agents and automation for small
-                teams. Working from Brunswick, ME &mdash; happy in any timezone.
+                A Maine-based software development and IT consulting company building, integrating,
+                modernizing and supporting maintainable systems.
             </p>
 
             <p class="mt-6 inline-flex items-center gap-2 rounded-sm border border-live/30 bg-live/8 px-3 py-2 font-mono text-2xs uppercase tracking-[0.14em] text-live">
-                <span class="h-1.5 w-1.5 rounded-full bg-live"></span> Available for new work
+                <span class="h-1.5 w-1.5 rounded-full bg-live"></span> Maine, USA
             </p>
         </div>
 

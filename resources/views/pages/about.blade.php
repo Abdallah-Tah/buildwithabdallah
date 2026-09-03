@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'title' => 'About — Build With Abdallah',
-    'metaDescription' => 'Build With Abdallah is the service brand of Abdallah Mohamed — a senior full-stack engineer building Laravel systems, AI agents and automation for small teams.',
+    'metaDescription' => 'Meet Abdallah Mohamed, founder and lead software engineer of Maine-based Build With Abdallah, with more than eight years of software-development experience.',
 ])
 
 @section('content')
@@ -21,16 +21,16 @@
             <div>
                 <div class="eyebrow reveal">About</div>
                 <h1 class="reveal mt-5 max-w-[20ch] font-display text-[2.5rem] leading-[1.06] tracking-tight text-ink sm:text-5xl lg:text-6xl" data-delay="1">
-                    Practical software, AI agents and automation for teams that need work shipped.
+                    Founder-led software engineering with <span class="motion-accent text-brand-500">direct accountability.</span>
                 </h1>
                 <p class="reveal mt-7 max-w-[62ch] text-lg leading-relaxed text-dim" data-delay="2">
-                    Build With Abdallah is the service brand of Abdallah Mohamed &mdash; a full-stack
-                    developer at Kyocera AVX and a Computer Science student at the University of
-                    Southern Maine, working from Brunswick, ME.
+                    Abdallah is the Founder &amp; Lead Software Engineer of Build With Abdallah. He has
+                    more than eight years of experience building, integrating, modernizing and supporting
+                    business-critical software from Brunswick, Maine.
                 </p>
 
                 <div class="reveal mt-8 flex flex-wrap gap-2" data-delay="3">
-                    @foreach (['8 years in production', 'Laravel · PHP · Python', 'AI agents & automation', 'Self-hosted infrastructure'] as $chip)
+                    @foreach (['8+ years software experience', 'Laravel · Python · C# · VB.NET', 'Manufacturing · quality · devices', 'Maine-based'] as $chip)
                         <span class="rounded-sm border border-line bg-surface px-3 py-2 text-sm text-ink2">{{ $chip }}</span>
                     @endforeach
                 </div>
@@ -55,9 +55,10 @@
                 </h2>
             </div>
             <div class="reveal space-y-6 text-lg leading-relaxed text-dim" data-delay="1">
-                <p>I work on Laravel systems, APIs, dashboards, AI agents, Telegram bots, payment workflows and business automation.</p>
-                <p>The goal is simple: build tools that save time, reduce mistakes, and help a business respond faster.</p>
-                <p>I use the same workflow on my own systems before offering it to clients &mdash; agents, GitHub automation, dashboards, API integrations and self-hosted deployment on real hardware.</p>
+                <p>His work spans PHP and Laravel, Python, C#, VB.NET, SQL Server, REST and SOAP services, manufacturing applications, quality systems, device integration, legacy modernization, automation and production support.</p>
+                <p>He has experience translating existing business processes and undocumented legacy logic into maintainable applications, services, database workflows and automation—without exposing confidential implementation details.</p>
+                <p>Build With Abdallah gives organizations direct access to the engineer responsible for discovery, architecture and implementation.</p>
+                <p>Projects prioritize understandable, testable systems with maintainable source code, deployment guidance and technical documentation.</p>
             </div>
         </div>
 
@@ -72,6 +73,28 @@
                     <h3 class="mt-5 font-display text-2xl text-ink lg:text-3xl">{{ $heading }}</h3>
                     <p class="mt-4 leading-relaxed text-dim">{{ $copy }}</p>
                 </article>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<section class="border-b border-line bg-panel/40">
+    <div class="mx-auto max-w-[1280px] px-5 py-20 lg:px-10 lg:py-28">
+        <div class="eyebrow reveal">Experience areas</div>
+        <h2 class="reveal mt-4 max-w-[18ch] font-display text-3xl tracking-tight text-ink sm:text-5xl">Engineering across the operational stack.</h2>
+        <div class="mt-12 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            @foreach ([
+                ['Application development', 'PHP · Laravel · Python · C# · VB.NET'],
+                ['Data', 'SQL Server · PostgreSQL · MySQL · Stored procedures'],
+                ['Integration', 'REST · SOAP · XML · JSON · Webhooks'],
+                ['Manufacturing', 'InfinityQS ProFicient · Quality data · Device integration'],
+                ['Industrial connectivity', 'RS-232 · Serial · COM · TCP/IP'],
+                ['Frontend', 'Livewire · Vue · React · Tailwind'],
+                ['Infrastructure', 'Linux · Nginx · AWS · Hetzner · Cloudflare'],
+                ['Security', 'OAuth · SSO / SAML · Secure APIs · Authorization'],
+                ['Automation', 'Background jobs · Scheduling · Data processing'],
+            ] as [$area, $skills])
+                <article class="reveal bg-surface p-7"><h3 class="font-mono text-xs uppercase tracking-[0.14em] text-brand-read">{{ $area }}</h3><p class="mt-4 leading-7 text-dim">{{ $skills }}</p></article>
             @endforeach
         </div>
     </div>
@@ -96,7 +119,7 @@
                 ['Central API', 'The single credential boundary between WhatsApp, Stripe and every product I run. Signed, queued, idempotent.', 'https://api.buildwithabdallah.com/about', 'Platform · Integration'],
                 ['AI Ad Studio', 'Turns real product photos into platform-ready video ads through a controlled review workflow.', 'https://adstudio.buildwithabdallah.com', 'Python · AI media'],
             ] as $index => [$name, $copy, $href, $tag])
-                <article class="reveal flex flex-col rounded-lg border border-line bg-surface p-7" @if ($index > 0) data-delay="{{ $index }}" @endif>
+                <article class="reveal motion-card flex flex-col rounded-lg border border-line bg-surface p-7" @if ($index > 0) data-delay="{{ $index }}" @endif>
                     <div class="font-mono text-2xs uppercase tracking-[0.12em] text-mute">{{ $tag }}</div>
                     <h3 class="mt-3 font-display text-2xl text-ink">{{ $name }}</h3>
                     <p class="mt-3 flex-1 leading-relaxed text-dim">{{ $copy }}</p>
@@ -115,19 +138,19 @@
     <div class="pointer-events-none absolute inset-0 bg-brand-glow"></div>
     <div class="relative mx-auto max-w-[1280px] px-5 py-24 text-center lg:px-10">
         <h2 class="reveal mx-auto max-w-[20ch] font-display text-3xl tracking-tight text-ink sm:text-4xl lg:text-5xl">
-            Want to talk through a build?
+            Discuss your software requirements.
         </h2>
         <p class="reveal mx-auto mt-6 max-w-[50ch] text-lg text-dim" data-delay="1">
-            Twenty minutes, no pitch. Bring the problem and we'll figure out whether it's worth building.
+            Share the problem, current constraints and desired outcome to begin a focused technical conversation.
         </p>
         <div class="reveal mt-9 flex flex-col justify-center gap-3 sm:flex-row" data-delay="2">
             <a href="{{ route('contact.index') }}" data-magnetic
                class="magnetic inline-flex items-center justify-center gap-3 rounded-sm bg-brand-500 px-7 py-4 font-semibold text-brand-ink shadow-glow transition hover:bg-brand-400">
-                Book a 20-min intro
+                Discuss Your Project
             </a>
             <a href="{{ route('services') }}"
                class="inline-flex items-center justify-center rounded-sm border border-line bg-surface px-6 py-4 text-ink transition hover:border-lineH hover:bg-elev">
-                See services &amp; pricing
+                View Our Capabilities
             </a>
         </div>
     </div>

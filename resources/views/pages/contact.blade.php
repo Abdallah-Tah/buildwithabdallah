@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'title' => 'Contact — Build With Abdallah',
-    'metaDescription' => 'Book a 20-minute intro call or send a project brief. Custom software, AI agents and automation, built by a senior full-stack engineer.',
+    'metaDescription' => 'Discuss a custom software, modernization, systems integration, automation, application support or public-sector project with Build With Abdallah.',
 ])
 
 @section('content')
@@ -21,11 +21,11 @@
             <div>
                 <div class="eyebrow reveal">Contact</div>
                 <h1 class="reveal mt-5 max-w-[16ch] font-display text-[2.5rem] leading-[1.06] tracking-tight text-ink sm:text-5xl lg:text-6xl" data-delay="1">
-                    Tell me what you're trying to <span class="text-brand-500">build</span>.
+                    Tell us what your organization needs to <span class="motion-accent text-brand-500">accomplish.</span>
                 </h1>
                 <p class="reveal mt-7 max-w-[52ch] text-lg leading-relaxed text-dim" data-delay="2">
-                    The more concrete the better &mdash; what's broken today, who it affects, and what
-                    "done" looks like. I reply to everything within two business days.
+                    Share the current problem, affected users and desired outcome. Your inquiry will
+                    receive a response within two business days.
                 </p>
 
                 <dl class="reveal mt-10 space-y-6 border-t border-line pt-8" data-delay="3">
@@ -41,7 +41,7 @@
                     </div>
                     <div>
                         <dt class="font-mono text-2xs uppercase tracking-[0.12em] text-mute">Typical engagements</dt>
-                        <dd class="mt-2 text-ink2">Fixed-scope builds from $8k &middot; retainers &middot; $250 office hours</dd>
+                        <dd class="mt-2 text-ink2">Fixed-scope projects &middot; milestone-based SOWs &middot; ongoing support &middot; technical consulting</dd>
                     </div>
                     <div>
                         <dt class="font-mono text-2xs uppercase tracking-[0.12em] text-mute">Elsewhere</dt>
@@ -73,6 +73,25 @@
                     </div>
 
                     <div>
+                        <label for="organization" class="mb-2 block font-mono text-2xs uppercase tracking-[0.12em] text-mute">Organization</label>
+                        <input id="organization" type="text" name="organization" value="{{ old('organization') }}" required autocomplete="organization"
+                               @error('organization') aria-invalid="true" aria-describedby="organization-error" @enderror
+                               class="w-full rounded-sm border border-line bg-bg px-4 py-3.5 text-ink outline-none transition placeholder:text-faint focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/40">
+                        @error('organization') <p id="organization-error" class="mt-2 text-sm text-crit">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div>
+                        <label for="organization_type" class="mb-2 block font-mono text-2xs uppercase tracking-[0.12em] text-mute">Organization type <span class="normal-case tracking-normal">(optional)</span></label>
+                        <select id="organization_type" name="organization_type" class="w-full rounded-sm border border-line bg-bg px-4 py-3.5 text-ink outline-none transition focus:border-brand-500">
+                            <option value="">Select organization type</option>
+                            @foreach (['Business', 'Manufacturing', 'Government', 'Municipality', 'Education', 'Nonprofit', 'Startup', 'Other'] as $type)
+                                <option value="{{ $type }}" @selected(old('organization_type') === $type)>{{ $type }}</option>
+                            @endforeach
+                        </select>
+                        @error('organization_type') <p class="mt-2 text-sm text-crit">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div>
                         <label for="email" class="mb-2 block font-mono text-2xs uppercase tracking-[0.12em] text-mute">Email</label>
                         <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email"
                                @error('email') aria-invalid="true" aria-describedby="email-error" @enderror
@@ -81,12 +100,37 @@
                     </div>
 
                     <div>
-                        <label for="subject" class="mb-2 block font-mono text-2xs uppercase tracking-[0.12em] text-mute">Subject</label>
-                        <input id="subject" type="text" name="subject" value="{{ old('subject') }}" required
-                               placeholder="e.g. Internal dashboard for our ops team"
-                               @error('subject') aria-invalid="true" aria-describedby="subject-error" @enderror
+                        <label for="phone" class="mb-2 block font-mono text-2xs uppercase tracking-[0.12em] text-mute">Phone <span class="normal-case tracking-normal">(optional)</span></label>
+                        <input id="phone" type="tel" name="phone" value="{{ old('phone') }}" autocomplete="tel"
+                               @error('phone') aria-invalid="true" aria-describedby="phone-error" @enderror
                                class="w-full rounded-sm border border-line bg-bg px-4 py-3.5 text-ink outline-none transition placeholder:text-faint focus:border-brand-500">
-                        @error('subject') <p id="subject-error" class="mt-2 text-sm text-crit">{{ $message }}</p> @enderror
+                        @error('phone') <p id="phone-error" class="mt-2 text-sm text-crit">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div>
+                        <label for="project_type" class="mb-2 block font-mono text-2xs uppercase tracking-[0.12em] text-mute">Project type</label>
+                        <select id="project_type" name="project_type" required
+                                @error('project_type') aria-invalid="true" aria-describedby="project-type-error" @enderror
+                                class="w-full rounded-sm border border-line bg-bg px-4 py-3.5 text-ink outline-none transition focus:border-brand-500">
+                            <option value="">Select a service</option>
+                            @foreach (['Government / Public Sector', 'Manufacturing', 'Commercial Software', 'Subcontracting / Prime Contractor Partnership', 'Support / Modernization', 'InfinityQS / Quality Integration', 'Device / Serial Integration', 'Database & Automation', 'Other'] as $type)
+                                <option value="{{ $type }}" @selected(old('project_type', $requestedProjectType) === $type)>{{ $type }}</option>
+                            @endforeach
+                        </select>
+                        @error('project_type') <p id="project-type-error" class="mt-2 text-sm text-crit">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div>
+                        <label for="timeline" class="mb-2 block font-mono text-2xs uppercase tracking-[0.12em] text-mute">Approximate timeline</label>
+                        <select id="timeline" name="timeline" required
+                                @error('timeline') aria-invalid="true" aria-describedby="timeline-error" @enderror
+                                class="w-full rounded-sm border border-line bg-bg px-4 py-3.5 text-ink outline-none transition focus:border-brand-500">
+                            <option value="">Select a timeline</option>
+                            @foreach (['As soon as practical', 'Within 1–3 months', 'Within 3–6 months', '6+ months', 'Exploring options'] as $timeline)
+                                <option value="{{ $timeline }}" @selected(old('timeline') === $timeline)>{{ $timeline }}</option>
+                            @endforeach
+                        </select>
+                        @error('timeline') <p id="timeline-error" class="mt-2 text-sm text-crit">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
@@ -100,14 +144,14 @@
 
                     <button type="submit"
                             class="inline-flex w-full items-center justify-center gap-3 rounded-sm bg-brand-500 px-6 py-4 font-semibold text-brand-ink shadow-glow transition hover:bg-brand-400">
-                        Send the brief
+                        Send Project Inquiry
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                             <path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
 
                     <p class="text-center font-mono text-2xs uppercase tracking-[0.12em] text-mute">
-                        No newsletter signup &middot; no CRM sequence
+                        No budget field required
                     </p>
                 </form>
             </div>

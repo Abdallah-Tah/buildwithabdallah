@@ -13,7 +13,12 @@ class ContactMessage extends Model
 
     protected $fillable = [
         'name',
+        'organization',
+        'organization_type',
         'email',
+        'phone',
+        'project_type',
+        'timeline',
         'subject',
         'message',
         'read_at',

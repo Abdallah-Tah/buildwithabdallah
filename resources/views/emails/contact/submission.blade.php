@@ -1,8 +1,11 @@
 <x-mail::message>
 # New contact message
 
-**From:** {{ $contact->name }} &lt;{{ $contact->email }}&gt;
-**Subject:** {{ $contact->subject }}
+**From:** {{ $contact->name }} &lt;{{ $contact->email }}&gt;<br>
+**Organization:** {{ $contact->organization }}<br>
+**Phone:** {{ $contact->phone ?: 'Not provided' }}<br>
+**Project type:** {{ $contact->project_type }}<br>
+**Timeline:** {{ $contact->timeline }}
 
 <x-mail::panel>
 {{ $contact->message }}

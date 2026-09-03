@@ -14,7 +14,9 @@ class ContactController extends Controller
 {
     public function index(): View
     {
-        return view('pages.contact');
+        return view('pages.contact', [
+            'requestedProjectType' => request()->string('project_type')->toString(),
+        ]);
     }
 
     public function store(StoreContactMessageRequest $request): RedirectResponse
