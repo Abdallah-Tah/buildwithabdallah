@@ -186,6 +186,7 @@ EXIT;
 
 ```bash
 composer install --no-dev --optimize-autoloader
+php artisan livewire:publish --assets --no-interaction
 npm install
 npm run build
 php artisan migrate --seed
