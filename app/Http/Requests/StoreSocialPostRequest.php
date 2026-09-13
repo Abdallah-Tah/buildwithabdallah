@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSocialPostRequest extends FormRequest
@@ -25,6 +24,8 @@ class StoreSocialPostRequest extends FormRequest
             'scheduled_at' => ['nullable', 'date'],
             'published_at' => ['nullable', 'date'],
             'meta' => ['nullable', 'array'],
+            'content_hash' => ['nullable', 'string', 'size:64', 'regex:/^[a-f0-9]{64}$/'],
+            'live_verified_at' => ['nullable', 'date'],
         ];
     }
 

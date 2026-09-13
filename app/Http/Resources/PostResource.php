@@ -23,6 +23,11 @@ class PostResource extends JsonResource
             'published_at' => $this->published_at,
             'meta_title' => $this->meta_title,
             'meta_description' => $this->meta_description,
+            'content_hash' => $this->content_hash,
+            'reading_time_minutes' => $this->reading_time_minutes,
+            'editorial_approved_hash' => $this->editorial_approved_hash,
+            'editorial_approved_at' => $this->editorial_approved_at,
+            'corrections' => $this->whenLoaded('corrections'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

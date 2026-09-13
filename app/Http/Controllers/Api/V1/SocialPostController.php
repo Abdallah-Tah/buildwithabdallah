@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSocialPostRequest;
 use App\Http\Requests\UpdateSocialPostRequest;
 use App\Http\Resources\SocialPostResource;
+use App\Models\Post;
 use App\Models\SocialPost;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Validation\ValidationException;
 
 class SocialPostController extends Controller
 {
@@ -39,14 +41,22 @@ class SocialPostController extends Controller
     public function store(StoreSocialPostRequest $request): SocialPostResource
     {
         $data = $request->validated();
+        $this->assertRevisionIsDistributable($data);
 
-        $socialPost = SocialPost::query()->create([
+        $attributes = [
             ...$data,
             'status' => $data['status'] ?? 'draft',
             'published_at' => ($data['status'] ?? null) === 'published'
                 ? ($data['published_at'] ?? now())
                 : ($data['published_at'] ?? null),
-        ]);
+        ];
+        $socialPost = ! empty($data['post_id'])
+            ? SocialPost::query()->firstOrCreate([
+                'post_id' => $data['post_id'],
+                'platform' => $data['platform'],
+                'content_hash' => $data['content_hash'],
+            ], $attributes)
+            : SocialPost::query()->create($attributes);
 
         return new SocialPostResource($socialPost->load(['post', 'video']));
     }
@@ -84,6 +94,7 @@ class SocialPostController extends Controller
             'published_at' => ['nullable', 'date'],
             'meta' => ['nullable', 'array'],
         ]);
+        $this->assertRevisionIsDistributable($socialPost->toArray());
 
         $socialPost->update([
             'status' => 'published',
@@ -94,6 +105,20 @@ class SocialPostController extends Controller
         ]);
 
         return new SocialPostResource($socialPost->load(['post', 'video']));
+    }
+
+    private function assertRevisionIsDistributable(array $data): void
+    {
+        if (empty($data['post_id'])) {
+            return;
+        }
+
+        $post = Post::query()->findOrFail($data['post_id']);
+        if (($data['content_hash'] ?? null) !== $post->content_hash || empty($data['live_verified_at'])) {
+            throw ValidationException::withMessages([
+                'content_hash' => 'Social distribution requires a live-verified hash matching the current article revision.',
+            ]);
+        }
     }
 
     public function unpublish(SocialPost $socialPost): SocialPostResource

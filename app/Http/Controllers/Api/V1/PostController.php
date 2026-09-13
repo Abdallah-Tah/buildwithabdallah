@@ -9,9 +9,12 @@ use App\Http\Resources\PostResource;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Observers\PostObserver;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
 {
@@ -26,6 +29,7 @@ class PostController extends Controller
     {
         $data = $request->validated();
         $publish = (bool) ($data['publish'] ?? false);
+        $correctionReason = $data['correction_reason'] ?? null;
 
         $categoryId = $this->resolveCategoryId($data);
         $tagIds = array_key_exists('tags', $data) ? $this->resolveTagIds($data['tags'] ?? []) : null;
@@ -33,10 +37,18 @@ class PostController extends Controller
         $slug = ($data['slug'] ?? null) ?: Str::slug($data['title']);
         $existing = Post::query()->where('slug', $slug)->first();
 
-        unset($data['publish'], $data['category'], $data['category_id'], $data['tags'], $data['slug']);
+        unset($data['publish'], $data['category'], $data['category_id'], $data['tags'], $data['slug'], $data['correction_reason']);
 
         // Idempotent: re-posting the same slug updates the existing post.
-        $post = $existing ?? new Post();
+        $post = $existing ?? new Post;
+        $previousContentHash = $post->content_hash;
+        if ($existing?->status === 'published'
+            && (($data['title'] ?? $post->title) !== $post->title || ($data['body'] ?? $post->body) !== $post->body)
+            && ! $correctionReason) {
+            throw ValidationException::withMessages([
+                'correction_reason' => 'A visible correction reason is required when editing published content.',
+            ]);
+        }
         $post->fill([
             ...$data,
             'slug' => $slug,
@@ -53,7 +65,7 @@ class PostController extends Controller
 
         // Publish/status: only move the post forward, never silently unpublish
         // a live post just because a re-run omitted `publish`.
-        if ($publish) {
+        if ($publish && (! $existing || $existing->status !== 'published')) {
             $post->status = 'published';
             $post->published_at = $data['published_at'] ?? $post->published_at ?? now();
         } elseif (! $existing) {
@@ -70,7 +82,20 @@ class PostController extends Controller
             $post->published_at = $data['published_at'] ?? now();
         }
 
+        if ($post->status === 'published' && (! $existing || $existing->status !== 'published')) {
+            $this->assertPublishable($post);
+        }
+
         $post->save();
+
+        if ($correctionReason && $previousContentHash && $previousContentHash !== $post->content_hash) {
+            $post->corrections()->create([
+                'reason' => $correctionReason,
+                'previous_content_hash' => $previousContentHash,
+                'corrected_content_hash' => $post->content_hash,
+                'corrected_at' => now(),
+            ]);
+        }
 
         if ($tagIds !== null) {
             $post->tags()->sync($tagIds);
@@ -89,12 +114,14 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post): PostResource
     {
         $data = $request->validated();
+        $previousContentHash = $post->content_hash;
+        $correctionReason = $data['correction_reason'] ?? null;
         $publish = array_key_exists('publish', $data) ? (bool) $data['publish'] : null;
 
         $categoryId = $this->resolveCategoryId($data);
         $tagIds = array_key_exists('tags', $data) ? $this->resolveTagIds($data['tags'] ?? []) : null;
 
-        unset($data['publish'], $data['category'], $data['category_id'], $data['tags']);
+        unset($data['publish'], $data['category'], $data['category_id'], $data['tags'], $data['correction_reason']);
 
         $post->fill([
             ...$data,
@@ -119,13 +146,26 @@ class PostController extends Controller
             $post->published_at = $data['published_at'] ?? now();
         }
 
+        if ($post->status === 'published' && $post->getOriginal('status') !== 'published') {
+            $this->assertPublishable($post);
+        }
+
         $post->save();
+
+        if ($correctionReason && $previousContentHash !== $post->content_hash) {
+            $post->corrections()->create([
+                'reason' => $correctionReason,
+                'previous_content_hash' => $previousContentHash,
+                'corrected_content_hash' => $post->content_hash,
+                'corrected_at' => now(),
+            ]);
+        }
 
         if ($tagIds !== null) {
             $post->tags()->sync($tagIds);
         }
 
-        return new PostResource($post->load(['category', 'tags']));
+        return new PostResource($post->load(['category', 'tags', 'corrections']));
     }
 
     public function destroy(Post $post): JsonResponse
@@ -135,14 +175,42 @@ class PostController extends Controller
         return response()->json(['message' => 'Post deleted.']);
     }
 
-    public function publish(Post $post): PostResource
+    public function publish(Request $request, Post $post): PostResource
     {
+        $data = $request->validate([
+            'content_hash' => ['required', 'string', 'size:64', 'regex:/^[a-f0-9]{64}$/'],
+        ]);
+
+        if (! hash_equals((string) $post->content_hash, $data['content_hash'])) {
+            throw ValidationException::withMessages([
+                'content_hash' => 'The requested revision is no longer current.',
+            ]);
+        }
+
+        $this->assertPublishable($post);
         $post->update([
             'status' => 'published',
             'published_at' => $post->published_at ?? now(),
         ]);
 
         return new PostResource($post->load(['category', 'tags']));
+    }
+
+    private function assertPublishable(Post $post): void
+    {
+        // Compute the hash before the first save so draft creation and approval
+        // always use the exact revision that will be rendered.
+        $currentHash = app(PostObserver::class)->contentHash(
+            (string) $post->title,
+            (string) $post->body,
+        );
+
+        if ($post->editorial_approved_at === null
+            || ! hash_equals($currentHash, (string) $post->editorial_approved_hash)) {
+            throw ValidationException::withMessages([
+                'status' => 'The current content revision has not been editorially approved.',
+            ]);
+        }
     }
 
     public function unpublish(Post $post): PostResource

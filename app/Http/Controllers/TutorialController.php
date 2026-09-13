@@ -42,7 +42,7 @@ class TutorialController extends Controller
         abort_unless($post->status === 'published', 404);
 
         return view('pages.tutorials.show', [
-            'post' => $post->load(['category', 'tags']),
+            'post' => $post->load(['category', 'tags', 'corrections']),
             'relatedPosts' => Post::query()
                 ->published()
                 ->whereKeyNot($post->id)

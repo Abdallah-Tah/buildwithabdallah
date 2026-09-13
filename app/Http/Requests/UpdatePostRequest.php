@@ -34,7 +34,20 @@ class UpdatePostRequest extends FormRequest
             'published_at' => ['nullable', 'date'],
             'meta_title' => ['nullable', 'string', 'max:255'],
             'meta_description' => ['nullable', 'string'],
+            'correction_reason' => ['nullable', 'string', 'min:10', 'max:2000'],
         ];
+    }
+
+    public function after(): array
+    {
+        return [function ($validator): void {
+            $post = $this->route('post');
+            $contentChanges = ($this->has('title') && $this->input('title') !== $post?->title)
+                || ($this->has('body') && $this->input('body') !== $post?->body);
+            if ($post?->status === 'published' && $contentChanges && ! $this->filled('correction_reason')) {
+                $validator->errors()->add('correction_reason', 'A visible correction reason is required when editing published content.');
+            }
+        }];
     }
 
     /**

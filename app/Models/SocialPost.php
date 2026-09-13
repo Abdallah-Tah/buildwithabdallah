@@ -23,6 +23,8 @@ class SocialPost extends Model
         'scheduled_at',
         'published_at',
         'meta',
+        'content_hash',
+        'live_verified_at',
     ];
 
     protected function casts(): array
@@ -31,6 +33,7 @@ class SocialPost extends Model
             'scheduled_at' => 'datetime',
             'published_at' => 'datetime',
             'meta' => 'array',
+            'live_verified_at' => 'datetime',
         ];
     }
 

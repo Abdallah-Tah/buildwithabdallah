@@ -6,8 +6,8 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
@@ -55,6 +55,13 @@ class PostForm
                 DateTimePicker::make('published_at'),
                 TextInput::make('meta_title')->maxLength(255),
                 Textarea::make('meta_description')->rows(3)->columnSpanFull(),
+                Textarea::make('correction_reason')
+                    ->label('Public correction reason')
+                    ->helperText('Required when saving changes to a published article. It appears on the article page.')
+                    ->required(fn ($record): bool => $record?->status === 'published')
+                    ->visible(fn ($record): bool => $record?->status === 'published')
+                    ->rows(3)
+                    ->columnSpanFull(),
             ]);
     }
 }

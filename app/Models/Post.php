@@ -29,6 +29,10 @@ class Post extends Model
         'newsletter_sent_at',
         'meta_title',
         'meta_description',
+        'content_hash',
+        'reading_time_minutes',
+        'editorial_approved_hash',
+        'editorial_approved_at',
     ];
 
     protected function casts(): array
@@ -37,6 +41,8 @@ class Post extends Model
             'featured' => 'boolean',
             'published_at' => 'datetime',
             'newsletter_sent_at' => 'datetime',
+            'reading_time_minutes' => 'integer',
+            'editorial_approved_at' => 'datetime',
         ];
     }
 
@@ -67,5 +73,10 @@ class Post extends Model
     public function socialPosts(): HasMany
     {
         return $this->hasMany(SocialPost::class);
+    }
+
+    public function corrections(): HasMany
+    {
+        return $this->hasMany(PostCorrection::class)->latest('corrected_at');
     }
 }
