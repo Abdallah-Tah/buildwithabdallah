@@ -24,6 +24,8 @@ class UpdateSocialPostRequest extends FormRequest
             'scheduled_at' => ['sometimes', 'nullable', 'date'],
             'published_at' => ['sometimes', 'nullable', 'date'],
             'meta' => ['sometimes', 'nullable', 'array'],
+            'content_hash' => ['sometimes', 'nullable', 'string', 'size:64', 'regex:/^[a-f0-9]{64}$/'],
+            'live_verified_at' => ['sometimes', 'nullable', 'date'],
         ];
     }
 

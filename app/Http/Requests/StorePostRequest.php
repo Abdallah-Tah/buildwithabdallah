@@ -32,6 +32,7 @@ class StorePostRequest extends FormRequest
             'published_at' => ['nullable', 'date'],
             'meta_title' => ['nullable', 'string', 'max:255'],
             'meta_description' => ['nullable', 'string'],
+            'correction_reason' => ['nullable', 'string', 'min:10', 'max:2000'],
         ];
     }
 

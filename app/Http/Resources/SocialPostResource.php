@@ -19,6 +19,8 @@ class SocialPostResource extends JsonResource
             'scheduled_at' => $this->scheduled_at,
             'published_at' => $this->published_at,
             'meta' => $this->meta,
+            'content_hash' => $this->content_hash,
+            'live_verified_at' => $this->live_verified_at,
             'post_id' => $this->post_id,
             'video_id' => $this->video_id,
             'post' => new PostResource($this->whenLoaded('post')),

@@ -4,6 +4,9 @@
 ])
 
 @section('content')
+@push('head')
+<meta name="smkit-content-hash" content="{{ $post->content_hash }}">
+@endpush
 {{-- Article Header --}}
 <section class="relative overflow-hidden border-b border-line/70">
     <div class="absolute inset-0 bg-grid-dark bg-grid pointer-events-none [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000_40%,transparent_85%)]"></div>
@@ -22,7 +25,7 @@
                 <span class="px-2 py-1 rounded-xs border border-brand-500/40 bg-brand-500/10 text-brand-400">
                     {{ $post->category?->name ?? 'Tutorial' }}
                 </span>
-                <span>{{ ceil(str_word_count(strip_tags($post->body ?? '')) / 200) }} min read</span>
+                <span>{{ $post->reading_time_minutes ?? 1 }} min read</span>
                 <span>{{ $post->published_at?->format('M d, Y') ?? 'Recently' }}</span>
             </div>
 
@@ -61,6 +64,7 @@
     <div class="mx-auto max-w-[1280px] px-6 lg:px-10 py-16">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12">
             {{-- Main Content --}}
+            <div>
             <article class="prose prose-lg max-w-none
                 prose-headings:font-display prose-headings:text-ink prose-headings:font-semibold
                 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
@@ -86,6 +90,18 @@
                     {!! \Illuminate\Support\Str::markdown($body, ['html_input' => 'strip', 'allow_unsafe_links' => false]) !!}
                 @endif
             </article>
+
+            @if($post->corrections->isNotEmpty())
+                <section class="mt-10 border border-amber-500/30 rounded-lg p-5" aria-labelledby="corrections-heading">
+                    <h2 id="corrections-heading" class="font-display text-xl text-ink">Corrections</h2>
+                    <ul class="mt-3 space-y-3 text-sm text-dim">
+                        @foreach($post->corrections as $correction)
+                            <li><time datetime="{{ $correction->corrected_at->toIso8601String() }}">{{ $correction->corrected_at->format('M d, Y') }}</time> — {{ $correction->reason }}</li>
+                        @endforeach
+                    </ul>
+                </section>
+            @endif
+            </div>
 
             {{-- Sidebar --}}
             <aside class="hidden lg:block">
