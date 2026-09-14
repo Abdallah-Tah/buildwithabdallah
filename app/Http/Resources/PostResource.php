@@ -27,6 +27,7 @@ class PostResource extends JsonResource
             'reading_time_minutes' => $this->reading_time_minutes,
             'editorial_approved_hash' => $this->editorial_approved_hash,
             'editorial_approved_at' => $this->editorial_approved_at,
+            'editorial_approval_record_hash' => $this->editorial_approval_record_hash,
             'corrections' => $this->whenLoaded('corrections'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

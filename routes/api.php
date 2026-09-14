@@ -28,12 +28,13 @@ Route::prefix('v1')
 
         Route::middleware('auth:sanctum')->group(function (): void {
             Route::get('/posts', [PostController::class, 'index'])->middleware('ability:admin:read')->name('api.v1.posts.index');
-            
+
             Route::post('/projects', [PostController::class, 'store'])->middleware('ability:posts:create')->name('api.v1.projects.store');
             Route::get('/posts/{post}', [PostController::class, 'show'])->middleware('ability:admin:read')->name('api.v1.posts.show');
             Route::patch('/posts/{post}', [PostController::class, 'update'])->middleware('ability:posts:update')->name('api.v1.posts.update');
             Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware('ability:posts:delete')->name('api.v1.posts.destroy');
             Route::post('/posts/{post}/publish', [PostController::class, 'publish'])->middleware('ability:posts:publish')->name('api.v1.posts.publish');
+            Route::post('/posts/{post}/approve', [PostController::class, 'approve'])->middleware('ability:posts:approve')->name('api.v1.posts.approve');
             Route::post('/posts/{post}/unpublish', [PostController::class, 'unpublish'])->middleware('ability:posts:publish')->name('api.v1.posts.unpublish');
 
             Route::get('/videos', [VideoController::class, 'index'])->middleware('ability:admin:read')->name('api.v1.videos.index');

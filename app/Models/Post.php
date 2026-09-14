@@ -33,6 +33,7 @@ class Post extends Model
         'reading_time_minutes',
         'editorial_approved_hash',
         'editorial_approved_at',
+        'editorial_approval_record_hash',
     ];
 
     protected function casts(): array

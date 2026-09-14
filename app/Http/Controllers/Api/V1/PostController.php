@@ -196,6 +196,28 @@ class PostController extends Controller
         return new PostResource($post->load(['category', 'tags']));
     }
 
+    public function approve(Request $request, Post $post): PostResource
+    {
+        $data = $request->validate([
+            'content_hash' => ['required', 'string', 'size:64', 'regex:/^[a-f0-9]{64}$/'],
+            'editorial_record_hash' => ['required', 'string', 'size:64', 'regex:/^[a-f0-9]{64}$/'],
+        ]);
+
+        if (! hash_equals((string) $post->content_hash, $data['content_hash'])) {
+            throw ValidationException::withMessages([
+                'content_hash' => 'The requested revision is no longer current.',
+            ]);
+        }
+
+        $post->update([
+            'editorial_approved_hash' => $post->content_hash,
+            'editorial_approved_at' => now(),
+            'editorial_approval_record_hash' => $data['editorial_record_hash'],
+        ]);
+
+        return new PostResource($post->load(['category', 'tags']));
+    }
+
     private function assertPublishable(Post $post): void
     {
         // Compute the hash before the first save so draft creation and approval
@@ -206,6 +228,7 @@ class PostController extends Controller
         );
 
         if ($post->editorial_approved_at === null
+            || $post->editorial_approval_record_hash === null
             || ! hash_equals($currentHash, (string) $post->editorial_approved_hash)) {
             throw ValidationException::withMessages([
                 'status' => 'The current content revision has not been editorially approved.',
