@@ -45,9 +45,17 @@ class EditPost extends EditRecord
                 ->requiresConfirmation()
                 ->modalDescription('This approval is tied to the current content hash and is cleared automatically if the title or body changes.')
                 ->action(function (): void {
+                    $approvedAt = now();
                     $this->record->update([
                         'editorial_approved_hash' => $this->record->content_hash,
-                        'editorial_approved_at' => now(),
+                        'editorial_approved_at' => $approvedAt,
+                        'editorial_approval_record_hash' => hash('sha256', implode('|', [
+                            'manual',
+                            $this->record->id,
+                            $this->record->content_hash,
+                            auth()->id(),
+                            $approvedAt->toIso8601String(),
+                        ])),
                     ]);
                 }),
             ViewAction::make(),

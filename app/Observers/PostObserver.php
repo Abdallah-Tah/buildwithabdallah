@@ -24,6 +24,7 @@ class PostObserver
         if ($post->exists && $contentChanged) {
             $post->editorial_approved_hash = null;
             $post->editorial_approved_at = null;
+            $post->editorial_approval_record_hash = null;
         }
 
         if ($post->exists && $post->isDirty('status') && $post->status === 'published' && ! $this->hasCurrentApproval($post)) {

@@ -90,11 +90,31 @@ class PostVerificationTest extends TestCase
         $post->update([
             'editorial_approved_hash' => $post->content_hash,
             'editorial_approved_at' => now(),
+            'editorial_approval_record_hash' => str_repeat('c', 64),
         ]);
         $this->postJson('/api/v1/posts/'.$post->id.'/publish', ['content_hash' => $post->content_hash])
             ->assertOk();
 
         $post->update(['body' => 'A new revision that must be approved again.']);
         $this->assertNull($post->fresh()->editorial_approved_at);
+    }
+
+    public function test_scoped_editorial_approval_records_the_gate_artifact(): void
+    {
+        $user = User::factory()->create();
+        Sanctum::actingAs($user, ['posts:approve']);
+        $post = Post::factory()->create(['status' => 'draft']);
+        $recordHash = str_repeat('b', 64);
+
+        $this->postJson('/api/v1/posts/'.$post->id.'/approve', [
+            'content_hash' => $post->content_hash,
+            'editorial_record_hash' => $recordHash,
+        ])->assertOk()->assertJsonPath('data.editorial_approval_record_hash', $recordHash);
+
+        $this->assertDatabaseHas('posts', [
+            'id' => $post->id,
+            'editorial_approved_hash' => $post->content_hash,
+            'editorial_approval_record_hash' => $recordHash,
+        ]);
     }
 }
