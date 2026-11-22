@@ -19,7 +19,7 @@
                     <span class="hero-title__line text-brand-500"><span>need systems to work.</span></span>
                 </h1>
                 <div class="reveal mt-7 max-w-[650px] text-[1.0625rem] leading-7 text-dim" data-delay="2">
-                    <p>Build With Abdallah delivers custom applications, legacy modernization, system integrations, automation and long-term technical support around real operational requirements.</p>
+                    <p>From internal portals to shop-floor integrations, Build With Abdallah helps businesses, manufacturers and public-sector teams connect systems, reduce manual work and plan legacy modernization. Work directly with a Maine-based engineer from discovery through delivery and support.</p>
                 </div>
                 <div class="reveal mt-8 flex flex-col gap-3 sm:flex-row sm:items-center" data-delay="3">
                     <a href="{{ route('contact.index') }}" data-magnetic data-magnetic-strength="0.2"
@@ -113,6 +113,17 @@
                         </div>
                         <h3 class="mt-14 max-w-[13ch] font-display text-3xl font-semibold leading-[1.05] tracking-[-0.025em] text-ink sm:text-4xl">{{ $title }}</h3>
                         <p class="mt-5 max-w-[54ch] text-[1.0625rem] leading-7 text-dim">{{ $copy }}</p>
+                        <div class="mt-6 border-t border-line pt-5">
+                            <p class="text-xs font-semibold uppercase tracking-[0.08em] text-brand-read">Typical deliverables</p>
+                            <p class="mt-2 text-sm leading-6 text-dim">{{ [
+                                'Role-based workflows, an administration interface, tested application code and deployment guidance.',
+                                'A workflow inventory, phased migration plan, replacement interfaces and validation of existing business rules.',
+                                'Documented data mappings, authenticated endpoints, retry handling and traceable processing.',
+                                'A device-connectivity assessment, data-acquisition workflow and connections to quality or reporting systems.',
+                                'Scheduled processing, data validation, operational dashboards and alerts for failed jobs.',
+                                'Root-cause findings, corrective changes, monitoring improvements and an operational handoff.',
+                            ][$index] }}</p>
+                        </div>
                         <div class="mt-auto flex flex-wrap items-end justify-between gap-5 pt-10">
                             <span class="text-xs font-semibold uppercase tracking-[0.08em] text-mute">
                                 {{ [
@@ -150,10 +161,10 @@
             <ol class="process-timeline relative" data-process-timeline>
                 <span class="process-timeline__rail" aria-hidden="true"><span data-process-progress></span></span>
             @foreach ([
-                ['Discover', 'Understand workflows, users, constraints and existing systems.'],
-                ['Design', 'Define architecture, data, integrations and security.'],
-                ['Build & Deploy', 'Develop, test, document and release.'],
-                ['Support', 'Maintain and improve after launch.'],
+                ['Discover', 'Review the workflow with the people using it. Map existing systems, constraints and business rules, then agree on the problem and success criteria.'],
+                ['Design', 'Turn findings into a written scope with deliverables, milestones and acceptance criteria. Identify integration, data and security requirements before implementation.'],
+                ['Build & Deploy', 'Review working software as it develops. Test agreed workflows, prepare deployment and rollback steps, and release against the approved scope.'],
+                ['Support', 'Walk through the system, source code and technical documentation. Agree on any ongoing maintenance, monitoring and improvements as a separate support scope.'],
             ] as $index => [$title, $copy])
                 <li class="process-stage relative pl-16 pb-16 last:pb-0 sm:pl-20 sm:pb-24" data-process-stage>
                     <span class="process-stage__marker">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}</span>
@@ -207,8 +218,21 @@
             ] as $index => [$name, $category, $problem, $built, $technologies, $href, $cta])
                 <article class="reveal case-study grid min-h-[520px] overflow-hidden rounded-xl border border-line bg-surface lg:grid-cols-[1.1fr_0.9fr]" data-delay="{{ min($index, 3) }}">
                     @if ($index === 0)
-                        <div class="case-study__visual relative min-h-[320px] overflow-hidden border-b border-line bg-panel lg:min-h-full lg:border-b-0 lg:border-r">
-                            <img src="https://buildwithabdallah.com/storage/covers/01KXXD1NG9X4YDDVRGCH9SKGV1.png" alt="Kirada property management platform interface" loading="lazy" class="absolute inset-0 h-full w-full object-cover">
+                        <div data-kirada-overview class="case-study__visual relative flex min-h-[320px] flex-col justify-center overflow-hidden border-b border-line bg-panel p-7 sm:p-10 lg:min-h-full lg:border-b-0 lg:border-r lg:p-12">
+                            <div class="font-mono text-xs uppercase tracking-[0.14em] text-brand-read">Kirada &middot; Product overview</div>
+                            <p class="mt-5 max-w-[14ch] font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">Rental operations, connected.</p>
+                            <dl class="mt-8 space-y-5 border-t border-line pt-6">
+                                @foreach ([
+                                    ['Manage', 'Properties, units, tenants and leases'],
+                                    ['Track', 'Invoices, payment proofs and documents'],
+                                    ['Coordinate', 'Maintenance requests and messaging'],
+                                ] as [$action, $features])
+                                    <div class="grid gap-1 sm:grid-cols-[7rem_1fr] sm:gap-4">
+                                        <dt class="text-sm font-semibold text-brand-read">{{ $action }}</dt>
+                                        <dd class="text-sm leading-6 text-dim">{{ $features }}</dd>
+                                    </div>
+                                @endforeach
+                            </dl>
                         </div>
                     @else
                         <div @class([
@@ -246,6 +270,26 @@
                             {{ $cta }} <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
                         </a>
                     </div>
+                </article>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- Engineering experience --}}
+<section aria-labelledby="experience-heading" class="border-b border-line bg-surface">
+    <div class="mx-auto max-w-[1400px] px-5 py-16 lg:px-8 xl:px-10">
+        <div class="max-w-3xl">
+            <div class="eyebrow">Engineering experience</div>
+            <h2 id="experience-heading" class="mt-5 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Inside the integration work.</h2>
+            <p class="mt-5 text-base leading-7 text-dim">Explore anonymized engineering summaries covering legacy applications, enterprise services and industrial devices. Client identities and proprietary implementation details remain confidential.</p>
+        </div>
+        <div class="mt-10 grid gap-8 md:grid-cols-3">
+            @foreach (config('case-studies') as $slug => $caseStudy)
+                <article class="border-l-2 border-brand-500/40 pl-5">
+                    <h3 class="font-display text-xl font-semibold text-ink">{{ $caseStudy['title'] }}</h3>
+                    <p class="mt-3 text-sm leading-6 text-dim">{{ $caseStudy['summary'] }}</p>
+                    <a href="{{ route('case-studies.show', $slug) }}" class="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-read" aria-label="Read {{ $caseStudy['title'] }} engineering summary">Read engineering summary <span aria-hidden="true">&rarr;</span></a>
                 </article>
             @endforeach
         </div>
@@ -292,6 +336,8 @@
             <span class="font-mono text-[0.6875rem] text-mute">04 / 06</span>
         </div>
         <h2 class="reveal mt-8 max-w-[19ch] font-display text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl" data-delay="1">Experienced engineering without unnecessary complexity.</h2>
+        <p class="mt-6 max-w-3xl text-[1.0625rem] leading-7 text-dim">Founded by Abdallah Mohamed, a software engineer with more than eight years of experience across business applications, manufacturing systems and enterprise integrations. Based in Brunswick, Maine, and available for projects throughout the United States.</p>
+        <a href="{{ route('about') }}" class="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-read">Meet the engineer <span aria-hidden="true">&rarr;</span></a>
         <div class="mt-14 grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2">
             @foreach ([
                 ['Direct Engineering Access', 'Work directly with the engineer responsible for architecture and implementation.'],
@@ -383,13 +429,65 @@
     </div>
 </section>
 
+{{-- Engagements --}}
+<section id="engagements" aria-labelledby="engagements-heading" class="border-b border-line bg-bg">
+    <div class="mx-auto max-w-[1400px] px-5 py-20 sm:py-24 lg:px-8 xl:px-10">
+        <div class="eyebrow">Ways to work together</div>
+        <h2 id="engagements-heading" class="mt-5 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">Start with the problem you have today.</h2>
+        <p class="mt-6 max-w-2xl text-base leading-7 text-dim">A new platform, a difficult integration or an application that needs attention can each start with a focused scope. Deliverables, timing and cost are agreed before work begins.</p>
+        <div class="mt-12 space-y-8">
+            @foreach ([
+                ['Understand an existing system', 'For teams with undocumented workflows, aging software or an unclear modernization path.', 'Workflow review, technical assessment and a prioritized implementation plan.'],
+                ['Deliver a defined project', 'For teams ready to build an application, connect systems or automate a specific process.', 'An agreed scope, milestone reviews, tested software and deployment documentation.'],
+                ['Maintain and improve', 'For teams that need help with an existing application, recurring failures or a backlog of changes.', 'A scoped investigation or improvement plan, followed by agreed maintenance and support work.'],
+            ] as [$title, $fit, $deliverables])
+                <article class="grid gap-4 border-t border-line pt-8 md:grid-cols-[0.8fr_1fr_1fr] md:gap-8">
+                    <h3 class="font-display text-2xl font-semibold text-ink">{{ $title }}</h3>
+                    <p class="text-base leading-7 text-dim">{{ $fit }}</p>
+                    <div><p class="text-xs font-semibold uppercase tracking-[0.08em] text-brand-read">Scope to discuss</p><p class="mt-2 text-sm leading-6 text-dim">{{ $deliverables }}</p></div>
+                </article>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- Questions --}}
+<section id="faq" aria-labelledby="faq-heading" class="border-b border-line bg-surface">
+    <div class="mx-auto grid max-w-[1400px] gap-10 px-5 py-20 sm:py-24 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20 lg:px-8 xl:px-10">
+        <div>
+            <div class="eyebrow">Before we begin</div>
+            <h2 id="faq-heading" class="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">Practical questions. Clear answers.</h2>
+            <p class="mt-6 text-base leading-7 text-dim">You do not need a finished specification to start a conversation. A description of the workflow and what needs to improve is enough.</p>
+        </div>
+        <div class="divide-y divide-line border-y border-line">
+            @foreach ([
+                ['What should I include in my first message?', 'Describe your organization, the current workflow or system, who uses it and what a better outcome would look like. Include any known constraints and target timeline. Please leave passwords, production credentials and sensitive records out of the initial inquiry.'],
+                ['How are pricing and timelines determined?', 'Estimates depend on the scope, existing code, data migration, integrations and deployment requirements. After reviewing the problem, we agree on deliverables, milestones, pricing and exclusions in writing. Changes to that scope are discussed before additional work begins.'],
+                ['Can you work with our existing application?', 'Yes. Work can begin with a review of the application, database and deployment environment. Modernization can be phased around existing workflows, with integration boundaries and validation steps agreed before replacing critical behavior.'],
+                ['Who owns the code and documentation?', 'Projects include maintainable source code and appropriate technical documentation. Ownership, repository access, infrastructure responsibilities and any third-party licensing are defined in the engagement agreement.'],
+                ['What happens after launch?', 'Delivery includes a technical handoff and deployment guidance appropriate to the project. Ongoing bug fixes, dependency updates, monitoring and feature work can be scoped separately. Support availability and response expectations are agreed for each engagement.'],
+                ['Do you work with manufacturing and public-sector teams?', 'Yes. Capabilities include legacy applications, SQL Server, SOAP and REST services, manufacturing quality workflows and device integration. Public-sector work can be structured around a Statement of Work or a prime-contractor partnership; procurement requirements are reviewed for each opportunity.'],
+            ] as [$question, $answer])
+                <details class="group py-5">
+                    <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-5 rounded-sm text-lg font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-500 [&::-webkit-details-marker]:hidden">
+                        {{ $question }}
+                        <span aria-hidden="true" class="shrink-0 text-2xl font-normal text-brand-read group-open:hidden">+</span>
+                        <span aria-hidden="true" class="hidden shrink-0 text-2xl font-normal text-brand-read group-open:block">&minus;</span>
+                    </summary>
+                    <p class="mt-4 max-w-[65ch] text-base leading-7 text-dim">{{ $answer }}</p>
+                </details>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 {{-- Final CTA --}}
 <section class="relative overflow-hidden border-b border-line bg-panel">
     <div class="pointer-events-none absolute inset-0 bg-grid-dark bg-grid opacity-35 [mask-image:radial-gradient(ellipse_at_center,#000,transparent_72%)]"></div>
     <div class="relative mx-auto max-w-[1400px] px-5 py-20 text-center sm:py-24 lg:px-8 lg:py-28 xl:px-10">
         <div class="eyebrow reveal justify-center">Start a conversation</div>
         <h2 class="reveal mx-auto mt-6 max-w-[18ch] font-display text-4xl font-semibold leading-[1.03] tracking-[-0.03em] text-ink sm:text-5xl lg:text-6xl" data-delay="1">Have a system that needs to be built, connected or modernized?</h2>
-        <p class="reveal mx-auto mt-6 max-w-[620px] text-[1.0625rem] leading-7 text-dim" data-delay="2">Tell us about the workflow, application or technical problem your organization needs to solve.</p>
+        <p class="reveal mx-auto mt-6 max-w-[620px] text-[1.0625rem] leading-7 text-dim" data-delay="2">Share the current workflow, what needs to improve and your target timeline. We can use that context to discuss fit, clarify requirements and identify a useful first scope.</p>
         <div class="reveal mt-9 flex flex-col justify-center gap-3 sm:flex-row" data-delay="3">
             <a href="{{ route('contact.index') }}" class="inline-flex min-h-12 items-center justify-center rounded-sm bg-brand-500 px-6 py-3 font-semibold text-brand-ink shadow-glow-sm transition hover:bg-brand-400">Discuss a Project</a>
             <a href="{{ route('government') }}" class="inline-flex min-h-12 items-center justify-center rounded-sm border border-lineH bg-surface px-6 py-3 font-semibold text-ink transition hover:bg-elev">Government &amp; Public Sector</a>

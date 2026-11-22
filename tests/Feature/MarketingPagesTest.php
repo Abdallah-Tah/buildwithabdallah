@@ -22,6 +22,92 @@ class MarketingPagesTest extends TestCase
             ->assertDontSee('>Admin<', false);
     }
 
+    public function test_homepage_explains_deliverables_engagements_and_the_engineer(): void
+    {
+        $this->withoutVite();
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSeeText('Typical deliverables')
+            ->assertSeeText('Role-based workflows')
+            ->assertSeeText('data-acquisition workflow')
+            ->assertSeeText('milestones and acceptance criteria')
+            ->assertSeeText('Founded by Abdallah Mohamed')
+            ->assertSeeText('Understand an existing system')
+            ->assertSeeText('Deliver a defined project')
+            ->assertSeeText('Maintain and improve')
+            ->assertSee('href="'.route('about').'"', false)
+            ->assertSee('href="'.route('contact.index').'"', false);
+    }
+
+    public function test_homepage_links_to_existing_engineering_summaries(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->get('/')->assertOk();
+
+        foreach (config('case-studies') as $slug => $caseStudy) {
+            $response
+                ->assertSeeText($caseStudy['title'])
+                ->assertSeeText($caseStudy['summary'])
+                ->assertSee('href="'.route('case-studies.show', $slug).'"', false);
+        }
+
+        $response->assertSeeText('Client identities and proprietary implementation details remain confidential.');
+    }
+
+    public function test_homepage_answers_project_questions_with_native_disclosures(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->get('/')
+            ->assertOk()
+            ->assertSeeText('How are pricing and timelines determined?')
+            ->assertSeeText('Who owns the code and documentation?')
+            ->assertSeeText('What happens after launch?')
+            ->assertSeeText('defined in the engagement agreement')
+            ->assertSeeText('Support availability and response expectations are agreed for each engagement.');
+
+        $document = new \DOMDocument;
+        @$document->loadHTML($response->getContent());
+        $xpath = new \DOMXPath($document);
+        $questions = $xpath->query('//section[@id="faq"]//details/summary');
+        $answers = $xpath->query('//section[@id="faq"]//details/p');
+
+        $this->assertCount(6, $questions);
+        $this->assertCount(6, $answers);
+
+        foreach ($questions as $question) {
+            $this->assertNotEmpty(trim($question->textContent));
+        }
+
+        foreach ($answers as $answer) {
+            $this->assertNotEmpty(trim($answer->textContent));
+        }
+    }
+
+    public function test_kirada_portfolio_preview_does_not_depend_on_a_missing_upload(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->get('/')
+            ->assertOk()
+            ->assertSeeText('Rental operations, connected.')
+            ->assertSeeText('Properties, units, tenants and leases')
+            ->assertSeeText('Invoices, payment proofs and documents')
+            ->assertSeeText('Maintenance requests and messaging')
+            ->assertSee('href="https://kirada.buildwithabdallah.com"', false)
+            ->assertDontSee('01KXXD1NG9X4YDDVRGCH9SKGV1.png');
+
+        $document = new \DOMDocument;
+        @$document->loadHTML($response->getContent());
+        $xpath = new \DOMXPath($document);
+
+        $this->assertCount(1, $xpath->query('//*[@data-kirada-overview]'));
+        $this->assertCount(0, $xpath->query('//*[@data-kirada-overview]//img'));
+        $this->assertCount(3, $xpath->query('//*[@data-kirada-overview]//dl/div'));
+    }
+
     public function test_newsletter_signup_can_be_updated_for_existing_email(): void
     {
         $this->withoutVite();
